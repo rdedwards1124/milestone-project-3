@@ -1,0 +1,29 @@
+nav {
+    display: flex; /* Use flexbox to arrange items horizontally */
+    justify-content: space-between; /* Distribute items evenly along the horizontal axis */
+    background-color: #333; /* Optional background color */
+    padding: 10px; /* Optional padding for spacing */
+}
+
+nav ul {
+    display: flex; /* Use flexbox to arrange items horizontally */
+    justify-content: space-between; /* Distribute items evenly along the horizontal axis */
+    padding: 10px; /* Optional padding for spacing */
+    list-style: none;
+}
+
+nav li{
+    float: right;
+}
+
+nav a {
+    color: white; /* Set the text color to white */
+    text-decoration: none; /* Remove underlines from links */
+    margin-right: 20px; /* Optional margin between items */
+}
+
+.log{
+    float: right;
+    list-style: none;
+    padding: 10px;
+}
