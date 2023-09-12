@@ -1,12 +1,36 @@
+
+.CenterIt{
+    text-align: center;
+}
+
 .SearchedPoke{
     display: flex;
+    /* justify-content: space-between; */
+    justify-content: space-around;
     list-style: none;
+    margin-top: 40px;
 }
 
 .SearchedPokeImg{
-    width: 40%;
+    max-width: 30%;
+    min-width: 200px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .SearchedPokeInfo{
-    margin-left: 10px;
+    margin-left: 0;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.SearchedPoke ul li{
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .SearchedPoke {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center items horizontally in the column */
+    }
 }
