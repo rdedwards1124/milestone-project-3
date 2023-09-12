@@ -12,6 +12,8 @@ function Home() {
                     alt="Pokemon"
                 />
             </div>
+            <h2>Current Users</h2>
+            <div></div>
         </main>
     );
 }

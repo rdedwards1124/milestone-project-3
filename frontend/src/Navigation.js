@@ -44,10 +44,6 @@ function Navigation() {
     //         </>
     //     );
 
-    //     if (currentUser.role === "admin") {
-            
-    //     }
-    // }
 
     return (
         <nav>
@@ -58,11 +54,20 @@ function Navigation() {
                     </a>
                 </li>
                 <li>
+                    <a href="#" onClick={() => history.push("/searchpage")}>
+                        Search PKMN
+                    </a>
+                </li>
+                <li>
                     <a href="#" onClick={() => {}}>
                         My Page
                     </a>
                 </li>
-                
+                <li>
+                    <a href="#" onClick={() => {}}>
+                        Chat
+                    </a>
+                </li>
             </ul>
             <div className="log">{loginActions}</div>
         </nav>
