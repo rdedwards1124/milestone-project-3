@@ -3,11 +3,12 @@ import Home from './Home'
 
 import Navigation from './Navigation'
 import Error404 from './Error404'
+import CurrentUserProvider from './contexts/CurrentUser'
 
 
 function App() {
   return (
-
+    
       <BrowserRouter>
         <Navigation />
         <Switch>
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" component={Error404} />
         </Switch>
       </BrowserRouter>
-
+    
   );
 }
 
