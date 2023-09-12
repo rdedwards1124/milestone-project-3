@@ -2,7 +2,7 @@ import './Add-Style/Home.css'
 
 function Home() {
     return (
-        <main>
+        <main className="HomePage">
             <h1>Welcome to PokéPipeline!!!</h1>
             <div>
                 <img

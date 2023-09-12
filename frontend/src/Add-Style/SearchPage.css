@@ -1,0 +1,12 @@
+.SearchedPoke{
+    display: flex;
+    list-style: none;
+}
+
+.SearchedPokeImg{
+    width: 40%;
+}
+
+.SearchedPokeInfo{
+    margin-left: 10px;
+}

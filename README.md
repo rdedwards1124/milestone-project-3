@@ -9,3 +9,6 @@ Home Page
 
 Error Page
 - https://www.pokekalos.fr/errors/404.php
+
+PokeBall Image
+- https://www.etsy.com/il-en/listing/1143048156/pokemon-pokeball-svg 
