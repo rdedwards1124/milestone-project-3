@@ -12,3 +12,7 @@ Error Page
 
 PokeBall Image
 - https://www.etsy.com/il-en/listing/1143048156/pokemon-pokeball-svg 
+
+# Sources
+Build a Rest Api with NodeJS (JavaScript), Express, and PostgreSQL
+- youtube.com/watch?v=DihOP19LQdg 
