@@ -57,6 +57,10 @@ function SearchPage() {
                                 </ul>
                             </li>
                         </ul>
+                        <div className="buttons">
+                            <button type="submit">Add to Favorites</button>
+                            <button type="submit">More Info</button>
+                        </div>
                     </div>
                 </div>
                 <div className="SearchByType">

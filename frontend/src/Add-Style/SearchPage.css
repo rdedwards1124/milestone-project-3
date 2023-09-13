@@ -37,7 +37,7 @@
     margin-right: 10%; */
     padding-top: 3em;
     padding-bottom: 2em;
-    border: 1px solid black;
+    border: 5px solid black;
     background-color: white;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -47,7 +47,7 @@
     width: 60%;
     /* margin-right: 5%;
     margin-left: 5%; */
-    border: 1px solid black;
+    border: 5px solid black;
     background-color: white;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -55,6 +55,12 @@
 
 .SearchedPoke ul li{
     text-align: left;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    margin: 1em;
 }
 
 .SearchByType{
@@ -104,5 +110,11 @@
     .SearchedPoke {
         flex-direction: column; /* Stack elements vertically */
         align-items: center; /* Center items horizontally in the column */
+    }
+    .SearchedPokeInfo{
+        width: 90%;
+    }
+    .SearchedPokeImg{
+        max-width: 90%;
     }
 }
