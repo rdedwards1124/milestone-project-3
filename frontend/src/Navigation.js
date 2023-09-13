@@ -59,7 +59,7 @@ function Navigation() {
                     </a>
                 </li>
                 <li>
-                    <a href="#" onClick={() => {}}>
+                    <a href="#" onClick={() => history.push("/usermypage")}>
                         My Page
                     </a>
                 </li>
