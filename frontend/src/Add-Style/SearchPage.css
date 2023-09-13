@@ -55,6 +55,7 @@
 
 .SearchedPoke ul li{
     text-align: left;
+    list-style: none;
 }
 
 .buttons{
