@@ -3,29 +3,64 @@
     text-align: center;
 }
 
+.Searchbox h1{
+    color: yellow;
+
+    /* Create a text shadow to simulate the text outline (black outline) */
+    text-shadow:
+      -3px -3px 0 black,
+       3px -3px 0 black,
+      -3px  3px 0 black,
+       3px  3px 0 black;
+}
+
+.Searchbox{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background-color: red;
+}
+
 .SearchedPoke{
     display: flex;
     /* justify-content: space-between; */
     justify-content: space-around;
     list-style: none;
-    margin-top: 40px;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    background-color: rgb(74, 204, 255);
 }
 
 .SearchedPokeImg{
     max-width: 30%;
     min-width: 200px;
-    margin-left: 10%;
-    margin-right: 10%;
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    padding-top: 3em;
+    padding-bottom: 2em;
+    border: 1px solid black;
+    background-color: white;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .SearchedPokeInfo{
-    margin-left: 0;
-    margin-right: 5%;
-    margin-left: 5%;
+    width: 60%;
+    /* margin-right: 5%;
+    margin-left: 5%; */
+    border: 1px solid black;
+    background-color: white;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .SearchedPoke ul li{
     text-align: left;
+}
+
+.SearchByType{
+    background-color: black;
+    color: white;
+    padding: 3em;
 }
 
 .types {

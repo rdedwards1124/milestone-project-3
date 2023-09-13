@@ -65,7 +65,7 @@ function Navigation() {
                 </li>
                 <li>
                     <a href="#" onClick={() => {}}>
-                        Chat
+                        Chat Room
                     </a>
                 </li>
             </ul>
