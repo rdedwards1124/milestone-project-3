@@ -28,6 +28,43 @@
     text-align: left;
 }
 
+.types {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    /* border: 1px solid green; */
+}
+
+.types div {
+    text-align: center;
+    /* border: 1px solid green; */
+    box-shadow: 5px 5px 8px gray;
+    width: 30%;
+    height: 120px;
+    min-width: 100px;
+    max-width: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background: white;
+}
+
+.types img {
+    /* width: 200px;*/
+    /* margin: 10px;
+    margin-top: 14px; */
+    width: 90%;
+    height: 90%;
+}
+
 @media (max-width: 768px) {
     .SearchedPoke {
         flex-direction: column; /* Stack elements vertically */
