@@ -6,6 +6,7 @@ import Error404 from "./Error404";
 import CurrentUserProvider from "./contexts/CurrentUser";
 import SearchPage from "./pages/SearchPage";
 import UserMyPage from "./pages/UserMyPage";
+import ChatPage from "./pages/ChatPage"
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/searchpage" component={SearchPage} />
                 <Route exact path="/usermypage" component={UserMyPage} />
+                <Route exact path="/chatpage" component={ChatPage} />
                 <Route path="/" component={Error404} />
             </Switch>
         </BrowserRouter>

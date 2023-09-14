@@ -17,7 +17,7 @@ function UserMyPage() {
                             <li>Nintendo Name: </li>
                             <li>Friend Code: </li>
                         </ul>
-                        <div className="buttons">
+                        <div className="button">
                             <button type="submit">Edit</button>
                         </div>
                     </div>

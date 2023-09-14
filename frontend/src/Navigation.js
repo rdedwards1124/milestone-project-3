@@ -64,7 +64,7 @@ function Navigation() {
                     </a>
                 </li>
                 <li>
-                    <a href="#" onClick={() => {}}>
+                    <a href="#" onClick={() => history.push("/chatpage")}>
                         Chat Room
                     </a>
                 </li>
