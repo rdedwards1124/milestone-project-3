@@ -22,6 +22,34 @@ import normal from "../Other/normal.png";
 import dragon from "../Other/dragon.png";
 
 function SearchPage() {
+    const [searchValue, setSearchValue] = useState("lucario");
+    const [searchedPokemon, setSearchedPokemon] = useState({});
+
+    const getPokemon = async (searchValue) => {
+        const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
+        const response = await fetch(url);
+        const responseJSON = await response.json();
+        if (responseJSON) {
+            setSearchedPokemon(responseJSON);
+        }
+    };
+
+    useEffect(() => {
+        getPokemon(searchValue);
+    }, [searchValue]);
+
+    const secondAbility = () => {
+        let ability2 = null
+        if ((!searchedPokemon.abilities[1].ability.name)) {
+            ability2 = null
+        } else {
+
+        }
+        return ability2
+    };
+
+    secondAbility()
+
     return (
         <>
             <div className="CenterIt">
@@ -32,8 +60,14 @@ function SearchPage() {
                             type="text"
                             name="search"
                             placeholder="Search..."
+                            // onChange={(event)=>setSearchValue(event.target.value)}
                         />
-                        <button type="submit">I Choose You!!</button>
+                        <button
+                            type="submit"
+                            // onClick={() => setSearchedPokemon([searchValue])}
+                        >
+                            I Choose You!!
+                        </button>
                     </form>
                 </div>
                 <div className="SearchedPoke">
@@ -41,22 +75,27 @@ function SearchPage() {
                         <img
                             width="90%"
                             src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                            // src={searchedPokemon.sprites.other.home.front_default}
+                            alt="pokemon image"
                         ></img>
                     </div>
                     <div className="SearchedPokeInfo">
-                        <h2>Pokemon Name</h2>
+                        <h2>{searchedPokemon.name}</h2>
                         <ul>
-                            <li>Type: </li>
+                            <li>Type: {searchedPokemon.types[0].type.name}</li>
+                            <li>Type2: ability2</li>
                             <li>Ability: </li>
+                            <li>Ability2: </li>
                             <li>Hidden Ability: </li>
-                            <li>Base Stats 
+                            <li>
+                                Base Stats
                                 <ul>
-                                    <li>HP:</li>
-                                    <li>Attack:</li>
-                                    <li>Defense:</li>
-                                    <li>Special Atk:</li>
-                                    <li>Special Def:</li>
-                                    <li>Speed:</li>
+                                    <li>HP: {searchedPokemon.stats[0].base_stat}</li>
+                                    <li>Attack: {searchedPokemon.stats[1].base_stat}</li>
+                                    <li>Defense: {searchedPokemon.stats[2].base_stat}</li>
+                                    <li>Special Atk: {searchedPokemon.stats[3].base_stat}</li>
+                                    <li>Special Def: {searchedPokemon.stats[4].base_stat}</li>
+                                    <li>Speed: {searchedPokemon.stats[5].base_stat}</li>
                                 </ul>
                             </li>
                         </ul>
