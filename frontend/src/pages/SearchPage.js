@@ -22,7 +22,7 @@ import normal from "../Other/normal.png";
 import dragon from "../Other/dragon.png";
 
 function SearchPage() {
-    const [searchValue, setSearchValue] = useState("lucario");
+    const [searchValue, setSearchValue] = useState("pikachu");
     const [searchedPokemon, setSearchedPokemon] = useState({});
 
     const getPokemon = async (searchValue) => {
@@ -38,17 +38,17 @@ function SearchPage() {
         getPokemon(searchValue);
     }, [searchValue]);
 
-    const secondAbility = () => {
-        let ability2 = null
-        if ((!searchedPokemon.abilities[1].ability.name)) {
-            ability2 = null
-        } else {
+    const type1 = "type1"
+    const type2 = "type2"
+    const ability1 = "ability 1"
+    const ability2 = "ability 2"
+    const hidden = "hidden ability"
 
-        }
-        return ability2
-    };
-
-    secondAbility()
+    // const type1 = searchedPokemon.types[0].type.name
+    // const type2 = searchedPokemon.types[1].type.name
+    // const ability1 = searchedPokemon.abilities[0].ability.name
+    // const ability2 = searchedPokemon.abilities[1].ability.name
+    // const hidden = searchedPokemon.abilities[2].ability.name
 
     return (
         <>
@@ -80,22 +80,30 @@ function SearchPage() {
                         ></img>
                     </div>
                     <div className="SearchedPokeInfo">
-                        <h2>{searchedPokemon.name}</h2>
+                        <h2>Pokemon Name</h2>
+                        {/* <h2>{searchedPokemon.name}</h2> */}
                         <ul>
-                            <li>Type: {searchedPokemon.types[0].type.name}</li>
-                            <li>Type2: ability2</li>
-                            <li>Ability: </li>
-                            <li>Ability2: </li>
-                            <li>Hidden Ability: </li>
+                            <li>Type1: {type1}</li>
+                            {/* <li>Type: {searchedPokemon.types[0].type.name}</li> */}
+                            <li>Type2: {type2}</li>
+                            <li>Ability1: {ability1}</li>
+                            <li>Ability2: {ability2}</li>
+                            <li>Hidden Ability: {hidden}</li>
                             <li>
                                 Base Stats
                                 <ul>
-                                    <li>HP: {searchedPokemon.stats[0].base_stat}</li>
+                                    <li>hp</li>
+                                    <li>atk</li>
+                                    <li>def</li>
+                                    <li>sa</li>
+                                    <li>sd</li>
+                                    <li>spd</li>
+                                    {/* <li>HP: {searchedPokemon.stats[0].base_stat}</li>
                                     <li>Attack: {searchedPokemon.stats[1].base_stat}</li>
                                     <li>Defense: {searchedPokemon.stats[2].base_stat}</li>
                                     <li>Special Atk: {searchedPokemon.stats[3].base_stat}</li>
                                     <li>Special Def: {searchedPokemon.stats[4].base_stat}</li>
-                                    <li>Speed: {searchedPokemon.stats[5].base_stat}</li>
+                                    <li>Speed: {searchedPokemon.stats[5].base_stat}</li> */}
                                 </ul>
                             </li>
                         </ul>
