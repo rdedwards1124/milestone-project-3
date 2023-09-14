@@ -37,7 +37,7 @@ h1{
     justify-content: space-around;
     flex-wrap: wrap;
     /* max-width: 80%; */
-    border: 2px solid green;
+    /* border: 2px solid green; */
     width: 100%;
     padding: 2em;
     background-color: rgb(74, 204, 255);
@@ -52,7 +52,7 @@ h1{
 
 .BattleTeams div{
     text-align: center;
-    border: 2px solid rgb(28, 0, 128);
+    border: 5px solid black;
     max-width: 10em;
     width: 30%;
     margin-bottom: 2em;
@@ -80,6 +80,9 @@ h1{
     }
     .BattleTeams{
         padding: 0;
+    }
+    .BattleTeams h2{
+        margin-top: 1em;
     }
     .BattleTeams div{
         margin-top: 1em;

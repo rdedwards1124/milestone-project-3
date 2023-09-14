@@ -1,4 +1,7 @@
 import "../Add-Style/SearchPage.css";
+
+import React, { useState, useEffect } from "react";
+
 import electric from "../Other/electric.png";
 import water from "../Other/water.png";
 import fire from "../Other/fire.png";
