@@ -64,12 +64,15 @@ function SearchPage() {
     // const sp_def = searchedPokemon.stats[4].base_stat
     // const speed = searchedPokemon.stats[5].base_stat
 
+    let theValue
+
     const handleChange = (event) => {
-        setSearchValue(event.target.value);
+        theValue = event.target.value
+        return theValue
     };
 
     const handleClick = () => {
-        setSearchedPokemon(searchValue);
+        setSearchValue(theValue);
     };
 
     return (
