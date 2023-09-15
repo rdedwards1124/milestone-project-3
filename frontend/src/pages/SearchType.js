@@ -6,6 +6,8 @@ import AllTypes from "./AllTypes";
 function SearchType (){
     const { id } = useParams();
     const [typeData, setTypeData] = useState({})
+    const [searchValue, setSearchValue] = useState("");
+    const [searchedPokemon, setSearchedPokemon] = useState({});
 
     const getTypeInfo = async (ID) => {
         const url = `https://pokeapi.co/api/v2/type/${ID}/`;
@@ -16,8 +18,18 @@ function SearchType (){
         }
     };
 
+    const getPokemon = async (searchValue) => {
+        const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
+        const response = await fetch(url);
+        const responseJSON = await response.json();
+        if (responseJSON) {
+            setSearchedPokemon(responseJSON);
+        }
+    };
+
     useEffect(() => {
         getTypeInfo(id);
+        getPokemon(searchValue)
     }, [id]);
 
     return(
