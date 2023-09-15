@@ -23,18 +23,18 @@ const addUser = (req, res) => {
     pool.query(queries.checkEmailExists, [email], (error, results) => {
         if (results.rows.length) {
             res.send("Email already exists!");
+        } else {
+            // add user to db(allusers)
+            pool.query(
+                queries.addUser,
+                [username, email, password],
+                (error, results) => {
+                    if (error) throw error;
+                    res.status(201).send("User created successfully!");
+                    console.log("User created!");
+                }
+            );
         }
-
-        // add user to db(allusers)
-        pool.query(
-            queries.addUser,
-            [username, email, password],
-            (error, results) => {
-                if (error) throw error;
-                res.status(201).send("User created successfully!");
-                console.log("User created!");
-            }
-        );
     });
 };
 
@@ -65,8 +65,25 @@ const updateUser = (req, res) => {
 
         pool.query(queries.updateUser, [username, id], (error, results) => {
             if (error) throw error;
-            res.status(200).send("User info updated successfully!")
-        })
+            res.status(200).send("User info updated successfully!");
+        });
+    });
+};
+
+const updateUserEmail = (req, res) => {
+    const id = parseInt(req.params.id);
+    const { email } = req.body;
+
+    pool.query(queries.getUserById, [id], (error, results) => {
+        const noUserFound = !results.rows.length;
+        if (noUserFound) {
+            res.send("User does not exist...");
+        }
+
+        pool.query(queries.updateUserEmail, [email, id], (error, results) => {
+            if (error) throw error;
+            res.status(200).send("User info updated successfully!");
+        });
     });
 };
 
@@ -76,4 +93,5 @@ module.exports = {
     addUser,
     deleteUser,
     updateUser,
+    updateUserEmail,
 };
