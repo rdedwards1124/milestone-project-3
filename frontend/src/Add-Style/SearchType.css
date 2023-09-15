@@ -1,0 +1,45 @@
+.PageTitle {
+    text-align: center;
+    padding-bottom: 2.5em;
+    background-color: red;
+}
+
+.PokemonList{
+    list-style: none;
+    background-color: rgb(74, 204, 255);
+    padding: 2em;
+    margin-bottom: 0;
+}
+
+.PokemonList ul{
+    padding: 0;
+}
+
+.PokemonList ul li{
+    list-style: none;
+    margin: 1em;
+    padding: 0.5em;
+    border: 0.2em solid black;
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+
+.EachPokemonDiv{
+    /* padding-right: 1em;
+    padding-left: 1em; */
+    padding: 0;
+}
+
+.EachPokemonDiv ul{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.TheTypes{
+    background-color: black;
+    margin-top: 0;
+    padding-top: 1em;
+}

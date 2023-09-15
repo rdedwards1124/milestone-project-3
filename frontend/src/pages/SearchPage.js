@@ -3,7 +3,7 @@ import "../Add-Style/SearchPage.css";
 import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 
-import AllTypes from "./AllTypes";
+import AllTypes from "../pageInserts/AllTypes";
 
 function SearchPage() {
     const [searchValue, setSearchValue] = useState("");
@@ -22,7 +22,16 @@ function SearchPage() {
         getPokemon(searchValue);
     }, [searchValue]);
 
-    // const pokename = "Pokemon";
+
+    // let pokeImg; 
+    // if (!searchedPokemon.sprites.other.home.front_default) {
+    //     pokeImg = "https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+    // } else {
+    //     pokeImg = searchedPokemon.sprites.other.home.front_default
+    // }
+
+    const pokename = "Pokemon"
+    const pokeImg = "https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
     const type1 = "type1";
     const type2 = "type2";
     const ability1 = "ability 1";
@@ -35,51 +44,37 @@ function SearchPage() {
     const sp_def = "000";
     const speed = "000";
 
-    const pokename = searchedPokemon.name;
-    // const type1 = searchedPokemon.types[0].type.name
-    // const type2 = searchedPokemon.types[1].type.name
-    // const ability1 = searchedPokemon.abilities[0].ability.name
-    // const ability2 = searchedPokemon.abilities[1].ability.name
-    // const hidden = searchedPokemon.abilities[2].ability.name
-    // const hp = searchedPokemon.stats[0].base_stat
-    // const attack = searchedPokemon.stats[1].base_stat
-    // const defense = searchedPokemon.stats[2].base_stat
-    // const sp_atk = searchedPokemon.stats[3].base_stat
-    // const sp_def = searchedPokemon.stats[4].base_stat
-    // const speed = searchedPokemon.stats[5].base_stat
-
-    let theValue;
 
     const handleChange = (event) => {
-        theValue = event.target.value;
-        return theValue;
-    };
-
-    const handleClick = () => {
-        setSearchValue(theValue);
-    };
+        setSearchValue(event.target.value);
+      };
+    
+      const handleSubmit = (event) => {
+        event.preventDefault(); // Prevent the default form submission behavior
+        // No need to call getPokemon here, it's already triggered by useEffect
+      };
 
     return (
         <>
             <div className="CenterIt">
                 <div className="Searchbox">
                     <h1>Choose Your Pokémon!!</h1>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <input
                             type="text"
                             name="search"
                             placeholder="Search..."
                             onChange={handleChange}
-                            // value={searchValue}
+                            value={searchValue}
                         />
-                        <button onClick={handleClick}>I Choose You!!</button>
+                        <button type="submit">I Choose You!!</button>
                     </form>
                 </div>
                 <div className="SearchedPoke">
                     <div className="SearchedPokeImg">
                         <img
                             width="90%"
-                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                            src={pokeImg}
                             // src={searchedPokemon.sprites.other.home.front_default}
                             alt="pokemon image"
                         ></img>
@@ -120,3 +115,53 @@ function SearchPage() {
 }
 
 export default SearchPage;
+
+
+
+    // let theValue;
+
+    // const handleChange = (event) => {
+    //     theValue = event.target.value;
+    //     return theValue;
+    // };
+
+    // const handleSubmit = (event) => {
+    //     event.preventDefault(); // Prevent the default form submission behavior
+    //     setSearchValue(theValue);
+    //     getPokemon(searchValue);
+    //   };
+
+
+    /*
+    
+        // const pokename = "Pokemon";
+    // const pokeImg = "https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+
+    const type1 = "type1";
+    const type2 = "type2";
+    const ability1 = "ability 1";
+    const ability2 = "ability 2";
+    const hidden = "hidden ability";
+    const hp = "000";
+    const attack = "000";
+    const defense = "000";
+    const sp_atk = "000";
+    const sp_def = "000";
+    const speed = "000";
+
+    const pokename = searchedPokemon ? searchedPokemon.name : "Loading..."
+    const pokeImg = searchedPokemon ? searchedPokemon.sprites.other.home.front_default : "Loading...";
+   
+    // const type1 = searchedPokemon.types[0].type.name
+    // const type2 = searchedPokemon ? searchedPokemon.types[1].type.name : "Loading..."
+    // const ability1 = searchedPokemon ? searchedPokemon.abilities[0].ability.name : "Loading..."
+    // const ability2 = searchedPokemon ? searchedPokemon.abilities[1].ability.name : "Loading..."
+    // const hidden = searchedPokemon ? searchedPokemon.abilities[2].ability.name : "Loading..."
+    // const hp = searchedPokemon ? searchedPokemon.stats[0].base_stat : "Loading..."
+    // const attack = searchedPokemon ? searchedPokemon.stats[1].base_stat : "Loading..."
+    // const defense = searchedPokemon ? searchedPokemon.stats[2].base_stat : "Loading..."
+    // const sp_atk = searchedPokemon ? searchedPokemon.stats[3].base_stat : "Loading..."
+    // const sp_def = searchedPokemon ? searchedPokemon.stats[4].base_stat : "Loading..."
+    // const speed = searchedPokemon ? searchedPokemon.stats[5].base_stat : "Loading..."
+    
+    */
