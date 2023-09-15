@@ -24,16 +24,21 @@ const addUser = (req, res) => {
         if (results.rows.length) {
             res.send("Email already exists!");
         } else {
-            // add user to db(allusers)
-            pool.query(
-                queries.addUser,
-                [username, email, password],
-                (error, results) => {
-                    if (error) throw error;
-                    res.status(201).send("User created successfully!");
-                    console.log("User created!");
+            pool.query(queries.checkUsernameExists, [username], (error, results) => {
+                if (results.rows.length) {
+                    res.send("Username is taken!");
+                } else {
+                    pool.query(
+                        queries.addUser,
+                        [username, email, password],
+                        (error, results) => {
+                            if (error) throw error;
+                            res.status(201).send("User created successfully!");
+                            console.log("User created!");
+                        }
+                    );
                 }
-            );
+            });
         }
     });
 };
