@@ -1,25 +1,9 @@
 import "../Add-Style/SearchPage.css";
 
 import React, { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
 
-import electric from "../Other/electric.png";
-import water from "../Other/water.png";
-import fire from "../Other/fire.png";
-import grass from "../Other/grass.png";
-import ice from "../Other/ice.png";
-import rock from "../Other/rock.png";
-import ground from "../Other/ground.png";
-import steel from "../Other/steel.png";
-import poison from "../Other/poison.png";
-import fairy from "../Other/fairy.png";
-import dark from "../Other/dark.png";
-import psychic from "../Other/psychic.png";
-import fighting from "../Other/fighting.png";
-import flying from "../Other/flying.png";
-import bug from "../Other/bug.png";
-import ghost from "../Other/ghost.png";
-import normal from "../Other/normal.png";
-import dragon from "../Other/dragon.png";
+import AllTypes from "./AllTypes";
 
 function SearchPage() {
     const [searchValue, setSearchValue] = useState("");
@@ -51,7 +35,7 @@ function SearchPage() {
     const sp_def = "000";
     const speed = "000";
 
-    const pokename = searchedPokemon.name
+    const pokename = searchedPokemon.name;
     // const type1 = searchedPokemon.types[0].type.name
     // const type2 = searchedPokemon.types[1].type.name
     // const ability1 = searchedPokemon.abilities[0].ability.name
@@ -64,11 +48,11 @@ function SearchPage() {
     // const sp_def = searchedPokemon.stats[4].base_stat
     // const speed = searchedPokemon.stats[5].base_stat
 
-    let theValue
+    let theValue;
 
     const handleChange = (event) => {
-        theValue = event.target.value
-        return theValue
+        theValue = event.target.value;
+        return theValue;
     };
 
     const handleClick = () => {
@@ -88,16 +72,14 @@ function SearchPage() {
                             onChange={handleChange}
                             // value={searchValue}
                         />
-                        <button onClick={handleClick}>
-                            I Choose You!!
-                        </button>
+                        <button onClick={handleClick}>I Choose You!!</button>
                     </form>
                 </div>
                 <div className="SearchedPoke">
                     <div className="SearchedPokeImg">
                         <img
                             width="90%"
-                            // src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
                             // src={searchedPokemon.sprites.other.home.front_default}
                             alt="pokemon image"
                         ></img>
@@ -130,116 +112,7 @@ function SearchPage() {
                 </div>
                 <div className="SearchByType">
                     <h2>Search By Type</h2>
-                    <div className="types">
-                        <div>
-                            {/* <!-- <h2>Electric</h2> --> */}
-                            <a href="">
-                                <img src={electric} alt="electric symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Water</h2> --> */}
-                            <a href="">
-                                <img src={water} alt="water symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Fire</h2> --> */}
-                            <a href="">
-                                <img src={fire} alt="fire symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Grass</h2> --> */}
-                            <a href="">
-                                <img src={grass} alt="grass symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Ice</h2> --> */}
-                            <a href="">
-                                <img src={ice} alt="ice symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Rock</h2> --> */}
-                            <a href="">
-                                <img src={rock} alt="rock symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Ground</h2> --> */}
-                            <a href="">
-                                <img src={ground} alt="ground symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Steel</h2> --> */}
-                            <a href="">
-                                <img src={steel} alt="steel symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Poison</h2> --> */}
-                            <a href="">
-                                <img src={poison} alt="poison symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Fairy</h2> --> */}
-                            <a href="">
-                                <img src={fairy} alt="fairy symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Dark</h2> --> */}
-                            <a href="">
-                                <img src={dark} alt="dark symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Psychic</h2> --> */}
-                            <a href="">
-                                <img src={psychic} alt="psychic symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Fighting</h2> --> */}
-                            <a href="">
-                                <img src={fighting} alt="fighting symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Flying</h2> --> */}
-                            <a href="">
-                                <img src={flying} alt="flying symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Bug</h2> --> */}
-                            <a href="">
-                                <img src={bug} alt="bug symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Ghost</h2> --> */}
-                            <a href="">
-                                <img src={ghost} alt="ghost symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Normal</h2> --> */}
-                            <a href="">
-                                <img src={normal} alt="normal symbol" />
-                            </a>
-                        </div>
-                        <div>
-                            {/* <!-- <h2>Dragon</h2> --> */}
-                            <a href="">
-                                <img src={dragon} alt="dragon symbol" />
-                            </a>
-                        </div>
-                    </div>
+                    <AllTypes/>
                 </div>
             </div>
         </>
