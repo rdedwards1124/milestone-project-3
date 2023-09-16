@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import AllTypes from "../pageInserts/AllTypes";
 
 function PokemonPage() {
     const { id } = useParams();
@@ -28,7 +28,7 @@ function PokemonPage() {
         searchedPokemon.sprites &&
         searchedPokemon.sprites.other &&
         searchedPokemon.sprites.other["official-artwork"] &&
-        searchedPokemon.sprites.other["official-artwork"].front_default
+        searchedPokemon.sprites.other["official-artwork"].front_default;
 
     const type1 =
         searchedPokemon.types &&
@@ -43,8 +43,6 @@ function PokemonPage() {
         searchedPokemon.types[1].type.name
             ? searchedPokemon.types[1].type.name
             : null;
-
-
 
     let ability1 = null;
     let ability2 = null;
@@ -93,15 +91,15 @@ function PokemonPage() {
         searchedPokemon.stats[5] &&
         searchedPokemon.stats[5].base_stat;
 
-        const handleClickAdd = (e) => {
-            e.preventDefault();
-            setText("Added to Favorites!!");
-        };
-    
-        const handleClickRemove = (e) => {
-            e.preventDefault();
-            setText("Removed from Favorites..");
-        };
+    const handleClickAdd = (e) => {
+        e.preventDefault();
+        setText("Added to Favorites!!");
+    };
+
+    const handleClickRemove = (e) => {
+        e.preventDefault();
+        setText("Removed from Favorites..");
+    };
 
     return (
         <div>
@@ -132,14 +130,22 @@ function PokemonPage() {
                         </li>
                     </ul>
                     <div className="buttons">
-                        <button onClick={handleClickAdd}>Add to Favorites</button>
-                        <button onClick={handleClickRemove}>Remove from Favorites</button>
-                        <Link to={`/searchpage`} >
+                        <button onClick={handleClickAdd}>
+                            Add to Favorites
+                        </button>
+                        <button onClick={handleClickRemove}>
+                            Remove from Favorites
+                        </button>
+                        <Link to={`/searchpage`}>
                             <button type="submit">Search Page</button>
                         </Link>
                     </div>
                     {text}
                 </div>
+            </div>
+            <div className="SearchByType">
+                <h2>Search By Type</h2>
+                <AllTypes />
             </div>
         </div>
     );
@@ -147,28 +153,20 @@ function PokemonPage() {
 
 export default PokemonPage;
 
+// const ability1 =
+//     searchedPokemon.abilities &&
+//     searchedPokemon.abilities[0] &&
+//     searchedPokemon.abilities[0].ability &&
+//     searchedPokemon.abilities[0].ability.name;
 
+// const ability2 =
+//     searchedPokemon.abilities &&
+//     searchedPokemon.abilities[1] &&
+//     searchedPokemon.abilities[1].ability &&
+//     searchedPokemon.abilities[1].ability.name;
 
-
-
-
-
-
-
-    // const ability1 =
-    //     searchedPokemon.abilities &&
-    //     searchedPokemon.abilities[0] &&
-    //     searchedPokemon.abilities[0].ability &&
-    //     searchedPokemon.abilities[0].ability.name;
-
-    // const ability2 =
-    //     searchedPokemon.abilities &&
-    //     searchedPokemon.abilities[1] &&
-    //     searchedPokemon.abilities[1].ability &&
-    //     searchedPokemon.abilities[1].ability.name;
-
-    // const hidden =
-    //     searchedPokemon.abilities &&
-    //     searchedPokemon.abilities[2] &&
-    //     searchedPokemon.abilities[2].ability &&
-    //     searchedPokemon.abilities[2].ability.name;
+// const hidden =
+//     searchedPokemon.abilities &&
+//     searchedPokemon.abilities[2] &&
+//     searchedPokemon.abilities[2].ability &&
+//     searchedPokemon.abilities[2].ability.name;

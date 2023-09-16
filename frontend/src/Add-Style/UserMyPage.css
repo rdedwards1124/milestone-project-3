@@ -37,6 +37,10 @@ h1{
     list-style: none;
 }
 
+.Info_ul {
+    padding-top: 2em;
+}
+
 .BattleTeams{
     text-align: center;
     display: flex;

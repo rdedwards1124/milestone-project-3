@@ -36,99 +36,99 @@ function AllTypes() {
             </div>
             <div>
                 {/* <!-- <h2>Fire</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/10`} >
                     <img src={fire} alt="fire symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Grass</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/12`} >
                     <img src={grass} alt="grass symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Ice</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/15`} >
                     <img src={ice} alt="ice symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Rock</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/6`} >
                     <img src={rock} alt="rock symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Ground</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/5`} >
                     <img src={ground} alt="ground symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Steel</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/9`} >
                     <img src={steel} alt="steel symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Poison</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/4`} >
                     <img src={poison} alt="poison symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Fairy</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/18`} >
                     <img src={fairy} alt="fairy symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Dark</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/17`} >
                     <img src={dark} alt="dark symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Psychic</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/14`} >
                     <img src={psychic} alt="psychic symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Fighting</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/2`} >
                     <img src={fighting} alt="fighting symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Flying</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/3`} >
                     <img src={flying} alt="flying symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Bug</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/7`} >
                     <img src={bug} alt="bug symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Ghost</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/8`} >
                     <img src={ghost} alt="ghost symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Normal</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/1`} >
                     <img src={normal} alt="normal symbol" />
-                </a>
+                </Link>
             </div>
             <div>
                 {/* <!-- <h2>Dragon</h2> --> */}
-                <a href="">
+                <Link to={`/searchtype/16`} >
                     <img src={dragon} alt="dragon symbol" />
-                </a>
+                </Link>
             </div>
         </div>
     );
