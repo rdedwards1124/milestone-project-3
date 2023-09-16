@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const userRoutes = require('./src/users/routes')
+const commentRoutes = require('./src/comments/routes')
 const app = express()
 
 
@@ -12,6 +13,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/users", userRoutes)
+app.use("/comments", commentRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening on ${process.env.PORT}`)
