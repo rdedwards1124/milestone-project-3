@@ -58,6 +58,14 @@
     padding-right: 1em;
 }
 
+.SPI_Padding ul{
+    padding-bottom: 2em;
+}
+
+.SPI_Padding ul li{
+    padding-top: 2em;
+}
+
 .SearchedPoke ul li{
     text-align: left;
     list-style: none;
