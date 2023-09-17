@@ -1,7 +1,61 @@
-.HomePage{
+/* .HomePage{
     text-align: center;
 }
 
-img{
-    margin: 5%;
+.HomePage h1{
+    padding-bottom: 1em;
 }
+
+.HomeImg{
+    background-color: rgb(74, 204, 255);
+}
+
+.HomeImg img{
+    margin: 5%;
+    border: 1em solid black;
+}
+
+.Users{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1em;
+    text-align: center;
+    min-height: 0vh;
+    background-color: black;
+}
+
+.HomePage h2{
+    margin-bottom: 0;
+    color: white;
+    background-color: black;
+    padding-top: 1em;
+}
+
+.Users h4{
+    padding: 1em;
+    border: 2px solid white;
+    color: white;
+    width: 30%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+    .Users{
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        width: 100%;
+    }
+    .Users h4{
+        width: 80%;
+    }
+} */

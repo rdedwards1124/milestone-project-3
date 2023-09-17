@@ -14,9 +14,15 @@ How to use
 
 Features
 - React, Javascript, Node.js, Express, PostgresSQL
+- Has separate folders for Backend and Frontend
 
 Bugs
 - 
+
+# Future Aspirations
+More from the PokeAPI
+- There were certain aspects of this free API that make it a little more difficult accessing specific data from it. But more time spent on this will open more doors!
+
 
 
 --------------------------------------
