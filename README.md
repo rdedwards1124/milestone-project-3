@@ -1,7 +1,32 @@
+--------------------------------------
+###### PokéPipeline ##################
+--------------------------------------
+
+# About
+Summary
+- Welcome to PokéPipeline, where all Pokémon Trainers both new and old come together to share information, chat with fellow trainers, and even schedule trades via games for the Nintendo Switch and more!
+
+Inspiration
+- 
+
+How to use
+- 
+
+Features
+- React, Javascript, Node.js, Express, PostgresSQL
+
+Bugs
+- 
+
+
+--------------------------------------
+###### Sources #######################
+--------------------------------------
 
 # External APIs
 Pokemon API
 - https://pokeapi.co/
+
 
 # Images
 Pokemon Logo
@@ -16,6 +41,7 @@ Error Page
 PokeBall Image
 - https://www.etsy.com/il-en/listing/1143048156/pokemon-pokeball-svg 
 
+
 # Videos
 Build a Rest Api with NodeJS (JavaScript), Express, and PostgreSQL
 - https://www.youtube.com/watch?v=DihOP19LQdg 
@@ -23,6 +49,13 @@ Build a Rest Api with NodeJS (JavaScript), Express, and PostgreSQL
 SQL Server Tutorial - One-to-many and many-to-many table relationships
 - https://www.youtube.com/watch?v=4q-keGvUnag&t=506s
 
+SQL Server Tutorial - One-to-many and many-to-many table relationships
+- https://www.youtube.com/watch?v=4q-keGvUnag&t=506s 
+
+
 # Articles/Websites
 W3School
-- 
+- https://www.w3schools.com/ 
+
+Open AI
+- https://chat.openai.com/ 
