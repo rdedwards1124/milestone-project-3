@@ -21,18 +21,18 @@ function SearchType() {
         }
     };
 
-    const getPokemon = async (searchValue) => {
-        const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
-        const response = await fetch(url);
-        const responseJSON = await response.json();
-        if (responseJSON) {
-            setSearchedPokemon(responseJSON);
-        }
-    };
+    // const getPokemon = async (searchValue) => {
+    //     const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
+    //     const response = await fetch(url);
+    //     const responseJSON = await response.json();
+    //     if (responseJSON) {
+    //         setSearchedPokemon(responseJSON);
+    //     }
+    // };
 
     useEffect(() => {
         getTypeInfo(id);
-        getPokemon(searchValue);
+        // getPokemon(searchValue);
     }, [id]);
 
     let names = typeData.pokemon

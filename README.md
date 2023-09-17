@@ -43,6 +43,7 @@ Home Page
 
 Error Page
 - https://www.pokekalos.fr/errors/404.php
+- PNG Image: https://www.media.pokekalos.fr/img/site/erreur404.png
 
 PokeBall Image
 - https://www.etsy.com/il-en/listing/1143048156/pokemon-pokeball-svg 
