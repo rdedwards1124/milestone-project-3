@@ -1,6 +1,8 @@
 const pool = require("../../db");
 const queries = require("./queries");
 
+const bcrypt = require('bcrypt')
+
 const getUsers = (req, res) => {
     pool.query(queries.getUsers2, (error, results) => {
         if (error) throw error;
@@ -16,8 +18,9 @@ const getUserById = (req, res) => {
     });
 };
 
-const addUser = (req, res) => {
+const addUser = async(req, res) => {
     const { username, email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10)
 
     // check if email already exists
     pool.query(queries.checkEmailExists, [email], (error, results) => {
@@ -31,7 +34,7 @@ const addUser = (req, res) => {
                 } else {
                     pool.query(
                         queries.addUser,
-                        [username, email, password],
+                        [username, email, hashedPassword],
                         (error, results) => {
                             if (error) throw error;
                             res.status(201).send("User created successfully!");
