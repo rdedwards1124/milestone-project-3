@@ -1,6 +1,33 @@
-import './Add-Style/Home.css'
+import "./Add-Style/Home.css";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
+    const [trainers, setTrainers] = useState([]);
+
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
+
+    async function fetchData() {
+        const response = await fetch(`http://localhost:4000/users`);
+        const resData = await response.json();
+        if (resData) {
+            setTrainers(resData);
+        }
+    }
+
+    // let info = trainers[0] && trainers[0].username
+
+    // const users = trainers.map((trainer) => {
+    //     return(
+    //         <>
+    //             <li>{trainer.username}</li>
+    //         </>
+    //     )
+    // })
+
+
     return (
         <main className="HomePage">
             <h1>Welcome to PokéPipeline!!!</h1>
@@ -13,17 +40,15 @@ function Home() {
                 />
             </div>
             <h2>Current Users</h2>
-            <div></div>
+            <div>
+                {/* {users} */}
+                {/* {trainers[0].username} */}
+                {/* {info} */}
+            </div>
         </main>
     );
 }
 
 export default Home;
 
-/*
 
-          <a href="/places">
-          <button className="btn-primary">Places Page</button>
-        </a>
-  
-  */

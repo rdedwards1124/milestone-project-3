@@ -24,6 +24,7 @@ const addUser = (req, res) => {
         if (results.rows.length) {
             res.send("Email already exists!");
         } else {
+            // then, check if username exists
             pool.query(queries.checkUsernameExists, [username], (error, results) => {
                 if (results.rows.length) {
                     res.send("Username is taken!");
@@ -60,7 +61,7 @@ const deleteUser = (req, res) => {
 
 const updateUser = (req, res) => {
     const id = parseInt(req.params.id);
-    const { username } = req.body;
+    const { username, email } = req.body;
 
     pool.query(queries.getUserById, [id], (error, results) => {
         const noUserFound = !results.rows.length;
@@ -68,29 +69,13 @@ const updateUser = (req, res) => {
             res.send("User does not exist...");
         }
 
-        pool.query(queries.updateUser, [username, id], (error, results) => {
+        pool.query(queries.updateUser, [username, email, id], (error, results) => {
             if (error) throw error;
             res.status(200).send("User info updated successfully!");
         });
     });
 };
 
-const updateUserEmail = (req, res) => {
-    const id = parseInt(req.params.id);
-    const { email } = req.body;
-
-    pool.query(queries.getUserById, [id], (error, results) => {
-        const noUserFound = !results.rows.length;
-        if (noUserFound) {
-            res.send("User does not exist...");
-        }
-
-        pool.query(queries.updateUserEmail, [email, id], (error, results) => {
-            if (error) throw error;
-            res.status(200).send("User info updated successfully!");
-        });
-    });
-};
 
 module.exports = {
     getUsers,
@@ -98,5 +83,4 @@ module.exports = {
     addUser,
     deleteUser,
     updateUser,
-    updateUserEmail,
 };

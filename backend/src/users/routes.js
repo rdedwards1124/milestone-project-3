@@ -7,7 +7,6 @@ router.get("/", controller.getUsers)
 router.post("/", controller.addUser)
 router.get("/:id", controller.getUserById)
 router.put("/:id", controller.updateUser)
-router.put("/:id", controller.updateUserEmail)
 router.delete("/:id", controller.deleteUser)
 
 
