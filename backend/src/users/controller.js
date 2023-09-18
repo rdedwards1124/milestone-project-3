@@ -39,6 +39,7 @@ const addUser = async(req, res) => {
                             if (error) throw error;
                             res.status(201).send("User created successfully!");
                             console.log("User created!");
+                            console.log(username, email, password, hashedPassword)
                         }
                     );
                 }
@@ -79,6 +80,26 @@ const updateUser = (req, res) => {
     });
 };
 
+const signInUser = (req, res)=>{
+    const { email, password } = req.body;
+    const passwordEntered = password
+
+    pool.query(queries.getPassword, [email], async (error, results) => {
+        const storedHashedPassword = results.rows[0].password
+        bcrypt.compare(passwordEntered, storedHashedPassword, (err, isMatch)=>{
+            if (err){
+                res.send("error")
+            }
+            if (isMatch){
+                res.send("log in success!")
+            } else {
+                res.send("wrong credentials...")
+            }
+        })
+    })
+
+}
+
 
 module.exports = {
     getUsers,
@@ -86,4 +107,14 @@ module.exports = {
     addUser,
     deleteUser,
     updateUser,
+    signInUser
 };
+
+
+        // if (!results.rows[0].password) {
+        //     res.send("email not in database")
+        // } else if (await bcrypt.compare(passwordEntered, storedHashedPassword)) {
+        //     res.send("User log in success!!")
+        // } else {
+        //     res.send("wrong credentials...")
+        // }
