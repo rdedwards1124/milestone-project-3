@@ -39,7 +39,6 @@ function SearchType() {
         ? typeData.pokemon.map((pokemon) => pokemon.pokemon.name)
         : [];
 
-    let bingo = names[1]
 
     return (
         <>

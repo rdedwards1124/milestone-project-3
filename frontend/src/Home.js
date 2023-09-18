@@ -7,9 +7,20 @@ function Home() {
     const [trainers, setTrainers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchedPokemon, setSearchedPokemon] = useState({});
+
+    const getPokemon = async (searchValue) => {
+        const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
+        const response = await fetch(url);
+        const responseJSON = await response.json();
+        if (responseJSON) {
+            setSearchedPokemon(responseJSON);
+        }
+    };
 
     useEffect(() => {
         fetchData();
+        getPokemon()
     }, []);
 
     async function fetchData() {
@@ -35,7 +46,9 @@ function Home() {
     const randomTrainers = getRandomTrainers();
 
     const users = randomTrainers.map((trainer) => (
-        <h4 key={trainer.id}>{trainer.username}</h4>
+        <>
+            <h4 key={trainer.id}>{trainer.username}</h4>
+        </>
       ));
 
     return (

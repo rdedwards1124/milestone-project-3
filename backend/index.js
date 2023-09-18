@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require("cors");
 const userRoutes = require('./src/users/routes')
 const commentRoutes = require('./src/comments/routes')
+const battleTeamRoutes = require('./src/battleTeams/routes')
 const app = express()
 
 app.use(cors());
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", userRoutes)
 app.use("/comments", commentRoutes)
+app.use("/battleteams", battleTeamRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening on ${process.env.PORT}`)

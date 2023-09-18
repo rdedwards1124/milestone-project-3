@@ -4,8 +4,9 @@ const controller = require("./controller")
 const router = Router()
 
 router.get("/", controller.getComments)
-router.get("/:id", controller.getCommentByCommentId)
+router.get("/:user_id", controller.getCommentsByUserId)
+router.get("/:user_id/:id", controller.getCommentByUserCommentId)
 router.post("/", controller.addComment)
-router.delete("/:id", controller.deleteComment)
+router.delete("/:user_id/:id", controller.deleteComment)
 
 module.exports = router
