@@ -21,23 +21,25 @@ function SearchType() {
         }
     };
 
-    // const getPokemon = async (searchValue) => {
-    //     const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
-    //     const response = await fetch(url);
-    //     const responseJSON = await response.json();
-    //     if (responseJSON) {
-    //         setSearchedPokemon(responseJSON);
-    //     }
-    // };
+    const getPokemon = async (searchValue) => {
+        const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
+        const response = await fetch(url);
+        const responseJSON = await response.json();
+        if (responseJSON) {
+            setSearchedPokemon(responseJSON);
+        }
+    };
 
     useEffect(() => {
         getTypeInfo(id);
-        // getPokemon(searchValue);
+        getPokemon(searchValue);
     }, [id]);
 
     let names = typeData.pokemon
         ? typeData.pokemon.map((pokemon) => pokemon.pokemon.name)
         : [];
+
+    let bingo = names[1]
 
     return (
         <>
@@ -51,6 +53,7 @@ function SearchType() {
                             <div className="EachPokemonName">
                                 <Link to={`/pokemonpage/${name}`}>
                                     <li key={index}>{name}</li>
+                                    <div>{}</div>
                                 </Link>
                             </div>
                         ))}
