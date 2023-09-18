@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { useHistory } from "react-router";
+import { CurrentUser } from "../contexts/CurrentUser";
 import { Link } from "react-router-dom";
 import "../Add-Style/LoginForm.css"
 
 function LoginForm() {
     const history = useHistory();
+
+    const { setCurrentUser } = useContext(CurrentUser);
 
     const [credentials, setCredentials] = useState({
         email: "",
@@ -28,9 +31,9 @@ function LoginForm() {
         console.log(data);
 
         if (response.status === 200) {
-            // setCurrentUser(data.user)
-            // localStorage.setItem('token', data.token)
-            // console.log(data.token)
+            setCurrentUser(data.user)
+            localStorage.setItem('token', data.token)
+            console.log(data.token)
             history.push("/");
         } else {
             setErrorMessage(data.message);

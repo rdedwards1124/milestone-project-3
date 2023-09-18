@@ -44,12 +44,6 @@ const addUser = async (req, res) => {
                                     "User created successfully!"
                                 );
                                 console.log("User created!");
-                                console.log(
-                                    username,
-                                    email,
-                                    password,
-                                    hashedPassword
-                                );
                             }
                         );
                     }

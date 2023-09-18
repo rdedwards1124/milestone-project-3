@@ -4,7 +4,6 @@ const cors = require("cors");
 const userRoutes = require('./src/users/routes')
 const commentRoutes = require('./src/comments/routes')
 const app = express()
-const bcrypt = require('bcrypt')
 
 app.use(cors());
 
@@ -15,24 +14,6 @@ app.get("/", (req, res) => {
     res.send("Hello World")
 })
 
-// Just testing authentication.
-/*------------------------------------*/
-
-const pokeusers = []
-
-app.get('/pokeusers', (req, res) => {
-    res.json(pokeusers)
-})
-
-app.post('/pokeusers', (req, res)=>{
-    const user = { username: req.body.username, password: req.body.password }
-    pokeusers.push(user)
-    res.status(201).send()
-})
-
-/*------------------------------------*/
-
-
 app.use("/users", userRoutes)
 app.use("/comments", commentRoutes)
 
@@ -42,7 +23,22 @@ app.listen(process.env.PORT, () => {
 
 
 
+// Just testing authentication.
+/*------------------------------------*/
 
+// const pokeusers = []
+
+// app.get('/pokeusers', (req, res) => {
+//     res.json(pokeusers)
+// })
+
+// app.post('/pokeusers', (req, res)=>{
+//     const user = { username: req.body.username, password: req.body.password }
+//     pokeusers.push(user)
+//     res.status(201).send()
+// })
+
+/*------------------------------------*/
 
 
 
