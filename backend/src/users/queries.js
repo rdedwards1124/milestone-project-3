@@ -6,6 +6,9 @@ const addUser = "INSERT INTO allusers (username, email, password) VALUES ($1, $2
 const deleteUser = "DELETE FROM allusers WHERE id = $1"
 const updateUser = "UPDATE allusers SET username = $1, email = $2 WHERE id = $3"
 
+const checkEmailAndPassword = "SELECT * FROM allusers WHERE email = $1 AND password = $2"
+const getPassword = "SELECT password FROM allusers WHERE email = $1;"
+
 
 module.exports = {
     getUsers2,
@@ -15,5 +18,7 @@ module.exports = {
     addUser,
     deleteUser,
     updateUser,
+    checkEmailAndPassword,
+    getPassword
 }
 

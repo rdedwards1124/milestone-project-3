@@ -8,9 +8,18 @@ const getComments = (req, res) => {
     });
 };
 
-const getCommentByCommentId = (req, res) => {
+const getCommentsByUserId = (req, res) => {
+    const user_id = parseInt(req.params.user_id);
+    pool.query(queries.getCommentsByUserId, [user_id], (error, results) => {
+        if (error) throw error;
+        res.status(200).json(results.rows);
+    });
+};
+
+const getCommentByUserCommentId = (req, res) => {
+    const user_id = parseInt(req.params.user_id);
     const id = parseInt(req.params.id);
-    pool.query(queries.getCommentByCommentId, [id], (error, results) => {
+    pool.query(queries.getCommentByUserCommentId, [user_id, id], (error, results) => {
         if (error) throw error;
         res.status(200).json(results.rows);
     });
@@ -31,13 +40,14 @@ const addComment = (req, res) => {
 
 const deleteComment = (req, res) => {
     const id = parseInt(req.params.id);
-    pool.query(queries.getCommentByCommentId, [id], (error, results) => {
+    const user_id = parseInt(req.params.user_id);
+    pool.query(queries.getCommentByUserCommentId, [user_id, id], (error, results) => {
         const noCommentFound = !results.rows.length;
         if (noCommentFound) {
             res.send("Comment does not exist...");
         }
 
-        pool.query(queries.deleteComment, [id], (error, results) => {
+        pool.query(queries.deleteComment, [user_id, id], (error, results) => {
             if (error) throw error;
             res.status(200).send("Comment deleted successfully!");
         });
@@ -47,7 +57,8 @@ const deleteComment = (req, res) => {
 
 module.exports = {
     getComments,
-    getCommentByCommentId,
+    getCommentsByUserId,
+    getCommentByUserCommentId,
     addComment,
     deleteComment,
 };
