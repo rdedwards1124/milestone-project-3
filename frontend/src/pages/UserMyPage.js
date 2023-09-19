@@ -42,8 +42,6 @@ function UserMyPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle the submission logic here
-        console.log('Selected option:', selectedOption);
         history.push(`/userpage/${selectedOption}`);
     };
 
@@ -87,7 +85,7 @@ function UserMyPage() {
                         </Link>
                     </div>
                     <div>
-                        <h3>Dropdown Menu Example</h3>
+                        <h3>Dropdown Menu</h3>
                         <form onSubmit={handleSubmit}>
                             <label htmlFor="dropdown">Select an option:</label>
                             <select

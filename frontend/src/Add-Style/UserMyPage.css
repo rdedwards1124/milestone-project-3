@@ -128,6 +128,10 @@ h1{
     .BattleTeams h2{
         margin-top: 1em;
     }
+    /* .BattleTeams h4{
+        width: 90%;
+        height: auto;
+    } */
     .BattleTeams div{
         margin-top: 1em;
         margin-left: 0;
