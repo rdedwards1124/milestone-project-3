@@ -9,18 +9,18 @@ function Home() {
     const [error, setError] = useState(null);
     const [searchedPokemon, setSearchedPokemon] = useState({});
 
-    const getPokemon = async (searchValue) => {
-        const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
-        const response = await fetch(url);
-        const responseJSON = await response.json();
-        if (responseJSON) {
-            setSearchedPokemon(responseJSON);
-        }
-    };
+    // const getPokemon = async (searchValue) => {
+    //     const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
+    //     const response = await fetch(url);
+    //     const responseJSON = await response.json();
+    //     if (responseJSON) {
+    //         setSearchedPokemon(responseJSON);
+    //     }
+    // };
 
     useEffect(() => {
         fetchData();
-        getPokemon()
+        // getPokemon()
     }, []);
 
     async function fetchData() {

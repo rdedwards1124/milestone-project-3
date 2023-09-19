@@ -89,34 +89,34 @@ const updateUser = (req, res) => {
     });
 };
 
-const signInUser = (req, res) => {
-    const { email, password } = req.body;
-    const passwordEntered = password;
+// const signInUser = (req, res) => {
+//     const { email, password } = req.body;
+//     const passwordEntered = password;
 
-    pool.query(queries.checkEmailExists, [email], (error, results) => {
-        if (!results.rows.length) {
-            res.send("email is not in database!");
-        } else {
-            pool.query(queries.getPassword, [email], async (error, results) => {
-                const storedHashedPassword = results.rows[0].password;
-                bcrypt.compare(
-                    passwordEntered,
-                    storedHashedPassword,
-                    (err, isMatch) => {
-                        if (err) {
-                            res.send("error");
-                        }
-                        if (isMatch) {
-                            res.send("log in success!");
-                        } else {
-                            res.send("wrong credentials...");
-                        }
-                    }
-                );
-            });
-        }
-    });
-};
+//     pool.query(queries.checkEmailExists, [email], (error, results) => {
+//         if (!results.rows.length) {
+//             res.send("email is not in database!");
+//         } else {
+//             pool.query(queries.getPassword, [email], async (error, results) => {
+//                 const storedHashedPassword = results.rows[0].password;
+//                 bcrypt.compare(
+//                     passwordEntered,
+//                     storedHashedPassword,
+//                     (err, isMatch) => {
+//                         if (err) {
+//                             res.send("error");
+//                         }
+//                         if (isMatch) {
+//                             res.send("log in success!");
+//                         } else {
+//                             res.send("wrong credentials...");
+//                         }
+//                     }
+//                 );
+//             });
+//         }
+//     });
+// };
 
 module.exports = {
     getUsers,
@@ -124,7 +124,7 @@ module.exports = {
     addUser,
     deleteUser,
     updateUser,
-    signInUser,
+    // signInUser,
 };
 
 // if (!results.rows[0].password) {

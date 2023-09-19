@@ -11,7 +11,7 @@ function Navigation() {
     let loginActions = (
         <>
             <li>
-                <a href="#" onClick={() => history.push("/sign-up")}>
+                <a href="#" onClick={() => history.push("/signup")}>
                     Sign Up
                 </a>
             </li>
