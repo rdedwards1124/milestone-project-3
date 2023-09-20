@@ -7,17 +7,17 @@ Summary
 - Welcome to PokéPipeline, where all Pokémon Trainers both new and old come together to share information, chat with fellow trainers, and even schedule trades via games for the Nintendo Switch and more!
 
 Inspiration
-- 
+- Trading possibilities for nintendo players that don't have other players locally.
 
 How to use
-- 
+- You gotta like Pokemon to use! >:)
 
 Features
 - React, Javascript, Node.js, Express, PostgresSQL
 - Has separate folders for Backend and Frontend
 
 Bugs
-- 
+- ... um. maybe...
 
 # Future Aspirations
 More from the PokeAPI

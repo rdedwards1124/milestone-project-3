@@ -17,6 +17,8 @@ const signInUser = (req, res) => {
             console.log(results.rows[0].s)
             pool.query(userQueries.getPassword, [email], async (error, results) => {
                 const storedHashedPassword = results.rows[0].password;
+                const stuff = results.rows[0]
+                const other = results.rows[0].id
                 bcrypt.compare(
                     passwordEntered,
                     storedHashedPassword,
@@ -25,7 +27,8 @@ const signInUser = (req, res) => {
                             res.send("error");
                         }
                         if (isMatch) {
-                            res.send("log in success!");
+                            // res.send("log in success!");
+                            res.status(200).json({ stuff, token: other});
                         } else {
                             res.send("wrong credentials...");
                         }

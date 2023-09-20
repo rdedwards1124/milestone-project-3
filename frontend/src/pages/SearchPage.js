@@ -92,8 +92,8 @@ function SearchPage() {
                             <li>Type2: {type2}</li>
                         </ul>
                         <div className="buttons">
-                            <button onClick={handleClickAdd}>Add to Favorites</button>
-                            <button onClick={handleClickRemove}>Remove from Favorites</button>
+                            {/* <button onClick={handleClickAdd}>Add to Favorites</button>
+                            <button onClick={handleClickRemove}>Remove from Favorites</button> */}
                             <Link to={`/pokemonpage/${name}`} >
                                 <button type="submit">More Info</button>
                             </Link>

@@ -15,7 +15,7 @@ import SignUpForm from "./users/SignUpForm"
 
 function App() {
     return (
-        <CurrentUserProvider>
+        // <CurrentUserProvider>
             <BrowserRouter>
                 <Navigation />
                 <Switch>
@@ -31,7 +31,7 @@ function App() {
                     <Route path="/" component={Error404} />
                 </Switch>
             </BrowserRouter>
-        </CurrentUserProvider>
+        // </CurrentUserProvider>
 
     );
 }

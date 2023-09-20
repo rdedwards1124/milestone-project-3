@@ -6,44 +6,48 @@ import "./Add-Style/Navigation.css";
 function Navigation() {
     const history = useHistory();
 
-    const { currentUser } = useContext(CurrentUser);
+    // const { currentUser } = useContext(CurrentUser);
 
-    let loginActions = (
-        <>
-            <li>
-                <a href="#" onClick={() => history.push("/signup")}>
-                    Sign Up
-                </a>
-            </li>
-            <li>
-                <a href="#" onClick={() => history.push("/login")}>
-                    Login
-                </a>
-            </li>
-        </>
-    );
+    // console.log(currentUser)
 
-    if (currentUser) {
+    let loginActions
+
+    // if (currentUser) {
+    //     loginActions = (
+    //         <>
+    //             <li style={{ float: "right" }}>
+    //                 Logged in as {currentUser.username}
+    //             </li>
+    //             <li>
+    //                 <button
+    //                     type="button"
+    //                     style={{ float: "right", marginRight: "20px" }}
+    //                     onClick={() => {
+    //                         localStorage.removeItem("token");
+    //                         window.location.reload();
+    //                     }}
+    //                 >
+    //                     Log Out
+    //                 </button>
+    //             </li>
+    //         </>
+    //     );
+    // } else {
         loginActions = (
             <>
-                <li style={{ float: "right" }}>
-                    Logged in as {currentUser.firstName} {currentUser.lastName}
+                <li>
+                    <a href="#" onClick={() => history.push("/signup")}>
+                        Sign Up
+                    </a>
                 </li>
                 <li>
-                    <button
-                        type="button"
-                        style={{ float: "right", marginRight: "20px" }}
-                        onClick={() => {
-                            localStorage.removeItem("token");
-                            window.location.reload();
-                        }}
-                    >
-                        Log Out
-                    </button>
+                    <a href="#" onClick={() => history.push("/login")}>
+                        Login
+                    </a>
                 </li>
             </>
         );
-    }
+    // }
 
 
     return (

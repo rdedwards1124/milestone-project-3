@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const cors = require("cors");
 
-const authenticationRoutes = require("./src/authentication/routes")
+// const authenticationRoutes = require("./src/authentication/routes")
 const userRoutes = require('./src/users/routes')
 const commentRoutes = require('./src/comments/routes')
 const battleTeamRoutes = require('./src/battleTeams/routes')
@@ -10,16 +10,18 @@ const favoriteRoutes = require('./src/favorites/routes')
 
 const app = express()
 
+// const defineCurrentUser = require('./src/middleware/defineCurrentUser')
+
 app.use(cors());
 
 app.use(express.json())
-
 
 app.get("/", (req, res) => {
     res.send("Hello World")
 })
 
-app.use("/authentication", authenticationRoutes)
+// app.use(defineCurrentUser)
+// app.use("/authentication", authenticationRoutes)
 app.use("/users", userRoutes)
 app.use("/comments", commentRoutes)
 app.use("/battleteams", battleTeamRoutes)

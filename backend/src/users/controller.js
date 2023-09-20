@@ -7,6 +7,7 @@ const getUsers = (req, res) => {
     pool.query(queries.getUsers2, (error, results) => {
         if (error) throw error;
         res.status(200).json(results.rows);
+        // console.log(results.rows)
     });
 };
 
@@ -15,8 +16,10 @@ const getUserById = (req, res) => {
     pool.query(queries.getUserById, [id], (error, results) => {
         if (error) throw error;
         res.status(200).json(results.rows);
+        console.log(results.rows)
     });
 };
+
 
 const addUser = async (req, res) => {
     const { username, email, password } = req.body;
