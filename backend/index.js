@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const cors = require("cors");
 
-// const authenticationRoutes = require("./src/authentication/routes")
+const authenticationRoutes = require("./src/authentication/routes")
 const userRoutes = require('./src/users/routes')
 const commentRoutes = require('./src/comments/routes')
 const battleTeamRoutes = require('./src/battleTeams/routes')
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 })
 
 // app.use(defineCurrentUser)
-// app.use("/authentication", authenticationRoutes)
+app.use("/authentication", authenticationRoutes)
 app.use("/users", userRoutes)
 app.use("/comments", commentRoutes)
 app.use("/battleteams", battleTeamRoutes)

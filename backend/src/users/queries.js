@@ -9,6 +9,8 @@ const updateUser = "UPDATE allusers SET username = $1, email = $2 WHERE id = $3"
 const checkEmailAndPassword = "SELECT * FROM allusers WHERE email = $1 AND password = $2"
 const getPassword = "SELECT password FROM allusers WHERE email = $1;"
 
+const getByEmail = "SELECT * FROM allusers WHERE email = $1"
+
 
 module.exports = {
     getUsers2,
@@ -19,6 +21,7 @@ module.exports = {
     deleteUser,
     updateUser,
     checkEmailAndPassword,
-    getPassword
+    getPassword,
+    getByEmail
 }
 

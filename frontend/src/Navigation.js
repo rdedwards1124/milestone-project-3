@@ -6,33 +6,33 @@ import "./Add-Style/Navigation.css";
 function Navigation() {
     const history = useHistory();
 
-    // const { currentUser } = useContext(CurrentUser);
+    const { currentUser } = useContext(CurrentUser);
 
-    // console.log(currentUser)
+    console.log(currentUser)
 
     let loginActions
 
-    // if (currentUser) {
-    //     loginActions = (
-    //         <>
-    //             <li style={{ float: "right" }}>
-    //                 Logged in as {currentUser.username}
-    //             </li>
-    //             <li>
-    //                 <button
-    //                     type="button"
-    //                     style={{ float: "right", marginRight: "20px" }}
-    //                     onClick={() => {
-    //                         localStorage.removeItem("token");
-    //                         window.location.reload();
-    //                     }}
-    //                 >
-    //                     Log Out
-    //                 </button>
-    //             </li>
-    //         </>
-    //     );
-    // } else {
+    if (currentUser) {
+        loginActions = (
+            <>
+                <li style={{ float: "right" }}>
+                    Logged in as {currentUser.email}
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        style={{ float: "right", marginRight: "20px" }}
+                        onClick={() => {
+                            localStorage.removeItem("token");
+                            window.location.reload();
+                        }}
+                    >
+                        Log Out
+                    </button>
+                </li>
+            </>
+        );
+    } else {
         loginActions = (
             <>
                 <li>
@@ -47,7 +47,7 @@ function Navigation() {
                 </li>
             </>
         );
-    // }
+    }
 
 
     return (

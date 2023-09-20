@@ -27,7 +27,9 @@ function LoginForm() {
         });
 
         const data = await response.json();
+        // const data = response
 
+        console.log(credentials);
         console.log(data);
 
         if (response.status === 200) {

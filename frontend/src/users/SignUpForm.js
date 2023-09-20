@@ -21,6 +21,7 @@ function SignUpForm() {
             },
             body: JSON.stringify(user),
         });
+        console.log(user)
 
         history.push(`/`);
     }

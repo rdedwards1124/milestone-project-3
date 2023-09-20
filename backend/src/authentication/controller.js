@@ -11,24 +11,30 @@ const signInUser = (req, res) => {
     const passwordEntered = password;
 
     pool.query(userQueries.checkEmailExists, [email], (error, results) => {
+        let user = pool.query(userQueries.getByEmail, [email], (error, results) => {})
+        console.log(user)
         if (!results.rows.length) {
             res.send("email is not in database!");
         } else {
-            console.log(results.rows[0].s)
+            // console.log(results.rows.length)
             pool.query(userQueries.getPassword, [email], async (error, results) => {
                 const storedHashedPassword = results.rows[0].password;
-                const stuff = results.rows[0]
-                const other = results.rows[0].id
+                // const stuff = results.rows
+                // const other = results.rows[0].id
+                // console.log(stuff)
                 bcrypt.compare(
                     passwordEntered,
                     storedHashedPassword,
-                    (err, isMatch) => {
+                    async (err, isMatch) => {
                         if (err) {
                             res.send("error");
                         }
                         if (isMatch) {
                             // res.send("log in success!");
-                            res.status(200).json({ stuff, token: other});
+                            // const { value } = await jwt.encode(process.env.JWT_SECRET, {
+                            //     userId: other,
+                            // });
+                            // res.status(200).json({ stuff, token: value});
                         } else {
                             res.send("wrong credentials...");
                         }
