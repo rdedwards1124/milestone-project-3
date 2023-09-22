@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import GrabTheImage from "../pageInserts/GrabTheImage";
-// import BattleTeam from "../pageInserts/BattleTeam"
+// import GrabTheImage2 from "../pageInserts/GrabTheImage2";
+import BattleTeam from "../pageInserts/BattleTeam"
 
 function UserPageWithId() {
     const { id } = useParams();
@@ -25,13 +26,18 @@ function UserPageWithId() {
         if (responseJSON) {
             setUser(responseJSON);
         }
-        // console.log(UserId)
+        // console.log(UserId) 
     };
 
     useEffect(() => {
-        getBattleTeam(id);
         getTrainer(id);
     }, [id]);
+
+    useEffect(() => {
+        getBattleTeam(id);
+    }, [id]);
+
+
 
     const UserId = user && user[0] && user[0].id;
 
@@ -39,31 +45,32 @@ function UserPageWithId() {
 
     const bestPokemon = user[0] && user[0].bestpokemon;
 
-    const TeamId =
-        team && team[0] && team[0].id ? team && team[0] && team[0].id : null;
+    // const TeamId =
+    //     team && team[0] && team[0].id ? team && team[0] && team[0].id : null;
 
-    const slot1 = team && team[0] && team[0].slot_1;
+    // const slot1 = team && team[0] && team[0].slot_1;
+    // console.log(slot1)
 
-    const slot2 =
-        team && team[0] && team[0].slot_2
-            ? team && team[0] && team[0].slot_2
-            : null;
-    const slot3 =
-        team && team[0] && team[0].slot_3
-            ? team && team[0] && team[0].slot_3
-            : null;
-    const slot4 =
-        team && team[0] && team[0].slot_4
-            ? team && team[0] && team[0].slot_4
-            : null;
-    const slot5 =
-        team && team[0] && team[0].slot_5
-            ? team && team[0] && team[0].slot_5
-            : null;
-    const slot6 =
-        team && team[0] && team[0].slot_6
-            ? team && team[0] && team[0].slot_6
-            : null;
+    // const slot2 =
+    //     team && team[0] && team[0].slot_2
+    //         ? team && team[0] && team[0].slot_2
+    //         : null;
+    // const slot3 =
+    //     team && team[0] && team[0].slot_3
+    //         ? team && team[0] && team[0].slot_3
+    //         : null;
+    // const slot4 =
+    //     team && team[0] && team[0].slot_4
+    //         ? team && team[0] && team[0].slot_4
+    //         : null;
+    // const slot5 =
+    //     team && team[0] && team[0].slot_5
+    //         ? team && team[0] && team[0].slot_5
+    //         : null;
+    // const slot6 =
+    //     team && team[0] && team[0].slot_6
+    //         ? team && team[0] && team[0].slot_6
+    //         : null;
 
     return (
         <>
@@ -85,30 +92,7 @@ function UserPageWithId() {
                 </div>
                 <div className="BattleTeams">
                     <h2>Battle Team</h2>
-                    <div>
-                        <h4>{slot1}</h4>
-                        <GrabTheImage Pokemon={slot1} />
-                    </div>
-                    <div>
-                        <h4>{slot2}</h4>
-                        <GrabTheImage Pokemon={slot2} />
-                    </div>
-                    <div>
-                        <h4>{slot3}</h4>
-                        <GrabTheImage Pokemon={slot3} />
-                    </div>
-                    <div>
-                        <h4>{slot4}</h4>
-                        <GrabTheImage Pokemon={slot4} />
-                    </div>
-                    <div>
-                        <h4>{slot5}</h4>
-                        <GrabTheImage Pokemon={slot5} />
-                    </div>
-                    <div>
-                        <h4>{slot6}</h4>
-                        <GrabTheImage Pokemon={slot6} />
-                    </div>
+                    <BattleTeam UserId={UserId} />
                 </div>
 
                 <div className="Favorites">
@@ -170,6 +154,35 @@ export default UserPageWithId;
                     <div>
                         <h3>Pokemon</h3>
                         <img src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg" alt=""/>
+                    </div>
+
+*/
+
+/*
+
+                    <div>
+                        <h4>{UserId}</h4>
+                        <GrabTheImage2 Pokemon={slot1} />
+                    </div>
+                    <div>
+                        <h4>{slot2}</h4>
+                        <GrabTheImage Pokemon={slot2} />
+                    </div>
+                    <div>
+                        <h4>{slot3}</h4>
+                        <GrabTheImage Pokemon={slot3} />
+                    </div>
+                    <div>
+                        <h4>{slot4}</h4>
+                        <GrabTheImage Pokemon={slot4} />
+                    </div>
+                    <div>
+                        <h4>{slot5}</h4>
+                        <GrabTheImage Pokemon={slot5} />
+                    </div>
+                    <div>
+                        <h4>{slot6}</h4>
+                        <GrabTheImage Pokemon={slot6} />
                     </div>
 
 */

@@ -7,7 +7,7 @@ import "../Add-Style/LoginForm.css"
 function LoginForm() {
     const history = useHistory();
 
-    const { setCurrentUser } = useContext(CurrentUser);
+    // const { setCurrentUser } = useContext(CurrentUser);
 
     const [credentials, setCredentials] = useState({
         email: "",
@@ -29,17 +29,17 @@ function LoginForm() {
         const data = await response.json();
         // const data = response
 
-        console.log(credentials);
-        console.log(data);
+        // console.log(credentials);
+        // console.log(data);
 
-        if (response.status === 200) {
-            setCurrentUser(data.user)
-            localStorage.setItem('token', data.token)
-            console.log(data.token)
-            history.push("/");
-        } else {
-            setErrorMessage(data.message);
-        }
+        // if (response.status === 200) {
+        //     setCurrentUser(data.user)
+        //     localStorage.setItem('token', data.token)
+        //     console.log(data.token)
+        //     history.push("/");
+        // } else {
+        //     setErrorMessage(data.message);
+        // }
         // history.push(`/`);
     }
 

@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+body{
+    padding: 0;
+}
+
 .HomePage h1{
     padding-bottom: 1em;
 }
@@ -15,16 +19,43 @@
     border: 1em solid black;
 }
 
+.HomeBottom{
+    align-items: center;
+    padding-bottom: 4em;
+    background-color: black;
+}
+
 .Users{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    padding: 1em;
+    /* padding: 1em; */
+    padding-left: 10%;
+    padding-right: 10%;
     text-align: center;
     min-height: 0vh;
     background-color: black;
+    /* max-width: 90%; */
 }
+
+
+.EachUser{
+    border: 0.8em solid red;
+    background-color: white;
+    width: 30%;
+    height: auto;
+    margin-top: 2em;
+    padding: 1em;
+}
+
+.EachUser img{
+    width: 5em;
+}
+
+/* .Pokeball{
+    width: 5em;
+} */
 
 .HomePage h2{
     margin-bottom: 0;
@@ -33,19 +64,27 @@
     padding-top: 1em;
 }
 
-.Users h4{
+/* .Users h4{
     padding: 1em;
     border: 2px solid white;
     color: white;
-    width: 30%;
-    margin-left: 1%;
-    margin-right: 1%;
-    margin-top: 0.5em;
+    width: 30%; */
+    /* margin-left: 1%;
+    margin-right: 1%; */
+    /* margin-top: 0.5em;
     margin-bottom: 0.5em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+} */
+
+.shrink-text {
+    width: 100%; /* Adjust this to the desired width of your div */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (...) to indicate text overflow */
 }
+  
 
 @media (max-width: 768px) {
     .Users{
@@ -57,5 +96,12 @@
     }
     .Users h4{
         width: 80%;
+    }
+    .EachUser{
+        border: 0.5em solid red;
+        background-color: white;
+        width: 30%;
+        margin-top: 1em;
+        padding: 0;
     }
 }

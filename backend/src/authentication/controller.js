@@ -11,8 +11,8 @@ const signInUser = (req, res) => {
     const passwordEntered = password;
 
     pool.query(userQueries.checkEmailExists, [email], (error, results) => {
-        let user = pool.query(userQueries.getByEmail, [email], (error, results) => {})
-        console.log(user)
+        let user = pool.query(`SELECT * FROM allusers WHERE email = ${email}`);
+        console.log(user);
         if (!results.rows.length) {
             res.send("email is not in database!");
         } else {
@@ -31,10 +31,10 @@ const signInUser = (req, res) => {
                         }
                         if (isMatch) {
                             // res.send("log in success!");
-                            // const { value } = await jwt.encode(process.env.JWT_SECRET, {
-                            //     userId: other,
-                            // });
-                            // res.status(200).json({ stuff, token: value});
+                            const { value } = await jwt.encode(process.env.JWT_SECRET, {
+                                userId: user.id,
+                            });
+                            res.status(200).json({ user, token: value});
                         } else {
                             res.send("wrong credentials...");
                         }

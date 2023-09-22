@@ -33,10 +33,11 @@ function UserMyPage() {
 
 
     const userNames = trainers.map((trainer) => (
-        <>
-            <option value={trainer.id}>{trainer.username}</option>
-        </>
+        <option key={trainer.id} value={trainer.id}>
+            {trainer.username}
+        </option>
     ));
+    
 
     const handleOptionChange = (e) => {
         e.preventDefault();
@@ -47,7 +48,7 @@ function UserMyPage() {
         let one = 1
         let two = 2
         e.preventDefault();
-        // console.log(selectedOption);
+        console.log(selectedOption);
         history.push(`/userpage/${selectedOption}`);
     };
 
@@ -100,6 +101,7 @@ function UserMyPage() {
                                 value={selectedOption}
                                 onChange={handleOptionChange}
                             >
+                                <option value="">select</option>
                                 {userNames}
                             </select>
                             <br />

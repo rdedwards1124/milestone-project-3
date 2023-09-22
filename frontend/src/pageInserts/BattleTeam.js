@@ -19,13 +19,10 @@ function BattleTeam(props) {
         getBattleTeam(props.UserId);
     }, [props.UserId]);
 
-    const TeamId =
-        team && team[0] && team[0].id ? team && team[0] && team[0].id : null;
+    const TeamId = team && team[0] && team[0].id !== undefined ? team[0].id : null;
 
-    const slot1 =
-        team && team[0] && team[0].slot_1
-            ? team && team[0] && team[0].slot_1
-            : null;
+    const slot1 = team && team[0] && team[0].slot_1 !== undefined ? team[0].slot_1 : null;
+
     const slot2 =
         team && team[0] && team[0].slot_2
             ? team && team[0] && team[0].slot_2
@@ -49,8 +46,8 @@ function BattleTeam(props) {
 
     return (
         <>
-            <div className="BattleTeams">
-                <h2>Battle Team</h2>
+            {/* <div className="BattleTeams">
+                <h2>Battle Team</h2> */}
                 <div>
                     <h4>{slot1}</h4>
                     <GrabTheImage Pokemon={slot1} />
@@ -75,7 +72,7 @@ function BattleTeam(props) {
                     <h4>{slot6}</h4>
                     <GrabTheImage Pokemon={slot6} />
                 </div>
-            </div>
+            {/* </div> */}
         </>
     );
 }

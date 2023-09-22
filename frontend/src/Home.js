@@ -2,6 +2,7 @@ import "./Add-Style/Home.css";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import GrabTheImage from "./pageInserts/GrabTheImage";
 
 function Home() {
     const [trainers, setTrainers] = useState([]);
@@ -46,15 +47,23 @@ function Home() {
     const randomTrainers = getRandomTrainers();
 
     const users = randomTrainers.map((trainer) => (
-        <>
-            <h4 key={trainer.id}>{trainer.username}</h4>
-        </>
-      ));
+        <div className="EachUser" key={trainer.id}>
+            <h4 className="shrink-text" >{trainer.username}</h4>
+            {trainer.bestpokemon ? (
+                <GrabTheImage Pokemon={trainer.bestpokemon} />
+            ) : (
+                <img className="Pokeball"
+                    src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                    alt="Default Pokeball Image"
+                />
+            )}
+        </div>
+    ));
 
     return (
         <main className="HomePage">
             <h1>Welcome to PokéPipeline!!!</h1>
-            <div className="HomeImg" >
+            <div className="HomeImg">
                 <img
                     height=""
                     width="80%"
@@ -62,18 +71,18 @@ function Home() {
                     alt="Pokemon"
                 />
             </div>
-            <h2>Current Users</h2>
+            <div className="HomeBottom" >
+                <h2>Current Users</h2>
             {loading ? (
                 <p>Loading...</p>
             ) : error ? (
                 <p>Error: {error.message}</p>
             ) : trainers.length > 0 ? (
-                <div className="Users" >
-                    {users}
-                </div>
+                <div className="Users">{users}</div>
             ) : (
                 <p>No users found.</p>
             )}
+            </div>
         </main>
     );
 }
@@ -130,9 +139,15 @@ export default Home;
 //     )
 // })
 
-{
-    /* {info} */
-}
-{
-    /* {users} */
-}
+/*
+
+const users = randomTrainers.map((trainer) => (
+        <>
+            <div className="EachUser" >
+                <h4 key={trainer.id} value={trainer.id}>{trainer.username}</h4>
+                <GrabTheImage Pokemon={trainer.bestpokemon} />
+            </div>
+        </>
+    ));
+
+*/
