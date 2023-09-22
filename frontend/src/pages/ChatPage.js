@@ -22,7 +22,7 @@ function ChatPage() {
     
 
     const allComments = comments.map((comment) => (
-        <div key={comment.comment_id}>
+        <div className="EachComment" key={comment.comment_id}>
           <p>{comment.comment_text}</p>
           {comment.user_id ? (
             <GrabUserName User={comment.user_id} />
@@ -40,8 +40,8 @@ function ChatPage() {
                 <div>
                     <h1>Trainer Chat</h1>
                 </div>
-                <div>
-                    <h3>Comments</h3>
+                <h3>Comments</h3>
+                <div className="CommentSection" >
                     <div className="comments-container" >
                         {allComments}
                     </div>
