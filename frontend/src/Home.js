@@ -8,20 +8,9 @@ function Home() {
     const [trainers, setTrainers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [searchedPokemon, setSearchedPokemon] = useState({});
-
-    // const getPokemon = async (searchValue) => {
-    //     const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
-    //     const response = await fetch(url);
-    //     const responseJSON = await response.json();
-    //     if (responseJSON) {
-    //         setSearchedPokemon(responseJSON);
-    //     }
-    // };
 
     useEffect(() => {
         fetchData();
-        // getPokemon()
     }, []);
 
     async function fetchData() {
@@ -48,15 +37,18 @@ function Home() {
 
     const users = randomTrainers.map((trainer) => (
         <div className="EachUser" key={trainer.id}>
-            <h4 className="shrink-text" >{trainer.username}</h4>
-            {trainer.bestpokemon ? (
-                <GrabTheImage Pokemon={trainer.bestpokemon} />
-            ) : (
-                <img className="Pokeball"
-                    src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
-                    alt="Default Pokeball Image"
-                />
-            )}
+            <Link to={`/userpage/${trainer.id}`}>
+                <h4 className="shrink-text">{trainer.username}</h4>
+                {trainer.bestpokemon ? (
+                    <GrabTheImage Pokemon={trainer.bestpokemon} />
+                ) : (
+                    <img
+                        className="Pokeball"
+                        src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                        alt="Default Pokeball Image"
+                    />
+                )}
+            </Link>
         </div>
     ));
 
@@ -71,17 +63,17 @@ function Home() {
                     alt="Pokemon"
                 />
             </div>
-            <div className="HomeBottom" >
+            <div className="HomeBottom">
                 <h2>Current Users</h2>
-            {loading ? (
-                <p>Loading...</p>
-            ) : error ? (
-                <p>Error: {error.message}</p>
-            ) : trainers.length > 0 ? (
-                <div className="Users">{users}</div>
-            ) : (
-                <p>No users found.</p>
-            )}
+                {loading ? (
+                    <p>Loading...</p>
+                ) : error ? (
+                    <p>Error: {error.message}</p>
+                ) : trainers.length > 0 ? (
+                    <div className="Users">{users}</div>
+                ) : (
+                    <p>No users found.</p>
+                )}
             </div>
         </main>
     );

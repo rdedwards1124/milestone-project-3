@@ -14,7 +14,7 @@ const getBattleTeamByUserId = (req, res) => {
     // const {user_id} = req.body
     // console.log(user_id)
     pool.query(queries.getBattleTeamByUserId, [user_id], (error, results) => {
-        // if (error) throw error;
+        if (error) throw error;
         res.status(200).json(results.rows)
         // console.log(results.rows)
     });

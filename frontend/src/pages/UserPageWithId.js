@@ -1,12 +1,15 @@
+import "../Add-Style/UserPageWithId.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import GrabTheImage from "../pageInserts/GrabTheImage";
 import BattleTeam from "../pageInserts/BattleTeam";
+import { Link } from "react-router-dom";
 
 function UserPageWithId() {
     const { id } = useParams();
     const [user, setUser] = useState(null);
     const [team, setTeam] = useState(null);
+    const [favorites, setFavorites] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -22,7 +25,13 @@ function UserPageWithId() {
             );
             const teamJSON = await teamResponse.json();
             setTeam(teamJSON);
-
+            
+            const favoritesResponse = await fetch(
+                `http://localhost:4000/favorites/${id}`
+            );
+            const favoritesJSON = await favoritesResponse.json();
+            setFavorites(favoritesJSON);
+       
             // Simulate a delay of 2 seconds (adjust as needed)
             setTimeout(() => {
                 setIsLoading(false);
@@ -40,32 +49,167 @@ function UserPageWithId() {
         return <p>Data not available.</p>;
     }
 
-    const { username, bestpokemon } = user[0];
+    const { username, email, bestpokemon } = user[0];
+    const { slot_1, slot_2, slot_3, slot_4, slot_5, slot_6 } = team[0];
+    let listOfPokemon
+  
+    if (!favorites) {
+        listOfPokemon = (
+            <div>No favs...</div>
+        )
+    } else {
+        listOfPokemon = favorites.map((each)=>(
+        <div key={each.favorite_id} >
+            <Link to={`/pokemonpage/${each.pokemon}`}>
+                <h4 className="shrink-text">{each.pokemon}</h4>
+                {each.pokemon ? (
+                    <GrabTheImage Pokemon={each.pokemon} />
+                ) : (
+                    <img
+                        className="Pokeball"
+                        src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                        alt="Default Pokeball Image"
+                    />
+                )}
+            </Link>
+        </div>
+    ))
+    }
+
+    
 
     return (
         <div className="CenterIt">
             <h1>{username}</h1>
             <div className="UserDetails">
-                <div className="SearchedPokeImg">
-                    <GrabTheImage Pokemon={bestpokemon} />
-                </div>
+                {bestpokemon ? (
+                    <div className="SearchedPokeImg">
+                        <Link to={`/pokemonpage/${bestpokemon}`}>
+                            <GrabTheImage Pokemon={bestpokemon} />
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="SearchedPokeImg">
+                        <img
+                            className="SearchedPokeImg"
+                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                        />
+                    </div>
+                )}
                 <div className="SearchedPokeInfo Info_ul">
                     <div className="button">
                         <button type="submit">Edit</button>
                     </div>
                     <ul>
-                        <li>Nintendo Name:</li>
-                        <li>Friend Code:</li>
+                        <li>Pokemon Trainer: {username}</li>
+                        <li>Email: {email}</li>
+                        <li>My favorite pokemon is: {bestpokemon}</li>
                     </ul>
                 </div>
             </div>
             <div className="BattleTeams">
                 <h2>Battle Team</h2>
-                <BattleTeam UserId={id} />
+
+                {slot_1 ? (
+                    <div>
+                        <h4>{slot_1}</h4>
+                        <Link to={`/pokemonpage/${slot_1}`}>
+                            <GrabTheImage Pokemon={slot_1} />
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="AltDiv">
+                        <img
+                            className="AltImg"
+                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                        />
+                    </div>
+                )}
+
+                {slot_2 ? (
+                    <div>
+                        <h4>{slot_2}</h4>
+                        <Link to={`/pokemonpage/${slot_2}`}>
+                            <GrabTheImage Pokemon={slot_2} />
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="AltDiv">
+                        <img
+                            className="AltImg"
+                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                        />
+                    </div>
+                )}
+
+                {slot_3 ? (
+                    <div>
+                        <h4>{slot_3}</h4>
+                        <Link to={`/pokemonpage/${slot_3}`}>
+                            <GrabTheImage Pokemon={slot_3} />
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="AltDiv">
+                        <img
+                            className="AltImg"
+                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                        />
+                    </div>
+                )}
+
+                {slot_4 ? (
+                    <div>
+                        <h4>{slot_4}</h4>
+                        <Link to={`/pokemonpage/${slot_4}`}>
+                            <GrabTheImage Pokemon={slot_4} />
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="AltDiv">
+                        <img
+                            className="AltImg"
+                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                        />
+                    </div>
+                )}
+
+                {slot_5 ? (
+                    <div>
+                        <h4>{slot_5}</h4>
+                        <Link to={`/pokemonpage/${slot_5}`}>
+                            <GrabTheImage Pokemon={slot_5} />
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="AltDiv">
+                        <img
+                            className="AltImg"
+                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                        />
+                    </div>
+                )}
+
+                {slot_6 ? (
+                    <div>
+                        <h4>{slot_6}</h4>
+                        <Link to={`/pokemonpage/${slot_6}`}>
+                            <GrabTheImage Pokemon={slot_6} />
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="AltDiv">
+                        <img
+                            className="AltImg"
+                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                        />
+                    </div>
+                )}
             </div>
 
             <div className="Favorites">
                 <h2>My Favorites</h2>
+                {listOfPokemon}
             </div>
         </div>
     );

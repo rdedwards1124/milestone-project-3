@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import GrabUserName from "../pageInserts/GrabUserName";
 
 function ChatPage() {
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState([]);
 
     const getComments = async () => {
         const url = `http://localhost:4000/comments/`;
@@ -19,20 +19,36 @@ function ChatPage() {
     useEffect(() => {
         getComments();
     }, []);
-    
 
-    const allComments = comments.map((comment) => (
+    const filteredComments = comments.filter(
+        (comment) => comment.trade === true
+    );
+
+    const allTradeComments = filteredComments.map((comment) => (
         <div className="EachComment" key={comment.comment_id}>
-          <p>{comment.comment_text}</p>
-          {comment.user_id ? (
-            <GrabUserName User={comment.user_id} />
-          ) : (
-            <p>Unknown User</p>
-          )}
+            <p>{comment.comment_text}</p>
+            {comment.user_id ? (
+                <GrabUserName User={comment.user_id} />
+            ) : (
+                <p>Unknown User</p>
+            )}
         </div>
-      ));
-      
+    ));
 
+    const filteredComments2 = comments.filter(
+        (comment) => comment.trade === false
+    );
+
+    const allGeneralComments = filteredComments2.map((comment) => (
+        <div className="EachComment" key={comment.comment_id}>
+            <p>{comment.comment_text}</p>
+            {comment.user_id ? (
+                <GrabUserName User={comment.user_id} />
+            ) : (
+                <p>Unknown User</p>
+            )}
+        </div>
+    ));
 
     return (
         <>
@@ -40,10 +56,18 @@ function ChatPage() {
                 <div>
                     <h1>Trainer Chat</h1>
                 </div>
-                <h3>Comments</h3>
-                <div className="CommentSection" >
-                    <div className="comments-container" >
-                        {allComments}
+                <div className="Comments" >
+                    <h3>Comments</h3>
+                    <div className="CommentSection">
+                        <div className="comments-container">
+                            {allGeneralComments}
+                        </div>
+                    </div>
+                    <h3>Trades</h3>
+                    <div className="CommentSection">
+                        <div className="comments-container">
+                            {allTradeComments}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,7 +98,6 @@ function ChatPage() {
 }
 
 export default ChatPage;
-
 
 /*
 

@@ -48,7 +48,7 @@ function UserMyPage() {
         let one = 1
         let two = 2
         e.preventDefault();
-        console.log(selectedOption);
+        // console.log(selectedOption);
         history.push(`/userpage/${selectedOption}`);
     };
 

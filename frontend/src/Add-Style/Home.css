@@ -47,6 +47,7 @@ body{
     height: auto;
     margin-top: 2em;
     padding: 1em;
+    text-decoration: none;
 }
 
 .EachUser img{
@@ -83,6 +84,7 @@ body{
     white-space: nowrap; /* Prevent text from wrapping */
     overflow: hidden; /* Hide overflowing text */
     text-overflow: ellipsis; /* Add ellipsis (...) to indicate text overflow */
+    text-decoration: none;
 }
   
 
