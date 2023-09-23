@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 import Home from "./Home";
 
 import Navigation from "./Navigation";
 import Error404 from "./Error404";
-import CurrentUserProvider from "./contexts/CurrentUser";
+
 import SearchPage from "./pages/SearchPage";
 import UserMyPage from "./pages/UserMyPage";
 import UserPageWithId from "./pages/UserPageWithId";
@@ -15,7 +16,7 @@ import SignUpForm from "./users/SignUpForm"
 
 function App() {
     return (
-        // <CurrentUserProvider>
+        <AuthProvider>
             <BrowserRouter>
                 <Navigation />
                 <Switch>
@@ -31,7 +32,10 @@ function App() {
                     <Route path="/" component={Error404} />
                 </Switch>
             </BrowserRouter>
-        // </CurrentUserProvider>
+        </AuthProvider>
+     
+            
+     
 
     );
 }
