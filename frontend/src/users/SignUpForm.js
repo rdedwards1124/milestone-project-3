@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router";
 
@@ -21,7 +20,7 @@ function SignUpForm() {
             },
             body: JSON.stringify(user),
         });
-        console.log(user)
+        console.log(user);
 
         history.push(`/login`);
     }
@@ -81,6 +80,16 @@ function SignUpForm() {
                     value="Sign Up"
                 />
             </form>
+            <div className="bottom">
+                <h3>Signed up already?</h3>
+                <button
+                    onClick={() => {
+                        history.push(`/login`);
+                    }}
+                >
+                    Click Here
+                </button>
+            </div>
         </main>
     );
 }

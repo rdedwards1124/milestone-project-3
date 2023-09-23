@@ -1,6 +1,6 @@
 const getUsers2 = "SELECT * FROM allusers"
 const getUserById = "SELECT * FROM allusers WHERE id = $1"
-const checkEmailExists = "SELECT s FROM allusers s WHERE s.email = $1"
+const checkEmailExists = "SELECT * FROM allusers WHERE email = $1"
 const checkUsernameExists = "SELECT s FROM allusers s WHERE s.username = $1"
 const addUser = "INSERT INTO allusers (username, email, password) VALUES ($1, $2, $3)"
 const deleteUser = "DELETE FROM allusers WHERE id = $1"

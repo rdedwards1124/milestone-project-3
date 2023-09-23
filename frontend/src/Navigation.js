@@ -1,37 +1,42 @@
-import { useState, useEffect, useContext } from "react";
+
 import { useHistory } from "react-router";
-import { CurrentUser } from "./contexts/CurrentUser";
+import axios from "axios";
+import { useAuth } from "./contexts/AuthContext";
 import "./Add-Style/Navigation.css";
 
 function Navigation() {
     const history = useHistory();
+    const { auth } = useAuth();
+    const { username } = useAuth()
 
-    // const { currentUser } = useContext(CurrentUser);
+    const handleDelete = ()=>{
+        axios.get('http://localhost:4000/authentication/logout').then(res=>{
+            window.location.reload(true)
+            history.push('/')
+        }).catch(err=>console.log(err))
+    }
 
 
     let loginActions
 
-    // if (currentUser) {
-    //     loginActions = (
-    //         <>
-    //             <li style={{ float: "right" }}>
-    //                 Logged in as {currentUser.email}
-    //             </li>
-    //             <li>
-    //                 <button
-    //                     type="button"
-    //                     style={{ float: "right", marginRight: "20px" }}
-    //                     onClick={() => {
-    //                         localStorage.removeItem("token");
-    //                         window.location.reload();
-    //                     }}
-    //                 >
-    //                     Log Out
-    //                 </button>
-    //             </li>
-    //         </>
-    //     );
-    // } else {
+    if (auth) {
+        loginActions = (
+            <>
+                <li style={{ float: "right" }}>
+                    Logged in as {username}
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        style={{ float: "right", marginRight: "20px" }}
+                        onClick={() => {handleDelete()}}
+                    >
+                        Log Out
+                    </button>
+                </li>
+            </>
+        );
+    } else {
         loginActions = (
             <>
                 <li>
@@ -46,7 +51,7 @@ function Navigation() {
                 </li>
             </>
         );
-    // }
+    }
 
 
     return (
