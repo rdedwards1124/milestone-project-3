@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { CurrentUser } from "../contexts/CurrentUser";
 import { Link } from "react-router-dom";
+import axios from 'axios'
 import "../Add-Style/LoginForm.css"
 
 function LoginForm() {
@@ -16,31 +17,15 @@ function LoginForm() {
 
     const [errorMessage, setErrorMessage] = useState(null);
 
-    async function handleSubmit(e) {
+    const handleSubmit = (e)=>{
         e.preventDefault();
-        await fetch(`http://localhost:4000/authentication`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(credentials),
-        });
-
-        // const data = await response.json();
-        // const data = response
-
-        // console.log(credentials);
-        // console.log(data);
-
-        // if (response.status === 200) {
-        //     setCurrentUser(data.user)
-        //     localStorage.setItem('token', data.token)
-        //     console.log(data.token)
-        //     history.push("/");
-        // } else {
-        //     setErrorMessage(data.message);
-        // }
-        // history.push(`/`);
+        axios.post('http://localhost:4000/authentication', credentials).then(res => {
+            if (res.data.Status === "Success") {
+                history.push(`/`);
+            } else{
+                alert(res.data.Error)
+            }
+        }).then(err => console.log(err))
     }
 
     return (
@@ -101,3 +86,36 @@ function LoginForm() {
 }
 
 export default LoginForm;
+
+
+
+/*
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        await fetch(`http://localhost:4000/authentication`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+        });
+
+        // const data = await response.json();
+        // const data = response
+
+        // console.log(credentials);
+        // console.log(data);
+
+        // if (response.status === 200) {
+        //     setCurrentUser(data.user)
+        //     localStorage.setItem('token', data.token)
+        //     console.log(data.token)
+        //     history.push("/");
+        // } else {
+        //     setErrorMessage(data.message);
+        // }
+        // history.push(`/`);
+    }
+
+*/

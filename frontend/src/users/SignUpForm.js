@@ -23,7 +23,7 @@ function SignUpForm() {
         });
         console.log(user)
 
-        history.push(`/`);
+        history.push(`/login`);
     }
 
     return (

@@ -1,6 +1,9 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require("cors");
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt");
+const cookieParcer = require("cookie-parser")
 const bodyParser = require('body-parser')
 const app = express()
 
@@ -12,12 +15,19 @@ const commentRoutes = require('./src/comments/routes')
 const battleTeamRoutes = require('./src/battleTeams/routes')
 const favoriteRoutes = require('./src/favorites/routes')
 
-
-app.use(cors());
 app.use(express.json())
+app.use(cors());
+app.use(cookieParcer())
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+
+
+const pool = require("./db");
+
+
+
+
 
 
 app.get("/", (req, res) => {
