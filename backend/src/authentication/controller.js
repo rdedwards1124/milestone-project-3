@@ -30,11 +30,12 @@ const signInUser = (req, res) => {
                             res.send("error");
                         }
                         if (isMatch) {
-                            // res.send("log in success!");
-                            const { value } = await jwt.encode(process.env.JWT_SECRET, {
-                                userId: user.id,
-                            });
-                            res.status(200).json({ user, token: value});
+                            res.send("log in success!");
+                            console.log("log in success!!")
+                            // const { value } = await jwt.encode(process.env.JWT_SECRET, {
+                            //     userId: user.id,
+                            // });
+                            // res.status(200).json({ user, token: value});
                         } else {
                             res.send("wrong credentials...");
                         }

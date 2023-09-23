@@ -20,14 +20,14 @@ const getFavoritesByUserId = (req, res) => {
     });
 };
 
-const getFavoriteByUserFavoriteId = (req, res) => {
+const getFavoriteByUserPokemon = (req, res) => {
     const user_id = parseInt(req.params.user_id);
-    const id = parseInt(req.params.id);
+    const { pokemon } = req.body
     pool.query(queries.getFavoritesByUserId, [user_id], (error, results) => {
         if (!results.rows.length) {
             res.send("This user does not exist!!");
         } else {
-            pool.query(queries.getFavoriteByUserFavoriteId, [user_id, id], (error, results) => {
+            pool.query(queries.getFavoriteByUserPokemon, [user_id, pokemon], (error, results) => {
                 if (!results.rows.length) {
                     res.send("Pokemon is not in list!!");
                 } else {
@@ -62,12 +62,13 @@ const addFavorite = (req, res) => {
 const deleteFavorite = (req, res) => {
     const id = parseInt(req.params.id);
     const user_id = parseInt(req.params.user_id);
-    pool.query(queries.getFavoriteByUserFavoriteId, [user_id, id], (error, results) => {
+    const { pokemon } = req.body
+    pool.query(queries.getFavoriteByUserPokemon, [user_id, pokemon], (error, results) => {
         const noCommentFound = !results.rows.length;
         if (noCommentFound) {
             res.send("pokemon is not in the list...");
         }
-        pool.query(queries.deleteFavorite, [user_id, id], (error, results) => {
+        pool.query(queries.deleteFavorite, [user_id, pokemon], (error, results) => {
             if (error) throw error;
             res.status(200).send("pokemon deleted successfully!");
         });
@@ -78,7 +79,31 @@ const deleteFavorite = (req, res) => {
 module.exports = {
     getFavorites,
     getFavoritesByUserId,
-    getFavoriteByUserFavoriteId,
+    getFavoriteByUserPokemon,
     addFavorite,
     deleteFavorite
 };
+
+
+
+/*
+
+const getFavoriteByUserFavoriteId = (req, res) => {
+    const user_id = parseInt(req.params.user_id);
+    const id = parseInt(req.params.id);
+    pool.query(queries.getFavoritesByUserId, [user_id], (error, results) => {
+        if (!results.rows.length) {
+            res.send("This user does not exist!!");
+        } else {
+            pool.query(queries.getFavoriteByUserFavoriteId, [user_id, id], (error, results) => {
+                if (!results.rows.length) {
+                    res.send("Pokemon is not in list!!");
+                } else {
+                    res.status(200).json(results.rows);
+                }
+            });
+        }
+    });
+};
+
+*/

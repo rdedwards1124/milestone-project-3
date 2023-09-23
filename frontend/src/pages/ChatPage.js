@@ -70,6 +70,14 @@ function ChatPage() {
                         </div>
                     </div>
                 </div>
+                <div className="AddComment" >
+                    <div>
+                        <h3>Add a comment</h3>
+                    </div>
+                    <div className="CenterButton" >
+                        <button>Click here to add</button>
+                    </div>
+                </div>
             </div>
         </>
     );

@@ -1,6 +1,10 @@
 
 .Comments{
-    background-color: black;
+    background-color: rgb(74, 204, 255);
+}
+
+.Comments h3{
+    text-align: center;
 }
 
 .CommentSection{
@@ -8,20 +12,47 @@
     justify-content: center; /* Horizontal centering */
     /* align-items: center; 
     min-height: 100vh; */
-    margin-bottom: 3em;
+    /* margin-bottom: 3em; */
+    padding-bottom: 3em;
 }
 
 .comments-container {
     max-height: 300px; /* Adjust the height as needed */
     overflow-y: auto; /* Add a vertical scrollbar when content exceeds container height */
     width: 80%;
-    border: 0.5em solid red;
-    background-color: rgb(74, 204, 255);
+    border: 0.5em solid black;
+    background-color: white;
 }
 
 .EachComment{
     border: 2px solid black;
+    color: black;
+    padding-left: 10%;
 }
+
+.AddComment{
+    background-color: black;
+    color: white;
+    padding: 3em;
+}
+
+.AddComment h3{
+    text-align: center;
+}
+
+.CenterButton{
+    align-items: center;
+    text-align: center;
+}
+
+.AddComment button{
+    border: 2px solid white;
+    color: white;
+    background-color: black;
+    text-align: center;
+    align-items: center;
+}
+
 
 @media (max-width: 768px) {
     .comments-container {

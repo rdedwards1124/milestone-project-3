@@ -132,8 +132,8 @@ function PokemonPage() {
                     <div className="buttons">
                         {/* <button onClick={handleClickAdd}>
                             Add to Favorites
-                        </button>
-                        <button onClick={handleClickRemove}>
+                        </button> */}
+                        {/* <button onClick={handleClickRemove}>
                             Remove from Favorites
                         </button> */}
                         <Link to={`/searchpage`}>
