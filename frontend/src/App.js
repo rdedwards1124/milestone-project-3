@@ -4,7 +4,7 @@ import Home from "./Home";
 
 import Navigation from "./Navigation";
 import Error404 from "./Error404";
-
+import MyPage from "./pages/MyPage";
 import SearchPage from "./pages/SearchPage";
 import UserMyPage from "./pages/UserMyPage";
 import UserPageWithId from "./pages/UserPageWithId";
@@ -25,6 +25,7 @@ function App() {
                     <Route exact path="/searchtype/:id" component={SearchType} />
                     <Route exact path="/pokemonpage/:id" component={PokemonPage} />
                     <Route exact path="/usermypage" component={UserMyPage} />
+                    <Route exact path="/mypage/:trainer" component={MyPage} />
                     <Route exact path="/userpage/:id" component={UserPageWithId} />
                     <Route exact path="/chatpage" component={ChatPage} />
                     <Route exact path="/login" component={LoginForm} />

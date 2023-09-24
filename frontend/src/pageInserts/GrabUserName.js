@@ -11,7 +11,10 @@ function GrabUserName({ User }) {
         if (responseJSON && responseJSON.length > 0) {
             setUser(responseJSON[0]); // Assuming the user data is an array.
         }
+
     };
+
+    // console.log(User)
 
     useEffect(() => {
         if (User) {
@@ -19,6 +22,7 @@ function GrabUserName({ User }) {
         }
     }, [User]);
 
+    
     const username = user && user.username ? user.username : null;
 
     if (user === null) {

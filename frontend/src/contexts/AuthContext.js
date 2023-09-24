@@ -15,6 +15,7 @@ export function AuthProvider({ children }) {
     const [auth, setAuth] = useState(false)
     const [message, setMessage] = useState(" ")
     const [username, setUsername] = useState(" ")
+    const [userID, setUserID] = useState(" ")
 
     axios.defaults.withCredentials = true
 
@@ -23,12 +24,13 @@ export function AuthProvider({ children }) {
             if (res.data.Status === "Success") {
                 setAuth(true)
                 setUsername(res.data.username)
+                setUserID(res.data.userID)
                 // history.push('/')
             } else{
                 setAuth(false)
                 setMessage(res.data.Error)
             }
-        }).then((err)=> {console.log(err)})
+        })
     }, [])
 
 
@@ -38,7 +40,9 @@ export function AuthProvider({ children }) {
     message,
     setMessage,
     username,
-    setUsername
+    setUsername,
+    userID,
+    setUserID
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

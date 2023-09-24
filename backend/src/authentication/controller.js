@@ -23,7 +23,8 @@ const signInUser = (req, res) => {
                         return res.json({ Error: "Password compare error" });
                     if (isMatch) {
                         const username = results.rows[0].username;
-                        const token = jwt.sign({ username }, "jwt-secret-key", {
+                        const userID = results.rows[0].id
+                        const token = jwt.sign({ username, userID }, "jwt-secret-key", {
                             expiresIn: "1d",
                         });
                         res.cookie("token", token);
@@ -49,6 +50,7 @@ const verifyUser = (req, res, next) => {
                 return res.json({ Error: "token is not okay" });
             } else {
                 req.username = decoded.username;
+                req.userID = decoded.userID
                 next();
             }
         });
@@ -56,7 +58,7 @@ const verifyUser = (req, res, next) => {
 };
 
 const getUserData = async (req, res) => {
-    return res.json({ Status: "Success", username: req.username });
+    return res.json({ Status: "Success", username: req.username, userID: req.userID });
 };
 
 const logOutUser = (req, res) => {

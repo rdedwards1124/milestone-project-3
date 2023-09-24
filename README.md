@@ -11,6 +11,8 @@ Inspiration
 
 How to use
 - You gotta like Pokemon to use!
+- When searching for pokemon you MUST use all lowercase letters.
+- The search feature will not work if the pokemon name is spelled wrong.
 
 Features
 - React, Javascript, Node.js, Express, PostgresSQL
@@ -51,6 +53,9 @@ Error Page
 PokeBall Image
 - https://www.etsy.com/il-en/listing/1143048156/pokemon-pokeball-svg 
 - https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg 
+
+Logged In Image
+- https://assets.pokemon.com/assets/cms2/img/misc/countries/au/country_detail_pokemon.png 
 
 
 # Videos

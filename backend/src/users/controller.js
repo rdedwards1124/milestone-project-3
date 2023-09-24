@@ -20,6 +20,15 @@ const getUserById = (req, res) => {
     });
 };
 
+const getUserByUsername = (req, res) => {
+    const username = req.params.username; // Access the username from URL params
+
+    pool.query(queries.getUserByUsername, [username], (error, results) => {
+        if (error) throw error;
+        res.status(200).json(results.rows);
+    });
+};
+
 
 const addUser = async (req, res) => {
     const { username, email, password } = req.body;
@@ -92,6 +101,24 @@ const updateUser = (req, res) => {
     });
 };
 
+
+module.exports = {
+    getUsers,
+    getUserById,
+    getUserByUsername,
+    addUser,
+    deleteUser,
+    updateUser
+};
+
+// if (!results.rows[0].password) {
+//     res.send("email not in database")
+// } else if (await bcrypt.compare(passwordEntered, storedHashedPassword)) {
+//     res.send("User log in success!!")
+// } else {
+//     res.send("wrong credentials...")
+// }
+
 // const signInUser = (req, res) => {
 //     const { email, password } = req.body;
 //     const passwordEntered = password;
@@ -120,20 +147,3 @@ const updateUser = (req, res) => {
 //         }
 //     });
 // };
-
-module.exports = {
-    getUsers,
-    getUserById,
-    addUser,
-    deleteUser,
-    updateUser,
-    // signInUser,
-};
-
-// if (!results.rows[0].password) {
-//     res.send("email not in database")
-// } else if (await bcrypt.compare(passwordEntered, storedHashedPassword)) {
-//     res.send("User log in success!!")
-// } else {
-//     res.send("wrong credentials...")
-// }

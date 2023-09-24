@@ -28,7 +28,6 @@ function UserPageWithId() {
                 const teamJSON = await teamResponse.json();
             setTeam(teamJSON);
             }
-            
 
             const favoritesResponse = await fetch(
                 `http://localhost:4000/favorites/${id}`
@@ -51,13 +50,14 @@ function UserPageWithId() {
     }, [id]);
 
     if (isLoading) {
-        return <p>Loading...</p>;
+        return <h1>Loading...</h1>;
     }
 
     if (!user) {
         return <p>Data not available.</p>;
     }
 
+    const username2 = user[0].username
     const { username, email, bestpokemon } = user[0];
     const { slot_1, slot_2, slot_3, slot_4, slot_5, slot_6 } = team[0];
     
@@ -86,7 +86,7 @@ function UserPageWithId() {
 
     return (
         <div className="CenterIt">
-            <h1>{username}</h1>
+            <h1>{username2}</h1>
             <div className="UserDetails">
                 {bestpokemon ? (
                     <div className="SearchedPokeImg">
@@ -103,9 +103,9 @@ function UserPageWithId() {
                     </div>
                 )}
                 <div className="SearchedPokeInfo Info_ul">
-                    <div className="button">
+                    {/* <div className="button">
                         <button type="submit">Edit</button>
-                    </div>
+                    </div> */}
                     <ul>
                         <li>Pokemon Trainer: {username}</li>
                         <li>Email: {email}</li>

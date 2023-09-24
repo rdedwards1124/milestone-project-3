@@ -1,4 +1,3 @@
-
 import { useHistory } from "react-router";
 import axios from "axios";
 import { useAuth } from "./contexts/AuthContext";
@@ -7,29 +6,31 @@ import "./Add-Style/Navigation.css";
 function Navigation() {
     const history = useHistory();
     const { auth } = useAuth();
-    const { username } = useAuth()
+    const { username } = useAuth();
 
-    const handleDelete = ()=>{
-        axios.get('http://localhost:4000/authentication/logout').then(res=>{
-            window.location.reload(true)
-            history.push('/')
-        }).catch(err=>console.log(err))
-    }
+    const handleDelete = () => {
+        axios
+            .get("http://localhost:4000/authentication/logout")
+            .then((res) => {
+                window.location.reload(true);
+                history.push("/");
+            })
+            .catch((err) => console.log(err));
+    };
 
-
-    let loginActions
+    let loginActions;
 
     if (auth) {
         loginActions = (
             <>
-                <li style={{ float: "right" }}>
-                    Logged in as {username}
-                </li>
+                <li style={{ float: "right" }}>Logged in as {username}</li>
                 <li>
                     <button
                         type="button"
                         style={{ float: "right", marginRight: "20px" }}
-                        onClick={() => {handleDelete()}}
+                        onClick={() => {
+                            handleDelete();
+                        }}
                     >
                         Log Out
                     </button>
@@ -53,7 +54,6 @@ function Navigation() {
         );
     }
 
-
     return (
         <nav>
             <ul>
@@ -67,6 +67,7 @@ function Navigation() {
                         Search PKMN
                     </a>
                 </li>
+                {/*{mypageNchat}*/}
                 <li>
                     <a href="#" onClick={() => history.push("/usermypage")}>
                         My Page
@@ -85,8 +86,23 @@ function Navigation() {
 
 export default Navigation;
 
-
 /*
 
+let mypageNchat
+
+mypageNchat = (
+    <>
+                <li>
+                    <a href="#" onClick={() => history.push("/usermypage")}>
+                        My Page
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onClick={() => history.push("/chatpage")}>
+                        Chat Room
+                    </a>
+                </li>
+    </>
+)
 
 */

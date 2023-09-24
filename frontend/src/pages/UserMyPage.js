@@ -2,12 +2,16 @@ import "../Add-Style/UserMyPage.css";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import axios from "axios";
 
 function UserMyPage() {
     const [trainers, setTrainers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedOption, setSelectedOption] = useState("");
+    const { auth } = useAuth();
+    const { username } = useAuth();
 
     const history = useHistory();
 
@@ -31,44 +35,37 @@ function UserMyPage() {
     }, []);
 
 
-
-    const userNames = trainers.map((trainer) => (
-        <option key={trainer.id} value={trainer.id}>
-            {trainer.username}
-        </option>
-    ));
-    
-
-    const handleOptionChange = (e) => {
-        e.preventDefault();
-        setSelectedOption(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        let one = 1
-        let two = 2
-        e.preventDefault();
-        // console.log(selectedOption);
-        history.push(`/userpage/${selectedOption}`);
-    };
-
     let ifLoggedIn;
     let ifLoggedOut;
-    /*
-    if (1 === 2) {
-        ifLoggedIn = (
-            <>
-                <div>
-                    <Link to={`/userpage/${user_id}`} >
-                        <p>ENTER</p>
-                    </Link>
-                </div>
-            </>
-        );
-    }
-*/
 
-    if (1 === 1) {
+    if (auth) {
+        if (trainers.length > 0) {
+            // Check if trainers array is not empty
+            // console.log(trainers[0].id);
+            const filteredUser = trainers.filter(
+                (user) => user.username === username
+            );
+            console.log(filteredUser[0].id)
+
+            
+            const handleSubmit = (e) => {
+                e.preventDefault();
+            
+            };
+
+            ifLoggedIn = (
+                <>
+                    <div>
+                        <Link to={`/userpage/${filteredUser[0].id}`}>
+                            <p>ENTER</p>
+                        </Link>
+                    </div>
+                </>
+            );
+        }
+    }
+
+    if (!auth) {
         ifLoggedOut = (
             <>
                 <div>
@@ -89,7 +86,20 @@ function UserMyPage() {
                             <p>Register Here!</p>
                         </Link>
                     </div>
-                    <div>
+                </div>
+            </>
+        );
+    }
+
+    return (
+        <>
+            {ifLoggedIn}
+            {ifLoggedOut}
+        </>
+    );
+
+    {
+        /* <div>
                         <h3>Dropdown Menu</h3>
                         {loading ? (
                         <p>Loading...</p>
@@ -108,18 +118,8 @@ function UserMyPage() {
                             <input type="submit" value="Submit" />
                         </form>}
                         
-                    </div>
-                </div>
-            </>
-        );
+                    </div> */
     }
-
-    return (
-        <>
-            {ifLoggedIn}
-            {ifLoggedOut}
-        </>
-    );
 
     // return (
     //     <>
