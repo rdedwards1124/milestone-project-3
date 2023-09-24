@@ -1,0 +1,12 @@
+
+.Images{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.EachImage{
+    width: 30%;
+    border: 1em solid black;
+    margin: 0.5em;
+}

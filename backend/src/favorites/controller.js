@@ -75,13 +75,30 @@ const deleteFavorite = (req, res) => {
     });
 };
 
+const deleteFavorite2 = (req, res) => {
+    // const user_id = parseInt(req.params.user_id);
+    const id = parseInt(req.params.id);
+    // const { pokemon } = req.body
+    pool.query(queries.getFavoriteByFavoriteId, [id], (error, results) => {
+        const noCommentFound = !results.rows.length;
+        if (noCommentFound) {
+            res.send("pokemon is not in the list...");
+        }
+        pool.query(queries.deleteFavorite2, [id], (error, results) => {
+            if (error) throw error;
+            res.status(200).send("pokemon deleted successfully!");
+        });
+    });
+};
+
 
 module.exports = {
     getFavorites,
     getFavoritesByUserId,
     getFavoriteByUserPokemon,
     addFavorite,
-    deleteFavorite
+    deleteFavorite,
+    deleteFavorite2
 };
 
 

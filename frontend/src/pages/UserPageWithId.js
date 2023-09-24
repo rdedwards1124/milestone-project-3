@@ -2,10 +2,12 @@ import "../Add-Style/UserPageWithId.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import GrabTheImage from "../pageInserts/GrabTheImage";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function UserPageWithId() {
+    const history = useHistory();
     const { id } = useParams();
     const [user, setUser] = useState(null);
     const [team, setTeam] = useState(null);
@@ -32,7 +34,7 @@ function UserPageWithId() {
                 setTeam(null);
             } else {
                 const teamJSON = await teamResponse.json();
-            setTeam(teamJSON);
+                setTeam(teamJSON);
             }
 
             const favoritesResponse = await fetch(
@@ -42,9 +44,8 @@ function UserPageWithId() {
                 setFavorites(null);
             } else {
                 const favoritesJSON = await favoritesResponse.json();
-            setFavorites(favoritesJSON);
+                setFavorites(favoritesJSON);
             }
-            
 
             // Simulate a delay of 2 seconds (adjust as needed)
             setTimeout(() => {
@@ -63,7 +64,7 @@ function UserPageWithId() {
         return <p>Data not available.</p>;
     }
 
-    const username2 = user[0].username
+    const username2 = user[0].username;
     const { email, bestpokemon } = user[0];
     const { slot_1, slot_2, slot_3, slot_4, slot_5, slot_6 } = team[0];
 
@@ -74,9 +75,45 @@ function UserPageWithId() {
     if (!user) {
         return <p>Data not available.</p>;
     }
-    
+
+    let theUserButton;
+    let theFavButton;
+    let theBattleButton;
+    if (auth) {
+        if (username === username2) {
+            theUserButton = (
+                <>
+                    <button
+                        onClick={() => {
+                            history.push(`/edituser`);
+                        }}
+                    >
+                        Edit
+                    </button>
+                </>
+            );
+            theFavButton = (
+                <>
+                    <button
+                        onClick={() => {
+                            history.push(`/editfavorites`);
+                        }}
+                    >
+                        Edit
+                    </button>
+                </>
+            );
+        } else {
+            theUserButton = <></>;
+            theFavButton = <></>;
+        }
+    } else {
+        theUserButton = <></>;
+        theFavButton = <></>;
+    }
+
     let listOfPokemon;
-    let battleList
+    let battleList;
 
     if (favorites === null) {
         listOfPokemon = <div>No favs...</div>;
@@ -200,14 +237,14 @@ function UserPageWithId() {
                     </div>
                 )}
             </>
-        )
+        );
     }
-
-
 
     return (
         <div className="CenterIt">
-            <h1>{username2}</h1>
+            <h1>
+                {username2} {theUserButton}
+            </h1>
             <div className="UserDetails">
                 {bestpokemon ? (
                     <div className="SearchedPokeImg">
@@ -241,7 +278,7 @@ function UserPageWithId() {
             </div>
 
             <div className="Favorites">
-                <h2>My Favorites</h2>
+                <h2>My Favorites {theFavButton}</h2>
                 {listOfPokemon}
             </div>
         </div>

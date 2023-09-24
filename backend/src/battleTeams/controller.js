@@ -70,6 +70,10 @@ module.exports = {
     updateBattleTeam
 };
 
+// IMPORTANT NOTE: I did not include a delete battle team function here because not having a battle team makes the mypage for the user not load. Instead, users and update their team to not having any pokemon rather than deleting it all together.
+
+
+
 /*
 
     slot_1, slot_2, slot_3, slot_4, slot_5, slot_6
