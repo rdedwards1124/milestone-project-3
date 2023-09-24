@@ -23,7 +23,7 @@ function Navigation() {
     if (auth) {
         loginActions = (
             <>
-                <li style={{ float: "right" }}>Logged in as {username}</li>
+                <li style={{ float: "right", color: "white" }}>Logged in as {username}</li>
                 <li>
                     <button
                         type="button"

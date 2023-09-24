@@ -110,6 +110,10 @@ h1{
     width: 60%;
 }
 
+.scroll-down{
+    margin-top: 22em;
+}
+
 
 @media (max-width: 768px) {
     .UserDetails {

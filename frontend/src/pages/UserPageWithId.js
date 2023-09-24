@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import GrabTheImage from "../pageInserts/GrabTheImage";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function UserPageWithId() {
     const { id } = useParams();
@@ -10,6 +11,11 @@ function UserPageWithId() {
     const [team, setTeam] = useState(null);
     const [favorites, setFavorites] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const { auth, username, userID } = useAuth();
+
+    // Ensure userID is a number, default to null if not
+    const x = parseInt(userID);
+    const y = isNaN(x) ? null : x;
 
     useEffect(() => {
         async function fetchData() {
@@ -58,12 +64,21 @@ function UserPageWithId() {
     }
 
     const username2 = user[0].username
-    const { username, email, bestpokemon } = user[0];
+    const { email, bestpokemon } = user[0];
     const { slot_1, slot_2, slot_3, slot_4, slot_5, slot_6 } = team[0];
+
+    if (isLoading) {
+        return <h1>Loading...</h1>;
+    }
+
+    if (!user) {
+        return <p>Data not available.</p>;
+    }
     
     let listOfPokemon;
+    let battleList
 
-    if (!favorites) {
+    if (favorites === null) {
         listOfPokemon = <div>No favs...</div>;
     } else {
         listOfPokemon = favorites.map((each) => (
@@ -84,38 +99,11 @@ function UserPageWithId() {
         ));
     }
 
-    return (
-        <div className="CenterIt">
-            <h1>{username2}</h1>
-            <div className="UserDetails">
-                {bestpokemon ? (
-                    <div className="SearchedPokeImg">
-                        <Link to={`/pokemonpage/${bestpokemon}`}>
-                            <GrabTheImage Pokemon={bestpokemon} />
-                        </Link>
-                    </div>
-                ) : (
-                    <div className="SearchedPokeImg">
-                        <img
-                            className="SearchedPokeImg"
-                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
-                        />
-                    </div>
-                )}
-                <div className="SearchedPokeInfo Info_ul">
-                    {/* <div className="button">
-                        <button type="submit">Edit</button>
-                    </div> */}
-                    <ul>
-                        <li>Pokemon Trainer: {username}</li>
-                        <li>Email: {email}</li>
-                        <li>My favorite pokemon is: {bestpokemon}</li>
-                    </ul>
-                </div>
-            </div>
-            <div className="BattleTeams">
-                <h2>Battle Team</h2>
-
+    if (team === null) {
+        battleList = <div>No team...</div>;
+    } else {
+        battleList = (
+            <>
                 {slot_1 ? (
                     <div>
                         <h4>{slot_1}</h4>
@@ -211,6 +199,45 @@ function UserPageWithId() {
                         />
                     </div>
                 )}
+            </>
+        )
+    }
+
+
+
+    return (
+        <div className="CenterIt">
+            <h1>{username2}</h1>
+            <div className="UserDetails">
+                {bestpokemon ? (
+                    <div className="SearchedPokeImg">
+                        <Link to={`/pokemonpage/${bestpokemon}`}>
+                            <GrabTheImage Pokemon={bestpokemon} />
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="SearchedPokeImg">
+                        <img
+                            className="SearchedPokeImg"
+                            src="https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
+                        />
+                    </div>
+                )}
+                <div className="SearchedPokeInfo Info_ul">
+                    {/* <div className="button">
+                        <button type="submit">Edit</button>
+                    </div> */}
+                    <ul>
+                        <li>Pokemon Trainer: {username}</li>
+                        <li>Email: {email}</li>
+                        <li>My favorite pokemon is: {bestpokemon}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div className="BattleTeams">
+                <h2>Battle Team</h2>
+                {battleList}
             </div>
 
             <div className="Favorites">

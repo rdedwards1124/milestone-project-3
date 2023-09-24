@@ -10,8 +10,11 @@ function UserMyPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedOption, setSelectedOption] = useState("");
-    const { auth } = useAuth();
-    const { username } = useAuth();
+    const { auth, username, userID } = useAuth();
+
+    // Ensure userID is a number, default to null if not
+    const x = parseInt(userID);
+    const y = isNaN(x) ? null : x;
 
     const history = useHistory();
 
@@ -34,7 +37,6 @@ function UserMyPage() {
         fetchData();
     }, []);
 
-
     let ifLoggedIn;
     let ifLoggedOut;
 
@@ -45,20 +47,55 @@ function UserMyPage() {
             const filteredUser = trainers.filter(
                 (user) => user.username === username
             );
-            console.log(filteredUser[0].id)
+            console.log(filteredUser[0].id);
 
-            
-            const handleSubmit = (e) => {
+            const battleTeamValues = {
+                slot_1: null,
+                slot_2: null,
+                slot_3: null,
+                slot_4: null,
+                slot_5: null,
+                slot_6: null,
+                user_id: y,
+            };
+
+            const favoriteValues = {
+                pokemon: "pikachu",
+                user_id: y
+            };
+
+            const handleSubmit = async (e) => {
                 e.preventDefault();
-            
+                await fetch(`http://localhost:4000/battleteams/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(battleTeamValues),
+                });
+                
+                await fetch(`http://localhost:4000/favorites/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(favoriteValues),
+                });
+                history.push(`/`)
             };
 
             ifLoggedIn = (
                 <>
                     <div>
-                        <Link to={`/userpage/${filteredUser[0].id}`}>
-                            <p>ENTER</p>
-                        </Link>
+                        <div>
+                            <Link to={`/userpage/${filteredUser[0].id}`}>
+                                <h2>ENTER</h2>
+                            </Link>
+                        </div>
+                        <div className="scroll-down" >
+                            <h2>If page isn't loading, then press this button once!</h2>
+                            <button onClick={handleSubmit} >Activate MyPage</button>
+                        </div>
                     </div>
                 </>
             );
@@ -99,6 +136,24 @@ function UserMyPage() {
     );
 
     {
+
+
+    /*
+    
+    const handleSubmit2 = async (e) => {
+                e.preventDefault()
+                await fetch(`http://localhost:4000/favorites/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(favoriteValues),
+                });
+            }
+    
+    
+    */
+        
         /* <div>
                         <h3>Dropdown Menu</h3>
                         {loading ? (

@@ -13,6 +13,7 @@ How to use
 - You gotta like Pokemon to use!
 - When searching for pokemon you MUST use all lowercase letters.
 - The search feature will not work if the pokemon name is spelled wrong.
+- After logging in, you must refresh the page to become logged in.
 
 Features
 - React, Javascript, Node.js, Express, PostgresSQL

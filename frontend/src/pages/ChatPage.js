@@ -105,7 +105,7 @@ function ChatPage() {
             trainerChat = (
                 <>
                     <div>
-                        <div>
+                        <div className="CenterIt" >
                             <h1>Trainer Chat</h1>
                         </div>
                         <div className="Comments">
@@ -210,7 +210,7 @@ function ChatPage() {
         trainerChat = (
             <>
                 <div>
-                    <div>
+                    <div className="CenterIt" >
                         <h1>
                             Sorry... You must be logged in to access this page!
                         </h1>
