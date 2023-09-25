@@ -62,8 +62,6 @@ export default function EditUser() {
     ));
 
     let infoToUpdate = {
-        username: username,
-        email: trainer1info.email,
         bestpokemon: selectedOption
     };
 
@@ -90,10 +88,10 @@ export default function EditUser() {
         display = (
             <>
                 <div>
-                    <div>
+                    <div className="top topDiv" >
                         <h1>Edit My Info</h1>
                     </div>
-                    <div>
+                    <div className="middle bottomDiv" >
                         <form onSubmit={handleSubmit}>
                             <label htmlFor="dropdown">
                                 Choose you Favorite Pokemon!
@@ -104,15 +102,24 @@ export default function EditUser() {
                                 value={selectedOption}
                                 onChange={handleOptionChange}
                             >
+                                <option value=" ">Select from favorites</option>
                                 {favlist}
                                 {/* <option value="option1">Option 1</option> */}
                             </select>
                             <input type="submit" value="Submit" />
                         </form>
                     </div>
-                    <div>
+                    <div className="bottom bottomDiv" >
                         <h3>Finished?</h3>
-                        <div></div>
+                        <div>
+                            <button
+                                onClick={() => {
+                                    history.push(`/userpage/${y}`);
+                                }}
+                            >
+                                Go back to My Page
+                            </button>
+                        </div>
                     </div>
                 </div>
             </>

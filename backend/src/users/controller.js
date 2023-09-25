@@ -82,7 +82,7 @@ const deleteUser = (req, res) => {
 
 const updateUser = (req, res) => {
     const id = parseInt(req.params.id);
-    const { username, email, bestpokemon } = req.body;
+    const { bestpokemon } = req.body;
 
     pool.query(queries.getUserById, [id], (error, results) => {
         const noUserFound = !results.rows.length;
@@ -91,8 +91,8 @@ const updateUser = (req, res) => {
         }
 
         pool.query(
-            queries.updateUser,
-            [username, email, bestpokemon, id],
+            queries.updateUser2,
+            [bestpokemon, id],
             (error, results) => {
                 if (error) throw error;
                 res.status(200).send("User info updated successfully!");

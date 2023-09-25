@@ -98,10 +98,10 @@ export default function EditBattleTeam() {
         display = (
             <>
                 <div>
-                    <div>
+                    <div className="top topDiv" >
                         <h1>Edit My Info</h1>
                     </div>
-                    <div>
+                    <div className="middle bottomDiv" >
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="dropdown">
@@ -190,9 +190,17 @@ export default function EditBattleTeam() {
                             <input type="submit" value="Submit" />
                         </form>
                     </div>
-                    <div>
+                    <div className="bottom bottomDiv" >
                         <h3>Finished?</h3>
-                        <div></div>
+                        <div>
+                            <button
+                                onClick={() => {
+                                    history.push(`/userpage/${y}`);
+                                }}
+                            >
+                                Go back to My Page
+                            </button>
+                        </div>
                     </div>
                 </div>
             </>

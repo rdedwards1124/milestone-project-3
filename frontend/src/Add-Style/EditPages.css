@@ -9,4 +9,55 @@
     width: 30%;
     border: 1em solid black;
     margin: 0.5em;
+    background-color: white;
+}
+
+main{
+    background-color: rgb(74, 204, 255);
+    /* padding-left: 1em;
+    padding-right: 1em; */
+}
+
+main h1{
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+.somePadding{
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.top{
+    background-color: red;
+    text-align: center;
+}
+
+.topDiv{
+    padding-bottom: 2em;
+}
+
+.middle{
+    background-color: rgb(74, 204, 255);
+    text-align: center;
+}
+
+.bottom{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.bottomDiv{
+    padding-top: 4em;
+    padding-bottom: 4em;
+}
+
+@media (max-width: 768px) {
+    .EachImage{
+        width: 40%;
+        border: 1em solid black;
+        margin: 0.5em;
+        background-color: white;
+    }
 }

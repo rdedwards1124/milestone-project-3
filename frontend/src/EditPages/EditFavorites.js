@@ -37,7 +37,7 @@ export default function EditFavorites() {
 
     const handleSubmit = async (e, z) => {
         e.preventDefault();
-    
+
         try {
             await fetch(`http://localhost:4000/favorites/${z}`, {
                 method: "DELETE",
@@ -45,18 +45,15 @@ export default function EditFavorites() {
                     "Content-Type": "application/json",
                 },
             });
-    
+
             // Reload the page after the DELETE request is successful
             window.location.reload();
         } catch (error) {
             console.error("Error deleting item:", error);
         }
     };
-    
 
-    const theList = favorites.filter(
-        (fav) => fav.user_id === y
-    )
+    const theList = favorites.filter((fav) => fav.user_id === y);
 
     let listOfPokemon;
 
@@ -75,7 +72,13 @@ export default function EditFavorites() {
                         alt="Default Pokeball Image"
                     />
                 )}
-                <button onClick={(e)=>{handleSubmit(e, each.favorite_id)}} >DELETE</button>
+                <button
+                    onClick={(e) => {
+                        handleSubmit(e, each.favorite_id);
+                    }}
+                >
+                    DELETE
+                </button>
             </div>
         ));
     }
@@ -85,15 +88,23 @@ export default function EditFavorites() {
         display = (
             <>
                 <div>
-                    <div>
+                    <div className="top topDiv" >
                         <h1>Delete Favorites</h1>
                     </div>
-                    <div>
+                    <div className="middle bottomDiv" >
                         <div className="Images">{listOfPokemon}</div>
                     </div>
-                    <div>
+                    <div className="bottom bottomDiv" >
                         <h3>Finished?</h3>
-                        <div></div>
+                        <div>
+                            <button
+                                onClick={() => {
+                                    history.push(`/userpage/${y}`);
+                                }}
+                            >
+                                Go back to My Page
+                            </button>
+                        </div>
                     </div>
                 </div>
             </>
@@ -138,6 +149,5 @@ export default function EditFavorites() {
 
     return <>{display}</>;
 }
-
 
 // history.push(`/userpage/${y}`)
