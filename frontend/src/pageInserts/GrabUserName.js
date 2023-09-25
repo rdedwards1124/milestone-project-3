@@ -14,8 +14,6 @@ function GrabUserName({ User }) {
 
     };
 
-    // console.log(User)
-
     useEffect(() => {
         if (User) {
             getUser(User);

@@ -1,6 +1,5 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router";
 import axios from "axios";
 
 const AuthContext = createContext();
@@ -10,7 +9,6 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-    const history = useHistory();
 
     const [auth, setAuth] = useState(false)
     const [message, setMessage] = useState(" ")
@@ -25,7 +23,6 @@ export function AuthProvider({ children }) {
                 setAuth(true)
                 setUsername(res.data.username)
                 setUserID(res.data.userID)
-                // history.push('/')
             } else{
                 setAuth(false)
                 setMessage(res.data.Error)

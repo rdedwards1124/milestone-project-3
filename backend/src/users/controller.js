@@ -1,6 +1,5 @@
 const pool = require("../../db");
 const queries = require("./queries");
-
 const bcrypt = require("bcrypt");
 
 const getUsers = (req, res) => {
@@ -111,39 +110,3 @@ module.exports = {
     updateUser
 };
 
-// if (!results.rows[0].password) {
-//     res.send("email not in database")
-// } else if (await bcrypt.compare(passwordEntered, storedHashedPassword)) {
-//     res.send("User log in success!!")
-// } else {
-//     res.send("wrong credentials...")
-// }
-
-// const signInUser = (req, res) => {
-//     const { email, password } = req.body;
-//     const passwordEntered = password;
-
-//     pool.query(queries.checkEmailExists, [email], (error, results) => {
-//         if (!results.rows.length) {
-//             res.send("email is not in database!");
-//         } else {
-//             pool.query(queries.getPassword, [email], async (error, results) => {
-//                 const storedHashedPassword = results.rows[0].password;
-//                 bcrypt.compare(
-//                     passwordEntered,
-//                     storedHashedPassword,
-//                     (err, isMatch) => {
-//                         if (err) {
-//                             res.send("error");
-//                         }
-//                         if (isMatch) {
-//                             res.send("log in success!");
-//                         } else {
-//                             res.send("wrong credentials...");
-//                         }
-//                     }
-//                 );
-//             });
-//         }
-//     });
-// };

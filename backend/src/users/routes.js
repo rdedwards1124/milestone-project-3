@@ -10,7 +10,6 @@ router.get("/username/:username", controller.getUserByUsername);
 router.put("/:id", controller.updateUser)
 router.delete("/:id", controller.deleteUser)
 
-// router.post("/login", controller.signInUser)
 
 
 module.exports = router

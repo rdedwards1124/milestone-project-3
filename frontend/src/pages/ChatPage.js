@@ -247,15 +247,4 @@ function ChatPage() {
 export default ChatPage;
 
 
-/*
 
-const allComments = comments.map((comment)=>(
-   
-            <div key={comment.comment_id} >
-                <p>{comment.comment_text}</p>
-                <GrabUserName User={comment.user_id} />
-            </div>
-     
-    ))
-
-*/

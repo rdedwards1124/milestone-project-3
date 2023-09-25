@@ -67,7 +67,6 @@ function Navigation() {
                         Search PKMN
                     </a>
                 </li>
-                {/*{mypageNchat}*/}
                 <li>
                     <a href="#" onClick={() => history.push("/usermypage")}>
                         My Page
@@ -86,23 +85,4 @@ function Navigation() {
 
 export default Navigation;
 
-/*
 
-let mypageNchat
-
-mypageNchat = (
-    <>
-                <li>
-                    <a href="#" onClick={() => history.push("/usermypage")}>
-                        My Page
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onClick={() => history.push("/chatpage")}>
-                        Chat Room
-                    </a>
-                </li>
-    </>
-)
-
-*/

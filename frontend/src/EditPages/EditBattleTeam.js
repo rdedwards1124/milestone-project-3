@@ -3,7 +3,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import GrabTheImage from "../pageInserts/GrabTheImage";
 
 export default function EditBattleTeam() {
     const history = useHistory();

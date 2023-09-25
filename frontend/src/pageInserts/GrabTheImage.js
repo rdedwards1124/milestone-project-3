@@ -17,23 +17,17 @@ function GrabTheImage(props) {
         getPokemon(props.Pokemon);
     }, [props.Pokemon]);
 
-    
     const imgSrc =
         searchedPokemon.sprites &&
         searchedPokemon.sprites.other &&
         searchedPokemon.sprites.other["official-artwork"] &&
-        searchedPokemon.sprites.other["official-artwork"].front_default ? searchedPokemon.sprites.other["official-artwork"].front_default : null
-
-    // if (imgSrc=null) {
-    //     imgSrc = "https://i.etsystatic.com/33357979/r/il/e1dfcd/3584257734/il_fullxfull.3584257734_bfy9.jpg"
-    // }
+        searchedPokemon.sprites.other["official-artwork"].front_default
+            ? searchedPokemon.sprites.other["official-artwork"].front_default
+            : null;
 
     return (
         <>
-            <img
-                width="90%"
-                src={imgSrc}
-            ></img>
+            <img width="90%" src={imgSrc}></img>
         </>
     );
 }

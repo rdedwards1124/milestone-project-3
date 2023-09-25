@@ -175,20 +175,4 @@ function PokemonPage() {
 
 export default PokemonPage;
 
-// const ability1 =
-//     searchedPokemon.abilities &&
-//     searchedPokemon.abilities[0] &&
-//     searchedPokemon.abilities[0].ability &&
-//     searchedPokemon.abilities[0].ability.name;
 
-// const ability2 =
-//     searchedPokemon.abilities &&
-//     searchedPokemon.abilities[1] &&
-//     searchedPokemon.abilities[1].ability &&
-//     searchedPokemon.abilities[1].ability.name;
-
-// const hidden =
-//     searchedPokemon.abilities &&
-//     searchedPokemon.abilities[2] &&
-//     searchedPokemon.abilities[2].ability &&
-//     searchedPokemon.abilities[2].ability.name;

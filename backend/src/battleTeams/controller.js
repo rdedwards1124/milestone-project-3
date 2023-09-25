@@ -11,8 +11,6 @@ const getBattleTeams = (req, res) => {
 
 const getBattleTeamByUserId = (req, res) => {
     const user_id = parseInt(req.params.user_id);
-    // const {user_id} = req.body
-    // console.log(user_id)
     pool.query(queries.getBattleTeamByUserId, [user_id], (error, results) => {
         if (error) throw error;
         res.status(200).json(results.rows)
@@ -72,31 +70,3 @@ module.exports = {
 
 // IMPORTANT NOTE: I did not include a delete battle team function here because not having a battle team makes the mypage for the user not load. Instead, users and update their team to not having any pokemon rather than deleting it all together.
 
-
-
-/*
-
-    slot_1, slot_2, slot_3, slot_4, slot_5, slot_6
-
-    pool.query(userQueries.getUserById, [id], (error, results) => {
-        if (!results.rows.length) {
-            res.send("This user does not exist!!");
-        } else {
-            pool.query(queries.checkUserExists, [user_id], (error, results) => {
-                if (results.rows.length) {
-                    res.send("this trainer already has a battle team!!");
-                } else {
-                    pool.query(
-                        queries.addBattleTeam,
-                        [slot_1, slot_2, slot_3, slot_4, slot_5, slot_6, user_id],
-                        (error, results) => {
-                            if (error) throw error;
-                            res.status(201).send("Battle Team Created!!");
-                        }
-                    );
-                }
-            });
-        }
-    });
-
-*/

@@ -1,7 +1,6 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "../Add-Style/LoginForm.css";
 
@@ -137,33 +136,3 @@ function LoginForm() {
 
 export default LoginForm;
 
-/*
-
-    async function handleSubmit(e) {
-        e.preventDefault();
-        await fetch(`http://localhost:4000/authentication`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(credentials),
-        });
-
-        // const data = await response.json();
-        // const data = response
-
-        // console.log(credentials);
-        // console.log(data);
-
-        // if (response.status === 200) {
-        //     setCurrentUser(data.user)
-        //     localStorage.setItem('token', data.token)
-        //     console.log(data.token)
-        //     history.push("/");
-        // } else {
-        //     setErrorMessage(data.message);
-        // }
-        // history.push(`/`);
-    }
-
-*/

@@ -3,7 +3,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import GrabTheImage from "../pageInserts/GrabTheImage";
 
 export default function EditUser() {
     const history = useHistory();
@@ -48,11 +47,7 @@ export default function EditUser() {
     }, []);
 
     
-
-    
-
     // Filterd info
-    const trainer1info = users.filter((user) => user.username === username);
     const theList = favorites.filter((fav) => fav.user_id === y);
     let favlist;
     favlist = theList.map((each) => (
@@ -104,7 +99,6 @@ export default function EditUser() {
                             >
                                 <option value=" ">Select from favorites</option>
                                 {favlist}
-                                {/* <option value="option1">Option 1</option> */}
                             </select>
                             <input type="submit" value="Submit" />
                         </form>

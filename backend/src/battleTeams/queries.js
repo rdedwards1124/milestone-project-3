@@ -1,10 +1,8 @@
 const getBattleTeams = "SELECT * FROM battleTeams"
 const getBattleTeamByUserId = "SELECT * FROM battleTeams WHERE user_id = $1"
 const addBattleTeam = "INSERT INTO battleTeams (slot_1, slot_2, slot_3, slot_4, slot_5, slot_6, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7)"
-
 const checkAllusersForId = "SELECT s FROM allusers s WHERE s.id = $1"
 const checkUserExists = "SELECT s FROM battleTeams s WHERE s.user_id = $1"
-
 const updateBattleTeam = "UPDATE battleTeams SET slot_1 = $1, slot_2 = $2, slot_3 = $3, slot_4 = $4, slot_5 = $5, slot_6 = $6 WHERE user_id = $7"
 
 
