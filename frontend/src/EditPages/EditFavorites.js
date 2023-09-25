@@ -138,3 +138,6 @@ export default function EditFavorites() {
 
     return <>{display}</>;
 }
+
+
+// history.push(`/userpage/${y}`)

@@ -47,7 +47,8 @@ const addFavorite = (req, res) => {
         } else {
             pool.query(queries.getFavoriteByUserPokemon, [user_id, pokemon], (error, results) => {
                 if (results.rows.length) {
-                    res.send("this pokemon is in your list already.");
+                    // res.send("this pokemon is in your list already.");
+                    return res.json({ Status: "Error" });
                 } else {
                     pool.query(queries.addFavorite, [pokemon, user_id], (error, results) => {
                         if (error) throw error;

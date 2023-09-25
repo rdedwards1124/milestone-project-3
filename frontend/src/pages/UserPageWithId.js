@@ -77,8 +77,9 @@ function UserPageWithId() {
     }
 
     let theUserButton;
-    let theFavButton;
     let theBattleButton;
+    let theFavButton;
+    
     if (auth) {
         if (username === username2) {
             theUserButton = (
@@ -86,6 +87,17 @@ function UserPageWithId() {
                     <button
                         onClick={() => {
                             history.push(`/edituser`);
+                        }}
+                    >
+                        Edit
+                    </button>
+                </>
+            );
+            theBattleButton = (
+                <>
+                    <button
+                        onClick={() => {
+                            history.push(`/editbattleteam`);
                         }}
                     >
                         Edit
@@ -105,10 +117,12 @@ function UserPageWithId() {
             );
         } else {
             theUserButton = <></>;
+            theBattleButton = <></>;
             theFavButton = <></>;
         }
     } else {
         theUserButton = <></>;
+        theBattleButton = <></>;
         theFavButton = <></>;
     }
 
@@ -273,7 +287,7 @@ function UserPageWithId() {
             </div>
 
             <div className="BattleTeams">
-                <h2>Battle Team</h2>
+                <h2>Battle Team {theBattleButton}</h2>
                 {battleList}
             </div>
 

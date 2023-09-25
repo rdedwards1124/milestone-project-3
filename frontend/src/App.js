@@ -14,6 +14,7 @@ import PokemonPage from "./pages/PokemonPage";
 import LoginForm from "./users/LoginForm";
 import SignUpForm from "./users/SignUpForm"
 import EditUser from "./EditPages/EditUser";
+import EditBattleTeam from "./EditPages/EditBattleTeam";
 import EditFavorites from "./EditPages/EditFavorites";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                     <Route exact path="/login" component={LoginForm} />
                     <Route exact path="/signup" component={SignUpForm} />
                     <Route exact path="/edituser" component={EditUser} />
+                    <Route exact path="/editbattleteam" component={EditBattleTeam} />
                     <Route exact path="/editfavorites" component={EditFavorites} />
                     <Route path="/" component={Error404} />
                 </Switch>

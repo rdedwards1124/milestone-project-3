@@ -74,7 +74,6 @@ export default function EditUser() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Handle the submission logic here
-        console.log("Selected option:", selectedOption);
         await fetch(`http://localhost:4000/users/${y}`, {
             method: "PUT",
             headers: {

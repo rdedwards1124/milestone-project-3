@@ -3,12 +3,21 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import AllTypes from "../pageInserts/AllTypes";
+import axios from "axios";
 
 function PokemonPage() {
     const { id } = useParams();
     const [searchedPokemon, setSearchedPokemon] = useState({});
     const [text, setText] = useState("");
+    const { auth, userID } = useAuth();
+
+    axios.defaults.withCredentials = true;
+
+    // Ensure userID is a number, default to null if not
+    const x = parseInt(userID);
+    const y = isNaN(x) ? null : x;
 
     const getPokemon = async (ID) => {
         const url = `https://pokeapi.co/api/v2/pokemon/${ID}`;
@@ -91,15 +100,33 @@ function PokemonPage() {
         searchedPokemon.stats[5] &&
         searchedPokemon.stats[5].base_stat;
 
-    const handleClickAdd = (e) => {
-        e.preventDefault();
-        setText("Added to Favorites!!");
+    let info = {
+        pokemon: name,
+        user_id: y,
     };
 
-    const handleClickRemove = (e) => {
+    const handleClickAdd = (e) => {
         e.preventDefault();
-        setText("Removed from Favorites..");
+        axios.post("http://localhost:4000/favorites", info).then((res) => {
+            if (res.data.Status === "Error") {
+                setText("This Pokemon is already in your favorites!!");
+            } else {
+                setText("Added to Favorites!!");
+                window.location.reload();
+            }
+        });
     };
+
+    let favButton;
+    if (auth) {
+        favButton = (
+            <>
+                <button onClick={handleClickAdd}>Add to Favorites</button>
+            </>
+        );
+    } else {
+        favButton = <></>;
+    }
 
     return (
         <div>
@@ -130,12 +157,7 @@ function PokemonPage() {
                         </li>
                     </ul>
                     <div className="buttons">
-                        {/* <button onClick={handleClickAdd}>
-                            Add to Favorites
-                        </button> */}
-                        {/* <button onClick={handleClickRemove}>
-                            Remove from Favorites
-                        </button> */}
+                        {favButton}
                         <Link to={`/searchpage`}>
                             <button type="submit">Search Page</button>
                         </Link>
