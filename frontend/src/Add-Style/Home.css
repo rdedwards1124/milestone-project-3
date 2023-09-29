@@ -8,7 +8,15 @@ body{
 
 .HomePage h1{
     padding-bottom: 1em;
+    /* font-family: 'Luckiest Guy', cursive; */
+    /* font-family: 'pokemon-solid'; */
+    font-family: 'Pokemon Solid', sans-serif;
+    letter-spacing: 4px;
 }
+
+/* h1{
+    font-family: 'Pokemon Solid', sans-serif;
+} */
 
 .HomeImg{
     background-color: rgb(74, 204, 255);

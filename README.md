@@ -16,7 +16,7 @@ How to use
 - The search feature will not work if the pokemon name is spelled wrong.
 - After logging in, you must refresh the page to become logged in.
 - Their is a middle-way page when you click on my page. Just click ENTER to go to your my page.
-- When deleting pokemon from favorites in the editFavorites pagee, DO NOT delete your last pokemon. It causes an error.
+- When deleting pokemon from favorites in the editFavorites page, DO NOT delete your last pokemon. It causes an error.
 
 Features
 - Has separate folders for Backend and Frontend

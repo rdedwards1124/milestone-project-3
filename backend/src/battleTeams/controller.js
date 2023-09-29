@@ -28,7 +28,8 @@ const addBattleTeam = (req, res) => {
         } else {
             pool.query(queries.checkUserExists, [user_id], (error, results) => {
                 if (results.rows.length) {
-                    res.send("this trainer already has a battle team!!");
+                    // res.send("this trainer already has a battle team!!");
+                    return res.json({ Status: "Error" });
                 } else {
                     pool.query(
                         queries.addBattleTeam,

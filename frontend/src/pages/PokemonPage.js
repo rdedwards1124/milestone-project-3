@@ -112,7 +112,7 @@ function PokemonPage() {
                 setText("This Pokemon is already in your favorites!!");
             } else {
                 setText("Added to Favorites!!");
-                window.location.reload();
+                // window.location.reload();
             }
         });
     };
