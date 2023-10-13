@@ -8,7 +8,7 @@ function ChatPage() {
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
     const [comments, setComments] = useState([]);
-    const [text, setText] = useState("trade");
+    const [text, setText] = useState("Create a comment");
     const [formControl, setFormControl] = useState(false);
     const { auth, userID } = useAuth();
 
@@ -85,8 +85,8 @@ function ChatPage() {
 
     const toggleButton = (e) => {
         e.preventDefault();
-        if (text === "trade") {
-            setText("don't trade");
+        if (text === "Create a comment") {
+            setText("Enter comment");
             setFormControl(true);
         }
         if (text === "don't trade") {
@@ -233,11 +233,11 @@ function ChatPage() {
                             }
                         />
                     </div>
-                    <input
+                    {/* <input
                         className="btn btn-primary"
                         type="submit"
                         value="comment"
-                    />
+                    /> */}
                 </form>
             </>
         );
