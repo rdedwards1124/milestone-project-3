@@ -93,6 +93,26 @@ const deleteFavorite2 = (req, res) => {
 };
 
 // Need to create new method to update the isShiny column!
+const updateFavorite = (req, res) => {
+    const id = parseInt(req.params.id);
+    const { shiny } = req.body;
+
+    pool.query(queries.getFavoriteByFavoriteId, [id], (error, results) => {
+        const noUserFound = !results.rows.length;
+        if (noUserFound) {
+            res.send("User does not exist...");
+        }
+
+        pool.query(
+            queries.updateFavorite,
+            [shiny, id],
+            (error, results) => {
+                if (error) throw error;
+                res.status(200).send("User info updated successfully!");
+            }
+        );
+    });
+};
 
 module.exports = {
     getFavorites,
@@ -100,7 +120,8 @@ module.exports = {
     getFavoriteByUserPokemon,
     addFavorite,
     deleteFavorite,
-    deleteFavorite2
+    deleteFavorite2,
+    updateFavorite
 };
 
 

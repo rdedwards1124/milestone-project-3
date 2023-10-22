@@ -17,13 +17,27 @@ function GrabTheImage(props) {
         getPokemon(props.Pokemon);
     }, [props.Pokemon]);
 
-    const imgSrc =
+    
+    let imgSrc
+    
+    if (props.Shiny === true) {
+        imgSrc =
+        searchedPokemon.sprites &&
+        searchedPokemon.sprites.other &&
+        searchedPokemon.sprites.other["official-artwork"] &&
+        searchedPokemon.sprites.other["official-artwork"].front_default
+            ? searchedPokemon.sprites.other["official-artwork"].front_shiny
+            : null;
+    } else {
+        imgSrc =
         searchedPokemon.sprites &&
         searchedPokemon.sprites.other &&
         searchedPokemon.sprites.other["official-artwork"] &&
         searchedPokemon.sprites.other["official-artwork"].front_default
             ? searchedPokemon.sprites.other["official-artwork"].front_default
             : null;
+    }
+    
 
     return (
         <>

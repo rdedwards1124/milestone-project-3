@@ -137,7 +137,7 @@ function UserPageWithId() {
                 <Link to={`/pokemonpage/${each.pokemon}`}>
                     <h4 className="shrink-text">{each.pokemon}</h4>
                     {each.pokemon ? (
-                        <GrabTheImage Pokemon={each.pokemon} />
+                        <GrabTheImage Pokemon={each.pokemon} Shiny={each.shiny}/>
                     ) : (
                         <img
                             className="Pokeball"
@@ -150,13 +150,34 @@ function UserPageWithId() {
         ));
     }
 
-    /*
+   
     
     const favShinySlot1 = favorites.filter(
         (favorite) => favorite.pokemon === slot_1
     );
     
-    */
+    console.log(favShinySlot1[0].shiny)
+
+    const favShinySlot2 = favorites.filter(
+        (favorite) => favorite.pokemon === slot_2
+    );
+    const favShinySlot3 = favorites.filter(
+        (favorite) => favorite.pokemon === slot_3
+    );
+    const favShinySlot4 = favorites.filter(
+        (favorite) => favorite.pokemon === slot_4
+    );
+    const favShinySlot5 = favorites.filter(
+        (favorite) => favorite.pokemon === slot_5
+    );
+    const favShinySlot6 = favorites.filter(
+        (favorite) => favorite.pokemon === slot_6
+    );
+    
+    const bestShiny = favorites.filter(
+        (favorite) => favorite.pokemon === bestpokemon
+    );
+    
 
     if (team === null) {
         battleList = <div>No team...</div>;
@@ -167,7 +188,7 @@ function UserPageWithId() {
                     <div>
                         <h4>{slot_1}</h4>
                         <Link to={`/pokemonpage/${slot_1}`}>
-                            <GrabTheImage Pokemon={slot_1} />
+                            <GrabTheImage Pokemon={slot_1} Shiny={favShinySlot1[0].shiny}/>
                         </Link>
                     </div>
                 ) : (
@@ -183,7 +204,7 @@ function UserPageWithId() {
                     <div>
                         <h4>{slot_2}</h4>
                         <Link to={`/pokemonpage/${slot_2}`}>
-                            <GrabTheImage Pokemon={slot_2} />
+                            <GrabTheImage Pokemon={slot_2} Shiny={favShinySlot2[0].shiny}/>
                         </Link>
                     </div>
                 ) : (
@@ -199,7 +220,7 @@ function UserPageWithId() {
                     <div>
                         <h4>{slot_3}</h4>
                         <Link to={`/pokemonpage/${slot_3}`}>
-                            <GrabTheImage Pokemon={slot_3} />
+                            <GrabTheImage Pokemon={slot_3} Shiny={favShinySlot3[0].shiny}/>
                         </Link>
                     </div>
                 ) : (
@@ -215,7 +236,7 @@ function UserPageWithId() {
                     <div>
                         <h4>{slot_4}</h4>
                         <Link to={`/pokemonpage/${slot_4}`}>
-                            <GrabTheImage Pokemon={slot_4} />
+                            <GrabTheImage Pokemon={slot_4} Shiny={favShinySlot4[0].shiny}/>
                         </Link>
                     </div>
                 ) : (
@@ -231,7 +252,7 @@ function UserPageWithId() {
                     <div>
                         <h4>{slot_5}</h4>
                         <Link to={`/pokemonpage/${slot_5}`}>
-                            <GrabTheImage Pokemon={slot_5} />
+                            <GrabTheImage Pokemon={slot_5} Shiny={favShinySlot5[0].shiny}/>
                         </Link>
                     </div>
                 ) : (
@@ -247,7 +268,7 @@ function UserPageWithId() {
                     <div>
                         <h4>{slot_6}</h4>
                         <Link to={`/pokemonpage/${slot_6}`}>
-                            <GrabTheImage Pokemon={slot_6} />
+                            <GrabTheImage Pokemon={slot_6} Shiny={favShinySlot6[0].shiny}/>
                         </Link>
                     </div>
                 ) : (
@@ -271,7 +292,7 @@ function UserPageWithId() {
                 {bestpokemon ? (
                     <div className="SearchedPokeImg">
                         <Link to={`/pokemonpage/${bestpokemon}`}>
-                            <GrabTheImage Pokemon={bestpokemon} />
+                            <GrabTheImage Pokemon={bestpokemon} Shiny={bestShiny[0].shiny}/>
                         </Link>
                     </div>
                 ) : (

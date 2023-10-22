@@ -36,7 +36,7 @@ export default function EditUser() {
 
     useEffect(() => {
         // Simulate a loading delay with setTimeout
-        const delay = 3000; // Adjust this to your desired loading time (in milliseconds)
+        const delay = 2000; // Adjust this to your desired loading time (in milliseconds)
         setTimeout(() => {
             setIsLoading(false); // After the delay, set isLoading to false
         }, delay);

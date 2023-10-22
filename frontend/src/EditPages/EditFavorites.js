@@ -9,6 +9,7 @@ export default function EditFavorites() {
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
     const [favorites, setFavorites] = useState([]);
+    const [selectedOption, setSelectedOption] = useState(false);
     const { auth, userID } = useAuth();
 
     // Ensure userID is a number, default to null if not
@@ -26,7 +27,7 @@ export default function EditFavorites() {
 
     useEffect(() => {
         // Simulate a loading delay with setTimeout
-        const delay = 3000; // Adjust this to your desired loading time (in milliseconds)
+        const delay = 2000; // Adjust this to your desired loading time (in milliseconds)
         setTimeout(() => {
             setIsLoading(false); // After the delay, set isLoading to false
         }, delay);
@@ -53,18 +54,94 @@ export default function EditFavorites() {
         }
     };
 
+    let infoToUpdate 
+
+    const handleShinyToggle = async(e, y, z) => {
+        e.preventDefault();
+        if (y === false) {
+            setSelectedOption(true)
+        }
+        if (y === true) {
+            setSelectedOption(false)
+        }
+        infoToUpdate = {
+            shiny: selectedOption,
+        };
+        try {
+            await fetch(`http://localhost:4000/favorites/${z}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(infoToUpdate),
+            });
+
+            // Reload the page after the DELETE request is successful
+            // window.location.reload();
+        } catch (error) {
+            console.error("Error deleting item:", error);
+        }
+
+    };
+
+    /*
+    const toggleButton = (e) => {
+        e.preventDefault();
+        if (text === "Create a comment") {
+            setText("Enter comment");
+            setFormControl(true);
+        }
+        if (text === "don't trade") {
+            setText("trade");
+            setFormControl(false);
+        }
+    };
+    */
+
+    const handleShinySubmit = async (e, z) => {
+        e.preventDefault();
+
+        try {
+            await fetch(`http://localhost:4000/favorites/${z}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(infoToUpdate),
+            });
+
+            // Reload the page after the DELETE request is successful
+            window.location.reload();
+        } catch (error) {
+            console.error("Error deleting item:", error);
+        }
+    };
+
     const theList = favorites.filter((fav) => fav.user_id === y);
+
+    const sortedList = theList.sort((a, b) => {
+        const nameA = a.pokemon.toLowerCase();
+        const nameB = b.pokemon.toLowerCase();
+
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
 
     let listOfPokemon;
 
     if (favorites === null) {
         listOfPokemon = <div>No favs...</div>;
     } else {
-        listOfPokemon = theList.map((each) => (
+        listOfPokemon = sortedList.map((each) => (
             <div className="EachImage" key={each.favorite_id}>
                 <h4 className="">{each.pokemon}</h4>
                 {each.pokemon ? (
-                    <GrabTheImage Pokemon={each.pokemon} />
+                    <GrabTheImage Pokemon={each.pokemon} Shiny={each.shiny} />
                 ) : (
                     <img
                         className="Pokeball"
@@ -79,6 +156,13 @@ export default function EditFavorites() {
                 >
                     DELETE
                 </button>
+                <button
+                    onClick={(e) => {
+                        handleShinyToggle(e, each.shiny, each.favorite_id);
+                    }}
+                >
+                    Shiny!
+                </button>
             </div>
         ));
     }
@@ -88,13 +172,13 @@ export default function EditFavorites() {
         display = (
             <>
                 <div>
-                    <div className="top topDiv" >
+                    <div className="top topDiv">
                         <h1>Delete Favorites</h1>
                     </div>
-                    <div className="middle bottomDiv" >
+                    <div className="middle bottomDiv">
                         <div className="Images">{listOfPokemon}</div>
                     </div>
-                    <div className="bottom bottomDiv" >
+                    <div className="bottom bottomDiv">
                         <h3>Finished?</h3>
                         <div>
                             <button
@@ -149,4 +233,3 @@ export default function EditFavorites() {
 
     return <>{display}</>;
 }
-
