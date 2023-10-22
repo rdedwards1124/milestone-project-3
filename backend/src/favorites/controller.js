@@ -92,6 +92,7 @@ const deleteFavorite2 = (req, res) => {
     });
 };
 
+// Need to create new method to update the isShiny column!
 
 module.exports = {
     getFavorites,

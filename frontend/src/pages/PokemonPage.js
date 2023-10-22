@@ -33,11 +33,26 @@ function PokemonPage() {
     }, [id]);
 
     const name = searchedPokemon.name || "Loading...";
-    const imgSrc =
+
+    let imgSrc
+    if (1===1) {
+        imgSrc =
         searchedPokemon.sprites &&
         searchedPokemon.sprites.other &&
         searchedPokemon.sprites.other["official-artwork"] &&
         searchedPokemon.sprites.other["official-artwork"].front_default;
+    }
+
+    
+
+    /*
+    let imgSrc =
+        searchedPokemon.sprites &&
+        searchedPokemon.sprites.other &&
+        searchedPokemon.sprites.other["official-artwork"] &&
+        searchedPokemon.sprites.other["official-artwork"].front_shiny;
+    
+    */
 
     const type1 =
         searchedPokemon.types &&

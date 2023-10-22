@@ -150,6 +150,14 @@ function UserPageWithId() {
         ));
     }
 
+    /*
+    
+    const favShinySlot1 = favorites.filter(
+        (favorite) => favorite.pokemon === slot_1
+    );
+    
+    */
+
     if (team === null) {
         battleList = <div>No team...</div>;
     } else {
