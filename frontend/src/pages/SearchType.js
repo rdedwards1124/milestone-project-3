@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import GrabTheImage from "../pageInserts/GrabTheImage";
 import AllTypes from "../pageInserts/AllTypes";
 import "../Add-Style/SearchType.css";
 
@@ -35,9 +36,12 @@ function SearchType() {
                 <div className="EachPokemonDiv">
                     <ul>
                         {names.map((name, index) => (
-                            <div className="EachPokemonName">
+                            <div className="EachPokemonName PokeImage">
                                 <Link to={`/pokemonpage/${name}`}>
-                                    <li key={index}>{name}</li>
+                                    <li key={index}>
+                                        {name}
+                                        <GrabTheImage Pokemon={name} />
+                                    </li>
                                     <div>{}</div>
                                 </Link>
                             </div>

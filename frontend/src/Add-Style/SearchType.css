@@ -46,6 +46,10 @@
     padding-top: 1em;
 }
 
+.PokeImage{
+    width: 20%;
+}
+
 @media (max-width: 768px) {
     .PokemonList {
         list-style: none;
@@ -69,5 +73,8 @@
         text-overflow: ellipsis; */
         align-items: center;
         text-align: center;
+    }
+    .PokeImage{
+        width: 40%;
     }
 }
