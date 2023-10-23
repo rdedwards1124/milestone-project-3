@@ -9,7 +9,6 @@ export default function EditFavorites() {
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
     const [favorites, setFavorites] = useState([]);
-    const [selectedOption, setSelectedOption] = useState(false);
     const { auth, userID } = useAuth();
 
     // Ensure userID is a number, default to null if not
@@ -24,6 +23,8 @@ export default function EditFavorites() {
             setFavorites(responseJSON);
         }
     };
+
+    
 
     useEffect(() => {
         // Simulate a loading delay with setTimeout
@@ -45,69 +46,6 @@ export default function EditFavorites() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-            });
-
-            // Reload the page after the DELETE request is successful
-            window.location.reload();
-        } catch (error) {
-            console.error("Error deleting item:", error);
-        }
-    };
-
-    let infoToUpdate 
-
-    const handleShinyToggle = async(e, y, z) => {
-        e.preventDefault();
-        if (y === false) {
-            setSelectedOption(true)
-        }
-        if (y === true) {
-            setSelectedOption(false)
-        }
-        infoToUpdate = {
-            shiny: selectedOption,
-        };
-        try {
-            await fetch(`http://localhost:4000/favorites/${z}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(infoToUpdate),
-            });
-
-            // Reload the page after the DELETE request is successful
-            // window.location.reload();
-        } catch (error) {
-            console.error("Error deleting item:", error);
-        }
-
-    };
-
-    /*
-    const toggleButton = (e) => {
-        e.preventDefault();
-        if (text === "Create a comment") {
-            setText("Enter comment");
-            setFormControl(true);
-        }
-        if (text === "don't trade") {
-            setText("trade");
-            setFormControl(false);
-        }
-    };
-    */
-
-    const handleShinySubmit = async (e, z) => {
-        e.preventDefault();
-
-        try {
-            await fetch(`http://localhost:4000/favorites/${z}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(infoToUpdate),
             });
 
             // Reload the page after the DELETE request is successful
@@ -155,13 +93,6 @@ export default function EditFavorites() {
                     }}
                 >
                     DELETE
-                </button>
-                <button
-                    onClick={(e) => {
-                        handleShinyToggle(e, each.shiny, each.favorite_id);
-                    }}
-                >
-                    Shiny!
                 </button>
             </div>
         ));

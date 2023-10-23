@@ -3,6 +3,7 @@ const getFavoritesByUserId = "SELECT * FROM favorites WHERE user_id = $1"
 const getFavoritesByPokemon = "SELECT * FROM favorites WHERE pokemon = $1"
 const getFavoriteByUserFavoriteId = "SELECT * FROM favorites WHERE user_id = $1 AND favorite_id = $2"
 const addFavorite = "INSERT INTO favorites (pokemon, user_id) VALUES ($1, $2)"
+const addFavorite2 = "INSERT INTO favorites (pokemon, user_id, shiny) VALUES ($1, $2, $3)"
 const deleteFavorite = "DELETE FROM favorites WHERE user_id = $1 AND pokemon = $2"
 const deleteFavorite2 = "DELETE FROM favorites WHERE favorite_id = $1"
 const getFavoriteByFavoriteId = "SELECT * FROM favorites WHERE favorite_id = $1"
@@ -16,6 +17,7 @@ module.exports = {
     getFavoritesByPokemon,
     getFavoriteByUserFavoriteId,
     addFavorite,
+    addFavorite2,
     deleteFavorite,
     deleteFavorite2,
     getFavoriteByFavoriteId,

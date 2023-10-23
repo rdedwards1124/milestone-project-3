@@ -60,6 +60,28 @@ const addFavorite = (req, res) => {
     });
 }
 
+const addFavorite2 = (req, res) => {
+    const { pokemon, user_id, shiny } = req.body;
+
+    pool.query(userQueries.getUserById, [user_id], (error, results) => {
+        if (!results.rows.length) {
+            res.send("This user does not exist!!");
+        } else {
+            pool.query(queries.getFavoriteByUserPokemon, [user_id, pokemon], (error, results) => {
+                if (results.rows.length) {
+                    // res.send("this pokemon is in your list already.");
+                    return res.json({ Status: "Error" });
+                } else {
+                    pool.query(queries.addFavorite2, [pokemon, user_id, shiny], (error, results) => {
+                        if (error) throw error;
+                        res.status(201).send("Pokemon added!")
+                    })
+                }
+            })
+        }
+    });
+}
+
 const deleteFavorite = (req, res) => {
     const id = parseInt(req.params.id);
     const user_id = parseInt(req.params.user_id);
@@ -119,6 +141,7 @@ module.exports = {
     getFavoritesByUserId,
     getFavoriteByUserPokemon,
     addFavorite,
+    addFavorite2,
     deleteFavorite,
     deleteFavorite2,
     updateFavorite

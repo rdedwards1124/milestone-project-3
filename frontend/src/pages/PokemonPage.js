@@ -10,6 +10,7 @@ import axios from "axios";
 function PokemonPage() {
     const { id } = useParams();
     const [searchedPokemon, setSearchedPokemon] = useState({});
+    const [shinyButton, setShinyButton] = useState("Shiny")
     const [text, setText] = useState("");
     const { auth, userID } = useAuth();
 
@@ -32,27 +33,37 @@ function PokemonPage() {
         getPokemon(id);
     }, [id]);
 
+
+
     const name = searchedPokemon.name || "Loading...";
 
     let imgSrc
-    if (1===1) {
+    let isShiny
+
+    const handleClickShiny = (e)=>{
+        e.preventDefault();
+        if (shinyButton === "Shiny") {
+            setShinyButton("Original")
+        } else {
+            setShinyButton("Shiny")
+        }
+    }
+
+    if (shinyButton === "Shiny") {
         imgSrc =
         searchedPokemon.sprites &&
         searchedPokemon.sprites.other &&
         searchedPokemon.sprites.other["official-artwork"] &&
         searchedPokemon.sprites.other["official-artwork"].front_default;
-    }
-
-    
-
-    /*
-    let imgSrc =
+        isShiny = false
+    } else{
+        imgSrc =
         searchedPokemon.sprites &&
         searchedPokemon.sprites.other &&
         searchedPokemon.sprites.other["official-artwork"] &&
         searchedPokemon.sprites.other["official-artwork"].front_shiny;
-    
-    */
+        isShiny = true
+    }
 
     const type1 =
         searchedPokemon.types &&
@@ -118,6 +129,7 @@ function PokemonPage() {
     let info = {
         pokemon: name,
         user_id: y,
+        shiny: isShiny
     };
 
     const handleClickAdd = (e) => {
@@ -172,6 +184,7 @@ function PokemonPage() {
                         </li>
                     </ul>
                     <div className="buttons">
+                        <button onClick={handleClickShiny} >{shinyButton}</button>
                         {favButton}
                         <Link to={`/searchpage`}>
                             <button type="submit">Search Page</button>
