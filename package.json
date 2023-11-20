@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "gh-pages": "^6.1.0",
+    "homepage": "https://rdedwards1124.github.io/milestone-project-3"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  }
+}
