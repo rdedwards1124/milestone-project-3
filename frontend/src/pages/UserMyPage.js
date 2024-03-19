@@ -1,4 +1,5 @@
 import "../Add-Style/UserMyPage.css";
+import "../Add-Style/Error404.css";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -107,14 +108,14 @@ function UserMyPage() {
     if (!auth) {
         ifLoggedOut = (
             <>
-                <div>
+                <div className="CenterIt">
                     <div>
                         <h1>
                             Sorry... You must be logged in to access this page!
                         </h1>
                     </div>
                     <div>
-                        <img src="https://www.media.pokekalos.fr/img/site/erreur404.png" />
+                        <img className="errorImg" src="https://www.media.pokekalos.fr/img/site/erreur404.png" alt="Oops! Page not found..."/>
                     </div>
                     <div>
                         <Link to={`/login`}>

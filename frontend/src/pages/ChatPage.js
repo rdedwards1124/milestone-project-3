@@ -1,4 +1,5 @@
 import "../Add-Style/ChatPage.css";
+import "../Add-Style/Error404.css";
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import GrabUserName from "../pageInserts/GrabUserName";
@@ -288,6 +289,7 @@ function ChatPage() {
                     </div>
                     <div>
                         <img
+                            className="errorImg"
                             src="https://www.media.pokekalos.fr/img/site/erreur404.png"
                             alt="Error 404"
                         />
