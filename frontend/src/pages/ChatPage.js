@@ -45,7 +45,7 @@ function ChatPage() {
 
     useEffect(() => {
         // Simulate a loading delay with setTimeout
-        const delay = 2000; // Adjust this to your desired loading time (in milliseconds)
+        const delay = 1000; // Adjust this to your desired loading time (in milliseconds)
         setTimeout(() => {
             setIsLoading(false); // After the delay, set isLoading to false
         }, delay);
@@ -281,20 +281,20 @@ function ChatPage() {
     } else {
         trainerChat = (
             <>
-                <div>
-                    <div className="CenterIt">
+                <div className="CenterIt">
+                    <div>
                         <h1>
                             Sorry... You must be logged in to access this page!
                         </h1>
                     </div>
-                    <div>
+                    <div className="div4Img">
                         <img
                             className="errorImg"
                             src="https://www.media.pokekalos.fr/img/site/erreur404.png"
                             alt="Error 404"
                         />
                     </div>
-                    <div>
+                    <div className="errorFooter">
                         <Link to={`/login`}>
                             <p>Log In Here!</p>
                         </Link>

@@ -3,14 +3,36 @@
     width: auto;
 }
 
+.CenterIt h1{
+    padding-bottom: 1em;
+}
 .errorImg{
     width: 60%;
     height: auto;
+    background-color: white;
+    margin: 5%;
+    border: 1em solid black;
+}
+
+.div4Img{
+    background-color: rgb(74, 204, 255);
+}
+
+.errorFooter{
+    align-items: center;
+    padding: 2em;
+    background-color: black;
+    color: white;
 }
 
 @media (max-width: 768px) {
     .errorImg{
         width: 100%;
         height: auto;
+        margin: 0%;
+    }
+    .div4Img{
+        background-color: rgb(74, 204, 255);
+        padding: 5%;
     }
 }

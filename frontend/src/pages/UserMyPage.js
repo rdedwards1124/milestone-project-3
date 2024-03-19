@@ -114,10 +114,10 @@ function UserMyPage() {
                             Sorry... You must be logged in to access this page!
                         </h1>
                     </div>
-                    <div>
+                    <div className="div4Img">
                         <img className="errorImg" src="https://www.media.pokekalos.fr/img/site/erreur404.png" alt="Oops! Page not found..."/>
                     </div>
-                    <div>
+                    <div className="errorFooter">
                         <Link to={`/login`}>
                             <p>Log In Here!</p>
                         </Link>
