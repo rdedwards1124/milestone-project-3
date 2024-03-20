@@ -87,7 +87,7 @@ function UserMyPage() {
                     <div>
                         <div>
                             <Link to={`/userpage/${filteredUser[0].id}`}>
-                                <h2>ENTER</h2>
+                                <div className="EnterButton">Enter My Page</div>
                             </Link>
                         </div>
                         <div className="scroll-down">

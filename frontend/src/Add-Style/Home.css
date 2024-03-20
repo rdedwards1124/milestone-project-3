@@ -6,6 +6,11 @@ body{
     padding: 0;
 }
 
+h1{
+    font-family: 'Pokemon Solid', sans-serif;
+    letter-spacing: 4px;
+}
+
 .HomePage h1{
     padding-bottom: 1em;
     /* font-family: 'Luckiest Guy', cursive; */

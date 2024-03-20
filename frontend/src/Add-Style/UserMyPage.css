@@ -16,6 +16,23 @@ h1{
        3px  3px 0 black;
 }
 
+.EnterButton{
+    background-color: red;
+    margin: 0;
+    padding-top: 1em;
+    color: yellow;
+
+    /* Create a text shadow to simulate the text outline (black outline) */
+    text-shadow:
+      -3px -3px 0 black,
+       3px -3px 0 black,
+      -3px  3px 0 black,
+       3px  3px 0 black;
+
+    font-family: 'Pokemon Solid', sans-serif;
+    letter-spacing: 4px;
+}
+
 .UserDetails{
     display: flex;
     /* justify-content: space-between; */

@@ -50,7 +50,7 @@ function UserPageWithId() {
             // Simulate a delay of 2 seconds.
             setTimeout(() => {
                 setIsLoading(false);
-            }, 2000);
+            }, 1000);
         }
 
         fetchData();
@@ -286,8 +286,9 @@ function UserPageWithId() {
     return (
         <div className="CenterIt">
             <h1>
-                {username2} {theUserButton}
+                {username2} 
             </h1>
+            <div className="Red-Background" >{theUserButton}</div>
             <div className="UserDetails">
                 {bestpokemon ? (
                     <div className="SearchedPokeImg">
