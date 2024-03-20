@@ -84,10 +84,10 @@ function UserMyPage() {
 
             ifLoggedIn = (
                 <>
-                    <div>
-                        <div>
+                    <div className="">
+                        <div className="">
                             <Link to={`/userpage/${filteredUser[0].id}`}>
-                                <div className="EnterButton">Enter My Page</div>
+                                <h1><div className="EnterButton"> Enter My Page </div></h1>
                             </Link>
                         </div>
                         <div className="scroll-down">

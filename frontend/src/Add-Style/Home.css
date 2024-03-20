@@ -9,6 +9,18 @@ body{
 h1{
     font-family: 'Pokemon Solid', sans-serif;
     letter-spacing: 4px;
+    background-color: red;
+    margin: 0;
+    padding-top: 1em;
+    color: yellow;
+    text-align: center;
+
+    /* Create a text shadow to simulate the text outline (black outline) */
+    text-shadow:
+      -3px -3px 0 black,
+       3px -3px 0 black,
+      -3px  3px 0 black,
+       3px  3px 0 black;
 }
 
 .HomePage h1{

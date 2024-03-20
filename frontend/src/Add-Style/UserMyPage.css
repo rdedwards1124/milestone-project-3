@@ -2,35 +2,18 @@
     float: right;
 }
 
-h1{
-    background-color: red;
-    margin: 0;
-    padding-top: 1em;
-    color: yellow;
 
-    /* Create a text shadow to simulate the text outline (black outline) */
-    text-shadow:
-      -3px -3px 0 black,
-       3px -3px 0 black,
-      -3px  3px 0 black,
-       3px  3px 0 black;
-}
 
 .EnterButton{
-    background-color: red;
-    margin: 0;
-    padding-top: 1em;
-    color: yellow;
-
-    /* Create a text shadow to simulate the text outline (black outline) */
-    text-shadow:
-      -3px -3px 0 black,
-       3px -3px 0 black,
-      -3px  3px 0 black,
-       3px  3px 0 black;
-
+    text-align: center;
     font-family: 'Pokemon Solid', sans-serif;
     letter-spacing: 4px;
+    /* font-size: 2em; */
+    width: 60%;
+}
+
+.EnterButton:hover {
+    transform: scale(1.2); /* You can adjust the scale factor as needed */
 }
 
 .UserDetails{
@@ -133,6 +116,15 @@ h1{
 
 
 @media (max-width: 768px) {
+    .EnterButton{
+        text-align: center;
+        font-family: 'Pokemon Solid', sans-serif;
+        letter-spacing: 4px;
+        /* font-size: 2em; */
+        width: 60%;
+        font-size: 0.5em;
+    }
+    
     .UserDetails {
         flex-direction: column; /* Stack elements vertically */
         align-items: center; /* Center items horizontally in the column */
