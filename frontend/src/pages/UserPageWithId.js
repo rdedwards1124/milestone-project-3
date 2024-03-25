@@ -47,10 +47,10 @@ function UserPageWithId() {
                 setFavorites(favoritesJSON);
             }
 
-            // Simulate a delay of 2 seconds.
+            // Simulate a delay of 0.5 seconds.
             setTimeout(() => {
                 setIsLoading(false);
-            }, 1000);
+            }, 500);
         }
 
         fetchData();
@@ -306,7 +306,7 @@ function UserPageWithId() {
                 )}
                 <div className="SearchedPokeInfo Info_ul">
                     <ul>
-                        <li>Pokemon Trainer: {username}</li>
+                        <li>Pokemon Trainer: {username2}</li>
                         <li>Email: {email}</li>
                         <li>My favorite pokemon is: {bestpokemon}</li>
                     </ul>

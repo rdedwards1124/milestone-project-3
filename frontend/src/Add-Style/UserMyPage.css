@@ -9,11 +9,12 @@
     font-family: 'Pokemon Solid', sans-serif;
     letter-spacing: 4px;
     /* font-size: 2em; */
-    width: 60%;
+    /* width: 60%; */
+    padding-bottom: 1em;
 }
 
 .EnterButton:hover {
-    transform: scale(1.2); /* You can adjust the scale factor as needed */
+    transform: scale(1.2); 
 }
 
 .UserDetails{
