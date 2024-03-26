@@ -8,7 +8,27 @@ function SignUpForm() {
         username: "",
         email: "",
         password: "",
+        //bestpokemon
     });
+
+    /*
+    
+    const battleTeamValues = {
+        slot_1: "pikachu",
+        slot_2: "pikachu",
+        slot_3: "pikachu",
+        slot_4: "pikachu",
+        slot_5: "pikachu",
+        slot_6: "pikachu",
+        user_id: y,
+    };
+
+    const favoriteValues = {
+        pokemon: "pikachu",
+        user_id: y,
+    };
+    
+    */
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -22,8 +42,67 @@ function SignUpForm() {
         });
         console.log(user);
 
+        /*
+        
+        await fetch(`http://localhost:4000/battleteams/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(battleTeamValues),
+        });
+
+        await fetch(`http://localhost:4000/favorites/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(favoriteValues),
+        });
+        
+        */
+
         history.push(`/login`);
     }
+
+    /*
+    
+    const battleTeamValues = {
+                slot_1: "pikachu",
+                slot_2: "pikachu",
+                slot_3: "pikachu",
+                slot_4: "pikachu",
+                slot_5: "pikachu",
+                slot_6: "pikachu",
+                user_id: y,
+            };
+
+            const favoriteValues = {
+                pokemon: "pikachu",
+                user_id: y,
+            };
+
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                await fetch(`http://localhost:4000/battleteams/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(battleTeamValues),
+                });
+
+                await fetch(`http://localhost:4000/favorites/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(favoriteValues),
+                });
+                history.push(`/`);
+            };
+    
+    */
 
     return (
         <main>

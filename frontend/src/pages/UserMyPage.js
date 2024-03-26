@@ -48,12 +48,12 @@ function UserMyPage() {
             console.log(filteredUser[0].id);
 
             const battleTeamValues = {
-                slot_1: null,
-                slot_2: null,
-                slot_3: null,
-                slot_4: null,
-                slot_5: null,
-                slot_6: null,
+                slot_1: "pikachu",
+                slot_2: "pikachu",
+                slot_3: "pikachu",
+                slot_4: "pikachu",
+                slot_5: "pikachu",
+                slot_6: "pikachu",
                 user_id: y,
             };
 
