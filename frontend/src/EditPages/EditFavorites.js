@@ -28,7 +28,7 @@ export default function EditFavorites() {
 
     useEffect(() => {
         // Simulate a loading delay with setTimeout
-        const delay = 2000; // Adjust this to your desired loading time (in milliseconds)
+        const delay = 1000; // Adjust this to your desired loading time (in milliseconds)
         setTimeout(() => {
             setIsLoading(false); // After the delay, set isLoading to false
         }, delay);
@@ -50,6 +50,7 @@ export default function EditFavorites() {
 
             // Reload the page after the DELETE request is successful
             window.location.reload();
+            //history.push(`/`);
         } catch (error) {
             console.error("Error deleting item:", error);
         }

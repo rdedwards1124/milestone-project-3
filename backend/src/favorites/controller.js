@@ -1,6 +1,7 @@
 const pool = require("../../db");
 const queries = require("./queries");
 const userQueries = require("../users/queries");
+//const battleTeamQueries = require("../battleTeams/queries");
 
 const getFavorites = (req, res) => {
     pool.query(queries.getFavorites, (error, results) => {
@@ -91,6 +92,8 @@ const deleteFavorite = (req, res) => {
         if (noCommentFound) {
             res.send("pokemon is not in the list...");
         }
+        //need to put if state for battle teams here
+
         pool.query(queries.deleteFavorite, [user_id, pokemon], (error, results) => {
             if (error) throw error;
             res.status(200).send("pokemon deleted successfully!");
