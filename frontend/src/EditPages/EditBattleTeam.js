@@ -82,17 +82,34 @@ export default function EditBattleTeam() {
         setSelectedOption6(e.target.value);
     };
 
+    console.log(selectedOption1)
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Handle the submission logic here
-        await fetch(`http://localhost:4000/battleteams/${y}`, {
+        
+        if (selectedOption1===" " || selectedOption2===" " || selectedOption3===" " || selectedOption4===" " || selectedOption5===" " || selectedOption6===" "){
+            console.log("need to select pokemon first!!")
+        } else {
+            
+            await fetch(`http://localhost:4000/battleteams/${y}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(infoToUpdate),
-        });
-        history.push(`/userpage/${y}`);
+            });
+            history.push(`/userpage/${y}`);
+        }
+        
+        // await fetch(`http://localhost:4000/battleteams/${y}`, {
+        //     method: "PUT",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(infoToUpdate),
+        // });
+        // history.push(`/userpage/${y}`);
     };
 
     let display;
