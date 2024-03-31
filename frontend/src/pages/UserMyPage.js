@@ -60,6 +60,7 @@ function UserMyPage() {
             const favoriteValues = {
                 pokemon: "pikachu",
                 user_id: y,
+                shiny: false,
             };
 
             const handleSubmit = async (e) => {
