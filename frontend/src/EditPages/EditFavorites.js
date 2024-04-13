@@ -72,9 +72,14 @@ export default function EditFavorites() {
 
     const theList = favorites.filter((fav) => fav.user_id === y);
     const myTeam = teams.filter((mine) => mine.user_id === y);
-    // const slot1 = myTeam[0] && myTeam[0].slot_1
-    // const { slot_1, slot_2, slot_3, slot_4, slot_5, slot_6 } = myTeam[0];
-    // console.log(slot_1)
+    const slot1 = myTeam[0] && myTeam[0].slot_1
+    const slot2 = myTeam[0] && myTeam[0].slot_2
+    const slot3 = myTeam[0] && myTeam[0].slot_3
+    const slot4 = myTeam[0] && myTeam[0].slot_4
+    const slot5 = myTeam[0] && myTeam[0].slot_5
+    const slot6 = myTeam[0] && myTeam[0].slot_6
+
+    // console.log(slot6)
 
     const sortedList = theList.sort((a, b) => {
         const nameA = a.pokemon.toLowerCase();
