@@ -9,6 +9,7 @@ export default function EditFavorites() {
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
     const [favorites, setFavorites] = useState([]);
+    const [teams, setTeams] = useState([]);
     const { auth, userID } = useAuth();
 
     // Ensure userID is a number, default to null if not
@@ -24,6 +25,16 @@ export default function EditFavorites() {
         }
     };
 
+  
+    const getTeams = async () => {
+        const url = `http://localhost:4000/battleteams/`;
+        const response = await fetch(url);
+        const responseJSON = await response.json();
+        if (responseJSON) {
+            setTeams(responseJSON);
+        }
+    };
+
     
 
     useEffect(() => {
@@ -35,6 +46,7 @@ export default function EditFavorites() {
 
         // Fetch comments after the loading delay
         getFavorites();
+        getTeams();
     }, []);
 
     const handleSubmit = async (e, z) => {
@@ -56,7 +68,13 @@ export default function EditFavorites() {
         }
     };
 
+  
+
     const theList = favorites.filter((fav) => fav.user_id === y);
+    const myTeam = teams.filter((mine) => mine.user_id === y);
+    // const slot1 = myTeam[0] && myTeam[0].slot_1
+    // const { slot_1, slot_2, slot_3, slot_4, slot_5, slot_6 } = myTeam[0];
+    // console.log(slot_1)
 
     const sortedList = theList.sort((a, b) => {
         const nameA = a.pokemon.toLowerCase();
