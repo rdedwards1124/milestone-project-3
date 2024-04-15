@@ -17,6 +17,10 @@
     transform: scale(1.2); 
 }
 
+.CenterIt{
+    text-align: center;
+}
+
 .UserDetails{
     display: flex;
     /* justify-content: space-between; */

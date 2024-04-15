@@ -51,11 +51,34 @@ function UserMyPage() {
     let ifLoggedIn;
     let ifLoggedOut;
 
-    const myTeam = teams.filter((team) => team.user_id === y)
-    const newTeam = myTeam && myTeam[0]
-    console.log(newTeam)
+    const myTeam = teams.filter((team) => team.user_id === y);
+    const newTeam = myTeam && myTeam[0];
+    console.log(newTeam);
 
     // Need an if statement: If newTeam is undefined, the Enter My Page button should be hidden!
+    // let activeTeam;
+    // if (newTeam === undefined) {
+    //     activeTeam = (
+    //         <>
+    //             <div className="scroll-down">
+    //                 <h2>If page isn't loading, then press this button once!</h2>
+    //                 <button onClick={handleSubmit}>Activate MyPage</button>
+    //             </div>
+    //         </>
+    //     );
+    // } else {
+    //     activeTeam = (
+    //         <>
+    //             <div className="">
+    //                 <Link to={`/userpage/${filteredUser[0].id}`}>
+    //                     <h1>
+    //                         <div className="EnterButton"> Enter My Page </div>
+    //                     </h1>
+    //                 </Link>
+    //             </div>
+    //         </>
+    //     );
+    // }
 
     if (auth) {
         if (trainers.length > 0) {
@@ -99,13 +122,42 @@ function UserMyPage() {
                 history.push(`/`);
             };
 
+            let activeTeam;
+            if (newTeam === undefined) {
+                activeTeam = (
+                    <>
+                        <div className="CenterIt">
+                            <h1>If page isn't loading, then press this button once!</h1>
+                            <button className="EnterButton" onClick={handleSubmit}>Activate MyPage</button>
+                        </div>
+                    </>
+                );
+            } else {
+                activeTeam = (
+                    <>
+                        <div className="">
+                            <Link to={`/userpage/${filteredUser[0].id}`}>
+                                <h1>
+                                    <div className="EnterButton"> Enter My Page </div>
+                                </h1>
+                            </Link>
+                        </div>
+                    </>
+                );
+            }
 
             ifLoggedIn = (
                 <>
-                    <div className="">
+                {activeTeam}
+                    {/* <div className="">
                         <div className="">
                             <Link to={`/userpage/${filteredUser[0].id}`}>
-                                <h1><div className="EnterButton"> Enter My Page </div></h1>
+                                <h1>
+                                    <div className="EnterButton">
+                                        {" "}
+                                        Enter My Page{" "}
+                                    </div>
+                                </h1>
                             </Link>
                         </div>
                         <div className="scroll-down">
@@ -117,7 +169,7 @@ function UserMyPage() {
                                 Activate MyPage
                             </button>
                         </div>
-                    </div>
+                    </div> */}
                 </>
             );
         }
@@ -133,7 +185,11 @@ function UserMyPage() {
                         </h1>
                     </div>
                     <div className="div4Img">
-                        <img className="errorImg" src="https://www.media.pokekalos.fr/img/site/erreur404.png" alt="Oops! Page not found..."/>
+                        <img
+                            className="errorImg"
+                            src="https://www.media.pokekalos.fr/img/site/erreur404.png"
+                            alt="Oops! Page not found..."
+                        />
                     </div>
                     <div className="errorFooter">
                         <Link to={`/login`}>

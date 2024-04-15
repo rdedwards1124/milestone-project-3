@@ -28,8 +28,10 @@ function Home() {
         }
     }
 
+    const filtered = trainers.filter((user) => user.bestpokemon !== null)
+
     const getRandomTrainers = () => {
-        const shuffled = trainers.sort(() => 0.5 - Math.random());
+        const shuffled = filtered.sort(() => 0.5 - Math.random());
         return shuffled.slice(0, 6);
     };
 
