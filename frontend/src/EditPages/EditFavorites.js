@@ -25,7 +25,6 @@ export default function EditFavorites() {
         }
     };
 
-  
     const getTeams = async () => {
         const url = `http://localhost:4000/battleteams/`;
         const response = await fetch(url);
@@ -34,8 +33,6 @@ export default function EditFavorites() {
             setTeams(responseJSON);
         }
     };
-
-    
 
     useEffect(() => {
         // Simulate a loading delay with setTimeout
@@ -51,7 +48,6 @@ export default function EditFavorites() {
 
     const handleSubmit = async (e, z) => {
         e.preventDefault();
-
         try {
             await fetch(`http://localhost:4000/favorites/${z}`, {
                 method: "DELETE",
@@ -68,18 +64,15 @@ export default function EditFavorites() {
         }
     };
 
-  
-
     const theList = favorites.filter((fav) => fav.user_id === y);
     const myTeam = teams.filter((mine) => mine.user_id === y);
-    const slot1 = myTeam[0] && myTeam[0].slot_1
-    const slot2 = myTeam[0] && myTeam[0].slot_2
-    const slot3 = myTeam[0] && myTeam[0].slot_3
-    const slot4 = myTeam[0] && myTeam[0].slot_4
-    const slot5 = myTeam[0] && myTeam[0].slot_5
-    const slot6 = myTeam[0] && myTeam[0].slot_6
+    const slot1 = myTeam[0] && myTeam[0].slot_1;
+    const slot2 = myTeam[0] && myTeam[0].slot_2;
+    const slot3 = myTeam[0] && myTeam[0].slot_3;
+    const slot4 = myTeam[0] && myTeam[0].slot_4;
+    const slot5 = myTeam[0] && myTeam[0].slot_5;
+    const slot6 = myTeam[0] && myTeam[0].slot_6;
 
-    // console.log(slot6)
 
     const sortedList = theList.sort((a, b) => {
         const nameA = a.pokemon.toLowerCase();
@@ -93,6 +86,7 @@ export default function EditFavorites() {
         }
         return 0;
     });
+
 
     let listOfPokemon;
 
@@ -111,13 +105,24 @@ export default function EditFavorites() {
                         alt="Default Pokeball Image"
                     />
                 )}
-                <button
-                    onClick={(e) => {
-                        handleSubmit(e, each.favorite_id);
-                    }}
-                >
-                    DELETE
-                </button>
+
+                {/* condition ? expressionIfTrue : expressionIfFalse */}
+                {each.pokemon === slot1 ||
+                each.pokemon === slot2 ||
+                each.pokemon === slot3 ||
+                each.pokemon === slot4 ||
+                each.pokemon === slot5 ||
+                each.pokemon === slot6 ? (
+                    <p>Remove from Battle Team to Delete...</p>
+                ) : (
+                    <button
+                        onClick={(e) => {
+                            handleSubmit(e, each.favorite_id);
+                        }}
+                    >
+                        DELETE
+                    </button>
+                )}
             </div>
         ));
     }
