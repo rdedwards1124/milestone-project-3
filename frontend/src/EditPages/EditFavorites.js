@@ -10,6 +10,7 @@ export default function EditFavorites() {
     const [isLoading, setIsLoading] = useState(true);
     const [favorites, setFavorites] = useState([]);
     const [teams, setTeams] = useState([]);
+    const [users, setUsers] = useState([])
     const { auth, userID } = useAuth();
 
     // Ensure userID is a number, default to null if not
@@ -34,6 +35,17 @@ export default function EditFavorites() {
         }
     };
 
+    
+    const getUsers = async () => {
+        const url = `http://localhost:4000/users/`;
+        const response = await fetch(url);
+        const responseJSON = await response.json();
+        if (responseJSON) {
+            setUsers(responseJSON);
+        }
+    };
+   
+
     useEffect(() => {
         // Simulate a loading delay with setTimeout
         const delay = 1000; // Adjust this to your desired loading time (in milliseconds)
@@ -44,6 +56,7 @@ export default function EditFavorites() {
         // Fetch comments after the loading delay
         getFavorites();
         getTeams();
+        getUsers();
     }, []);
 
     const handleSubmit = async (e, z) => {
@@ -65,15 +78,6 @@ export default function EditFavorites() {
     };
 
     const theList = favorites.filter((fav) => fav.user_id === y);
-    const myTeam = teams.filter((mine) => mine.user_id === y);
-    const slot1 = myTeam[0] && myTeam[0].slot_1;
-    const slot2 = myTeam[0] && myTeam[0].slot_2;
-    const slot3 = myTeam[0] && myTeam[0].slot_3;
-    const slot4 = myTeam[0] && myTeam[0].slot_4;
-    const slot5 = myTeam[0] && myTeam[0].slot_5;
-    const slot6 = myTeam[0] && myTeam[0].slot_6;
-
-
     const sortedList = theList.sort((a, b) => {
         const nameA = a.pokemon.toLowerCase();
         const nameB = b.pokemon.toLowerCase();
@@ -87,9 +91,19 @@ export default function EditFavorites() {
         return 0;
     });
 
+    const myTeam = teams.filter((mine) => mine.user_id === y);
+    const slot1 = myTeam[0] && myTeam[0].slot_1;
+    const slot2 = myTeam[0] && myTeam[0].slot_2;
+    const slot3 = myTeam[0] && myTeam[0].slot_3;
+    const slot4 = myTeam[0] && myTeam[0].slot_4;
+    const slot5 = myTeam[0] && myTeam[0].slot_5;
+    const slot6 = myTeam[0] && myTeam[0].slot_6;
+
+    const userPerson = users.filter((me) => me.id === y);
+    const favPokemon = userPerson[0] && userPerson[0].bestpokemon;
+
 
     let listOfPokemon;
-
     if (favorites === null) {
         listOfPokemon = <div>No favs...</div>;
     } else {
@@ -107,13 +121,16 @@ export default function EditFavorites() {
                 )}
 
                 {/* condition ? expressionIfTrue : expressionIfFalse */}
+                {/* condition1 ? expressionIfTrue1 : condition2 ? expressionIfTrue2 : expressionIfFalse */}
                 {each.pokemon === slot1 ||
                 each.pokemon === slot2 ||
                 each.pokemon === slot3 ||
                 each.pokemon === slot4 ||
                 each.pokemon === slot5 ||
                 each.pokemon === slot6 ? (
-                    <p>Remove from Battle Team to Delete...</p>
+                    <p>Remove from BattleTeam to Delete...</p>
+                ) : each.pokemon === favPokemon ? (
+                    <p>Remove from FavoritePokemon to Delete...</p>
                 ) : (
                     <button
                         onClick={(e) => {

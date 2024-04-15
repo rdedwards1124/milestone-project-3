@@ -155,9 +155,6 @@ function UserPageWithId() {
     const favShinySlot1 = favorites.filter(
         (favorite) => favorite.pokemon === slot_1
     );
-    
-    // console.log(favShinySlot1[0].shiny)
-
     const favShinySlot2 = favorites.filter(
         (favorite) => favorite.pokemon === slot_2
     );

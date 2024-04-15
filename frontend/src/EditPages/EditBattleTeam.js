@@ -31,7 +31,7 @@ export default function EditBattleTeam() {
 
     useEffect(() => {
         // Simulate a loading delay with setTimeout
-        const delay = 2000; // Adjust this to your desired loading time (in milliseconds)
+        const delay = 1000; // Adjust this to your desired loading time (in milliseconds)
         setTimeout(() => {
             setIsLoading(false); // After the delay, set isLoading to false
         }, delay);
@@ -47,7 +47,6 @@ export default function EditBattleTeam() {
     let favlist;
     favlist = theList.map((each) => (
         <>
-            
             <option key={each.favorite_id} value={each.pokemon}>
                 {each.pokemon}
             </option>
@@ -112,6 +111,17 @@ export default function EditBattleTeam() {
         // history.push(`/userpage/${y}`);
     };
 
+    const isFormValid = () => {
+        return (
+            selectedOption1 !== "" &&
+            selectedOption2 !== "" &&
+            selectedOption3 !== "" &&
+            selectedOption4 !== "" &&
+            selectedOption5 !== "" &&
+            selectedOption6 !== ""
+        );
+    };
+
     let display;
     if (auth) {
         display = (
@@ -123,90 +133,90 @@ export default function EditBattleTeam() {
                     <div className="middle bottomDiv" >
                         <form onSubmit={handleSubmit}>
                             <div>
-                                <label htmlFor="dropdown">
+                                <label htmlFor="dropdown1">
                                     Choose 1st Pokemon!
                                 </label>
                                 <select
-                                    id="dropdown"
-                                    name="dropdown"
+                                    id="dropdown1"
+                                    name="dropdown1"
                                     value={selectedOption1}
                                     onChange={handleOptionChange1}
                                 >
-                                    <option value=" ">Select from favorites</option>
+                                    <option value="">Select from favorites</option>
                                     {favlist}
                                 </select>
                             </div>
                             <div>
-                                <label htmlFor="dropdown">
+                                <label htmlFor="dropdown2">
                                     Choose 2nd Pokemon!
                                 </label>
                                 <select
-                                    id="dropdown"
-                                    name="dropdown"
+                                    id="dropdown2"
+                                    name="dropdown2"
                                     value={selectedOption2}
                                     onChange={handleOptionChange2}
                                 >
-                                    <option value=" ">Select from favorites</option>
+                                    <option value="">Select from favorites</option>
                                     {favlist}
                                 </select>
                             </div>
                             <div>
-                                <label htmlFor="dropdown">
+                                <label htmlFor="dropdown3">
                                     Choose 3rd Pokemon!
                                 </label>
                                 <select
-                                    id="dropdown"
-                                    name="dropdown"
+                                    id="dropdown3"
+                                    name="dropdown3"
                                     value={selectedOption3}
                                     onChange={handleOptionChange3}
                                 >
-                                    <option value=" ">Select from favorites</option>
+                                    <option value="">Select from favorites</option>
                                     {favlist}
                                 </select>
                             </div>
                             <div>
-                                <label htmlFor="dropdown">
+                                <label htmlFor="dropdown4">
                                     Choose 4th Pokemon!
                                 </label>
                                 <select
-                                    id="dropdown"
-                                    name="dropdown"
+                                    id="dropdown4"
+                                    name="dropdown4"
                                     value={selectedOption4}
                                     onChange={handleOptionChange4}
                                 >
-                                    <option value=" ">Select from favorites</option>
+                                    <option value="">Select from favorites</option>
                                     {favlist}
                                 </select>
                             </div>
                             <div>
-                                <label htmlFor="dropdown">
+                                <label htmlFor="dropdown5">
                                     Choose 5th Pokemon!
                                 </label>
                                 <select
-                                    id="dropdown"
-                                    name="dropdown"
+                                    id="dropdown5"
+                                    name="dropdown5"
                                     value={selectedOption5}
                                     onChange={handleOptionChange5}
                                 >
-                                    <option value=" ">Select from favorites</option>
+                                    <option value="">Select from favorites</option>
                                     {favlist}
                                 </select>
                             </div>
                             <div>
-                                <label htmlFor="dropdown">
+                                <label htmlFor="dropdown6">
                                     Choose 6th Pokemon!
                                 </label>
                                 <select
-                                    id="dropdown"
-                                    name="dropdown"
+                                    id="dropdown6"
+                                    name="dropdown6"
                                     value={selectedOption6}
                                     onChange={handleOptionChange6}
                                 >
-                                    <option value=" ">Select from favorites</option>
+                                    <option value="">Select from favorites</option>
                                     {favlist}
                                 </select>
                             </div>
-                            <input type="submit" value="Submit" />
+                            <input type="submit" value="Submit" disabled={!isFormValid()} />
                         </form>
                     </div>
                     <div className="bottom bottomDiv" >

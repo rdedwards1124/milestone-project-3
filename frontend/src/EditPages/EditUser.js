@@ -77,6 +77,12 @@ export default function EditUser() {
         history.push(`/userpage/${y}`)
     };
 
+    const isFormValid = () => {
+        return (
+            selectedOption !== "" 
+        );
+    };
+
     // Authorization
     let display;
     if (auth) {
@@ -100,7 +106,7 @@ export default function EditUser() {
                                 <option value=" ">Select from favorites</option>
                                 {favlist}
                             </select>
-                            <input type="submit" value="Submit" />
+                            <input type="submit" value="Submit" disabled={!isFormValid()} />
                         </form>
                     </div>
                     <div className="bottom bottomDiv" >
