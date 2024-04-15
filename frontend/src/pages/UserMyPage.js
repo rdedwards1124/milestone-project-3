@@ -10,6 +10,7 @@ function UserMyPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedOption, setSelectedOption] = useState("");
+    const [teams, setTeams] = useState([]);
     const { auth, username, userID } = useAuth();
 
     // Ensure userID is a number, default to null if not
@@ -33,20 +34,35 @@ function UserMyPage() {
         }
     }
 
+    const getTeams = async () => {
+        const url = `http://localhost:4000/battleteams/`;
+        const response = await fetch(url);
+        const responseJSON = await response.json();
+        if (responseJSON) {
+            setTeams(responseJSON);
+        }
+    };
+
     useEffect(() => {
         fetchData();
+        getTeams();
     }, []);
 
     let ifLoggedIn;
     let ifLoggedOut;
+
+    const myTeam = teams.filter((team) => team.user_id === y)
+    const newTeam = myTeam && myTeam[0]
+    console.log(newTeam)
+
+    // Need an if statement: If newTeam is undefined, the Enter My Page button should be hidden!
 
     if (auth) {
         if (trainers.length > 0) {
             const filteredUser = trainers.filter(
                 (user) => user.username === username
             );
-            console.log(filteredUser[0].id);
-
+            // console.log(filteredUser[0].id);
             const battleTeamValues = {
                 slot_1: "pikachu",
                 slot_2: "pikachu",
@@ -82,6 +98,7 @@ function UserMyPage() {
                 });
                 history.push(`/`);
             };
+
 
             ifLoggedIn = (
                 <>

@@ -10,7 +10,7 @@ export default function EditFavorites() {
     const [isLoading, setIsLoading] = useState(true);
     const [favorites, setFavorites] = useState([]);
     const [teams, setTeams] = useState([]);
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState([]);
     const { auth, userID } = useAuth();
 
     // Ensure userID is a number, default to null if not
