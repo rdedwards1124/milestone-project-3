@@ -155,6 +155,41 @@ function PokemonPage() {
         favButton = <></>;
     }
 
+    // const pokeID = searchedPokemon.id
+    const previousID = searchedPokemon.id - 1
+    const nextID = searchedPokemon.id + 1
+    let previousButton;
+    let nextButton;
+    
+    if(previousID<=0){
+        previousButton = (
+            <></>
+        )
+    } else {
+        previousButton = (
+            <>
+                <Link to={`/pokemonpage/${previousID}`}>
+                    <p>↞Previous</p>
+                </Link>
+            </>
+        )
+    }
+
+    if(nextID>1025){
+        nextButton = (
+            <></>
+        )
+    } else {
+        nextButton = (
+            <>
+                <Link to={`/pokemonpage/${nextID}`}>
+                    <p>Next↠</p>
+                </Link>
+            </>
+        )
+    }
+
+
     return (
         <div>
             <div className="PageTitle">
@@ -184,11 +219,13 @@ function PokemonPage() {
                         </li>
                     </ul>
                     <div className="buttons">
+                        {previousButton}
                         <button onClick={handleClickShiny} >{shinyButton}</button>
                         {favButton}
                         <Link to={`/searchpage`}>
                             <button type="submit">Search Page</button>
                         </Link>
+                        {nextButton}
                     </div>
                     {text}
                 </div>
