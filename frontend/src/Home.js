@@ -27,7 +27,7 @@ function Home() {
             setLoading(false);
         }
     }
-
+// 
     const filtered = trainers.filter((user) => user.bestpokemon !== null)
 
     const getRandomTrainers = () => {

@@ -127,8 +127,8 @@ function UserMyPage() {
                 activeTeam = (
                     <>
                         <div className="CenterIt">
-                            <h1>If page isn't loading, then press this button once!</h1>
-                            <button className="EnterButton" onClick={handleSubmit}>Activate MyPage</button>
+                            <h1>Are you ready to be a Pokémon Master?!</h1>
+                            <button className="EnterButton" onClick={handleSubmit}>Start Your Journey Here!</button>
                         </div>
                     </>
                 );
